@@ -1,0 +1,143 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: row;
+  display: flex;
+  padding: 0;
+  width: 100%;
+  height: 46px;
+  line-height: 46px;
+  background-color: $-header-bg;
+  box-shadow: 0px 2px 8px 0px rgba(216, 198, 217, 1);
+  z-index: 200;
+
+  .logo {
+    position: relative;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    justify-content: center;
+
+    /deep/ svg,
+    /deep/ img {
+      fill: #fff;
+      height: 32px;
+      width: 32px;
+      margin-right: 8px;
+    }
+    /deep/ h1 {
+      font-size: 24px;
+    }
+    /deep/ .el-divider {
+      position: absolute;
+      border-left: solid 1px $-header-divider-left;
+      border-right: solid 1px $-header-divider-right;
+      height: 20px;
+      right: -8px;
+      top: 13px;
+    }
+  }
+
+  &-nav {
+    font-size: 14px;
+    color: #fff;
+    padding-left: 8px;
+    flex: 1;
+    background: transparent;
+    border: none !important;
+    > .el-menu-item {
+      height: 46px !important;
+      line-height: 46px !important;
+      padding: 0 9px;
+      color: #fff !important;
+      font-weight: 400;
+    }
+  }
+  &-user {
+    float: right !important;
+    .text {
+      margin-left: 8px;
+    }
+  }
+  &-msg {
+    float: right !important;
+    margin-right: 20px !important;
+  }
+  .visitor-item {
+    float: right;
+    line-height: 40px !important;
+    height: 40px !important;
+    position: relative;
+    color: #eae6eb !important;
+    &:after {
+      content: "\20";
+      position: absolute;
+      width: 1px;
+      height: 14px;
+      right: 0;
+      background-color: #fff;
+    }
+  }
+  .visitor-item:first-child {
+    &:after {
+      display: none;
+    }
+  }
+  .el-menu-item {
+    display: flex;
+    align-items: center;
+  }
+  .el-input {
+    width: 220px;
+    height: 36px;
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 18px;
+    margin-right: 40px;
+    vertical-align: top;
+    overflow: hidden;
+  }
+  .icon {
+    font-size: 20px;
+    fill: #fff;
+  }
+  .icon1 {
+    width: 15px;
+    height: 13px;
+  }
+  .icon2 {
+    width: 18px;
+  }
+  .item {
+    line-height: 46px;
+    font-size: 12px;
+    color: #fff;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .username {
+    display: flex;
+    position: relative;
+    cursor: default;
+    padding: 0 18px;
+    margin: 0 18px;
+    &:after,
+    &:before {
+      content: "\20";
+      position: absolute;
+      top: 10px;
+      height: 26px;
+      border-left: solid 1px rgba(144, 43, 148, 1);
+    }
+
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+  }
+}

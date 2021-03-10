@@ -1,0 +1,100 @@
+{
+  "id": "2409716",
+  "name": "fe-admin",
+  "font_family": "fe-font",
+  "css_prefix_text": "fe-",
+  "description": "fe-admin",
+  "glyphs": [
+    {
+      "icon_id": "3702591",
+      "name": "系统配置",
+      "font_class": "system",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "9118054",
+      "name": "系统配置",
+      "font_class": "system2",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "19812950",
+      "name": "boy",
+      "font_class": "boy",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "19813025",
+      "name": "girl",
+      "font_class": "girl",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "14821563",
+      "name": "用户名",
+      "font_class": "user",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "3702615",
+      "name": "logo配置",
+      "font_class": "logo",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "11556685",
+      "name": "菜单收起",
+      "font_class": "menu-close",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "11556695",
+      "name": "菜单展开",
+      "font_class": "menu-open",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "6370603",
+      "name": "异常",
+      "font_class": "exception",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "6654682",
+      "name": "dashboard",
+      "font_class": "dashboard",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "10375664",
+      "name": "500",
+      "font_class": "500",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "11896291",
+      "name": "403",
+      "font_class": "400",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "17446831",
+      "name": "404",
+      "font_class": "404",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

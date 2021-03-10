@@ -1,0 +1,73 @@
+{
+  "name": "fe-admin",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "dev": "vue-cli-service serve",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios-encapsulation": "^1.0.3",
+    "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
+    "lodash.get": "^4.4.2",
+    "lodash.noop": "^3.0.1",
+    "lodash.set": "^4.3.2",
+    "microservices-fe": "http://39.105.184.167:9999/tbs/microservices-fe.git#tbs_hn_v0.0.1",
+    "monaco-editor": "^0.21.2",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "promise.allsettled": "^1.0.2",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.5",
+    "vue-event-proxy": "^1.0.5",
+    "vue-property-decorator": "^9.0.0",
+    "vue-router": "^3.3.4",
+    "vuex": "^3.5.1",
+    "vuex-class": "^0.3.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.159",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "@vue/cli-plugin-babel": "^4.4.0",
+    "@vue/cli-plugin-eslint": "^4.4.0",
+    "@vue/cli-plugin-typescript": "^4.4.0",
+    "@vue/cli-service": "^4.4.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-vue": "^7.1.0",
+    "fs-extra": "^9.1.0",
+    "lint-staged": "^10.2.11",
+    "monaco-editor-webpack-plugin": "^2.0.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.2",
+    "typescript": "^4.0.2",
+    "uuid": "^8.3.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-manifest-plugin": "^2.2.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "tag": "754dc44f"
+}

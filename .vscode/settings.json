@@ -1,0 +1,108 @@
+{
+  // *控制字体大小(像素)
+  "editor.fontSize": 13,
+  // *保存时候格式化文件
+  "editor.formatOnSave": true,
+  // *控制行号显示
+  "editor.lineNumbers": "on",
+  // *定义默认格式化程序，
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // *一个制表符等于的空格数
+  "editor.tabSize": 2,
+  // *控制代码片段是否与其他建议一起显示及其排列的位置
+  "editor.snippetSuggestions": "bottom",
+  // *控制折行方式
+  "editor.wordWrap": "wordWrapColumn",
+  // *控制编辑器的折行列
+  "editor.wordWrapColumn": 120,
+  // *代码保存的时候运行代码操作类型
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": false
+  },
+
+  // 在拉取前暂存所有更改，在拉取成功后还原这些更改
+  "git.autoStash": true,
+  // 启用时，提交将自动从当前Git存储库默认远程获取
+  "git.autofetch": true,
+
+  // 配置语言的文件关联
+  "files.associations": {
+    "*.vue": "vue",
+    "*.tpl": "html"
+  },
+  // 文件头配置（是否自动添加注释）
+  "fileheader.configObj": {
+    "autoAdd": false
+  },
+  // typescript验证是否开启
+  "typescript.validate.enable": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  // *emmet启用后，按下TAB健，将展开Emmet缩写, 能够快速编写html, css代码,
+  "emmet.triggerExpansionOnTab": true,
+  // *在默认不受支持的语言中启用Emmet缩写
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "vue": "html"
+  },
+  // *菜单树缩进（以像素为单位）
+  "workbench.tree.indent": 14,
+  // import路径移动或者重命名时，自动更新
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "files.autoSave": "onFocusChange",
+
+  // *vue 文件配置（包括格式化插件，空格像素，自动保存格式化）
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  // typescript 文件路径改变后，import它的地方的路径自动改变
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // *是否制表符(tabs)进行缩进
+  "prettier.useTabs": false,
+  // *设置不会自动关闭的标记列表
+  "auto-close-tag.excludedTags": [
+    "area",
+    "base",
+    "br",
+    "col",
+    "command",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "keygen",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr"
+  ],
+  // *设置使用该插件的开发语言，如果支持所有语言的话用["*"]
+  "auto-close-tag.activationOnLanguage": [
+    "xml",
+    "php",
+    "blade",
+    "ejs",
+    "jinja",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "plaintext",
+    "markdown",
+    "vue",
+    "liquid",
+    "erb",
+    "lang-cfml",
+    "cfml",
+    "HTML (EEx)",
+    "HTML (Eex)",
+    "plist"
+  ]
+}

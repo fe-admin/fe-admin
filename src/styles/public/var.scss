@@ -1,0 +1,71 @@
+/* 改变主题色变量 */
+$--color-primary: #556ebb;
+/*网页标题文字和颜色*/
+$--header-font: 16px;
+$--header-color: #262626;
+
+/*表格标题及描述文字标题等重要文字、弹窗标题*/
+$--descrition-font: 14px;
+$--descrition-color: #262626;
+
+/*表格内容及描述文字正文等普通文字*/
+$--table-font: 14px;
+$--table-font-color: #595959;
+
+/*文字提示内容、备案号、次重要文字信息、返回文字*/
+$--sub-font: 14px;
+$--sub-color: #999999;
+
+/*控件内提示字体*/
+$--component-font: 14px;
+$--component-color: #bfbfbf;
+
+/*标签内文字，颜色为平台vi色*/
+$--span-font: 12px;
+
+/// color|[成功颜色
+$--color-success: #61c200 !default;
+/// color|[警告颜色,
+$--color-warning: #ffc718 !default;
+/// color|[危险颜色
+$--color-danger: #df1616 !default;
+/// color|[信息颜色,
+$--color-info: #909399 !default;
+/// color|[状态 - 运行中、在用
+$--color-runing: #5d78ff !default;
+
+/*用于输入框及选择框颜色及icon、置灰文字与button色 */
+$--color-base: #d9d9d9;
+
+/*用于表格标题栏底色、分割线颜色*/
+$--color-line-base: #f1f1f1;
+
+/*用于不可操作内容输入框底色、详情内表格表头颜色*/
+$--disabled-input: #fafafa;
+
+// 导航背景色
+$-header-bg: #4e72df;
+$-footer-bg: #425892;
+$-header-divider-left: #4868c7;
+$-header-divider-right: #6987e3;
+$-aside-menu-color: #34378b;
+$-aside-menu-tit-line: #b8bed1;
+/*链接颜色*/
+$--link-color: #556ebb;
+$--font-color: #595959;
+
+$handle-common-color: #556ebb;
+// 黄色按钮
+$-bread-color: #7999fc;
+$-bread-hover-color: #7999fc;
+
+// checked radio
+$-checked-color: #6f99ec;
+// 登录渐变按钮
+$violet-linear-from: #3cb9fa;
+$violet-linear-to: #4e72df;
+$violet-linear-active-from: #3cb9fa;
+$violet-linear-active-to: #4e72df;
+$-dialog-color: #7999fc;
+
+$-checked-content: url("data:image/svg+xml;%20charset=utf8,%3C?xml%20version=%221.0%22%20standalone=%22no%22?%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%3Csvg%20t=%221596805552225%22%20class=%22icon%22%20viewBox=%220%200%201024%201024%22%20version=%221.1%22%20xmlns=%22http://www.w3.org/2000/svg%22%20p-id=%227282%22%20xmlns:xlink=%22http://www.w3.org/1999/xlink%22%20width=%22200%22%20height=%22200%22%3E%3Cdefs%3E%3Cstyle%20type=%22text/css%22%3E%3C/style%3E%3C/defs%3E%3Cpath%20d=%22M467.6%20666.1c-9.1%200-18.1-3.5-25.1-10.4L300.2%20513.4c-13.9-13.9-13.9-36.3%200-50.1%2013.9-13.9%2036.3-13.9%2050.1%200l117.2%20117.2%20212.1-212.1c13.9-13.9%2036.3-13.9%2050.1%200s13.9%2036.3%200%2050.1l-237%20237.2c-6.9%206.9-16%2010.4-25.1%2010.4z%22%20p-id=%227283%22%3E%3C/path%3E%3C/svg%3E");
