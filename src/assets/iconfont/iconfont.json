@@ -6,16 +6,30 @@
   "description": "fe-admin",
   "glyphs": [
     {
-      "icon_id": "3702591",
-      "name": "系统配置",
-      "font_class": "system",
-      "unicode": "e63e",
-      "unicode_decimal": 58942
+      "icon_id": "17514974",
+      "name": "result",
+      "font_class": "result",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "14273013",
+      "name": "形状结合",
+      "font_class": "success",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "14273015",
+      "name": "Shape备份 5",
+      "font_class": "error",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
     },
     {
       "icon_id": "9118054",
       "name": "系统配置",
-      "font_class": "system2",
+      "font_class": "system",
       "unicode": "e630",
       "unicode_decimal": 58928
     },
@@ -85,7 +99,7 @@
     {
       "icon_id": "11896291",
       "name": "403",
-      "font_class": "400",
+      "font_class": "403",
       "unicode": "e63d",
       "unicode_decimal": 58941
     },

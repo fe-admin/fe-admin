@@ -1,4 +1,4 @@
-import { ErrorBoundary, get, post } from "@/util/axios";
+import { ErrorBoundary, get, post } from "@/utils/axios";
 import { baseURL } from "@/config";
 
 const tusdaoUrl = `/user/tusdao_control`;
@@ -78,4 +78,87 @@ export function register(params, handler) {
  */
 export function noticeUnread() {
   return ErrorBoundary(get(`${baseURL}${API.noticeUnread}`));
+}
+
+export function getMenus() {
+  return new Promise((resolve) => {
+    const list = [
+      {
+        name: "Dashboard",
+        path: "/dashboard",
+        meta: {
+          title: "仪表盘",
+          icon: "fe-dashboard",
+        },
+      },
+      //exception
+      {
+        name: "RouteView",
+        redirect: "/exception/403",
+        path: "/exception",
+        meta: { title: "异常页面", name: "RouteView", icon: "fe-exception" },
+        children: [
+          {
+            path: "/exception/403",
+            name: "403",
+            meta: {
+              title: "403",
+              permission: ["exception"],
+            },
+          },
+          {
+            path: "/exception/404",
+            name: "404",
+            meta: {
+              title: "404",
+              permission: ["exception"],
+            },
+          },
+          {
+            path: "/exception/500",
+            name: "500",
+            meta: {
+              title: "500",
+              permission: ["exception"],
+            },
+          },
+        ],
+      },
+      // result
+      {
+        path: "/result",
+        name: "RouteView",
+        redirect: "/result/success",
+        meta: {
+          title: "结果页面",
+          icon: "fe-result",
+          permission: ["result"],
+        },
+        children: [
+          {
+            path: "/result/success",
+            name: "ResultSuccess",
+            meta: {
+              title: "成功",
+              keepAlive: false,
+              hiddenHeaderContent: true,
+              permission: ["result"],
+            },
+          },
+          {
+            path: "/result/fail",
+            name: "ResultFail",
+            meta: {
+              title: "失败",
+              keepAlive: false,
+              hiddenHeaderContent: true,
+              permission: ["result"],
+            },
+          },
+        ],
+      },
+    ];
+    console.info(list);
+    resolve(list);
+  });
 }

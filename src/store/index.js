@@ -1,15 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 import actions from "./actions";
 import getters from "./getters";
 import mutations from "./mutations";
-import userInfo from "./modules/user";
+import user from "./modules/user";
+import permission from "./modules/permission";
 
 Vue.use(Vuex);
 const state = {
-  notice: 0,
+  menuId: "0",
   isCollapse: false,
-  layout: null,
 };
 
 export default new Vuex.Store({
@@ -17,5 +18,6 @@ export default new Vuex.Store({
   getters,
   mutations,
   actions,
-  modules: { userInfo },
+  modules: { user, permission },
+  plugins: [createPersistedState()],
 });

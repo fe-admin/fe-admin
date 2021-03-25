@@ -1,5 +1,8 @@
 export default {
   isCollapse: (state) => state.isCollapse,
-  layout: (state) => state.layout,
-  store: (state) => state,
+  // store: (state) => state,
+  addRouters: (state) => state.permission.addRouters,
+  routerAdded: (state) => state.permission.routerAdded,
+  accountName: (state) => state.user.accountName,
+  menuId: (state) => state.menuId,
 };

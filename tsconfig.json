@@ -26,7 +26,14 @@
     "tests/**/*.tsx",
     "src/main.js",
     "src/components/Aside/MenuRender.jsx",
-    "src/components/Logo/index.jsx"
+    "src/components/Logo/index.jsx",
+    "src/fe-admin-component/SvgIcon/index.jsx",
+    "src/fe-admin-component/Aside/index.jsx",
+    "src/fe-admin-component/Aside/index.jsx",
+    "src/fe-admin-component/Breadcrumb/index.jsx",
+    "src/fe-admin-component/Collapse/index.jsx",
+    "src/fe-admin-component/Header/index.jsx",
+    "src/fe-admin-component/Footers/index.jsx"
   ],
   "exclude": ["node_modules"]
 }

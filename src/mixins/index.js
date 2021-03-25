@@ -1,5 +1,5 @@
 import { mapActions } from "vuex";
-import { microId, showButton, isQiankun } from "../util";
+import { microId, showButton, isQiankun } from "../utils";
 import { getButtonList } from "../api";
 
 export const authMixin = {

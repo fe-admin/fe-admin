@@ -1,5 +1,5 @@
 import { mapGetters, mapActions } from "vuex";
-import { isQiankun, collapse } from "../util";
+import { isQiankun, collapse } from "../utils";
 let collapseScope = () => {};
 
 export default {

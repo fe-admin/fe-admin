@@ -1,17 +1,30 @@
-const userInfo = {
-    state: {
-        userName: '',
-        userId: '',
-    },
-    mutations: {
-        updateUserInfo: (state, payload) => {
-            Object.assign(state, payload)
-        },
-    },
-    getters: {
-        getUserId: state => () => state.userId,
-        getUserName: state => () => state.userName,
-    },
-}
+import { loginOut } from "@/api";
+import { removeToken } from "@/utils/auth";
 
-export default userInfo
+const userInfo = {
+  state: {
+    accountName: "",
+    userId: "",
+  },
+  mutations: {
+    updateUserInfo: (state, payload) => {
+      Object.assign(state, payload);
+    },
+    SET_USERINFO: (state, payload) => {
+      Object.assign(state, payload);
+    },
+  },
+  actions: {
+    Login({ commit }, userInfo) {
+      commit("SET_USERINFO", userInfo);
+    },
+    Logout({ commit, state }) {
+      return loginOut(state.token).then(() => {
+        removeToken();
+        commit("CLEAR_ROUTER_FLAG");
+      });
+    },
+  },
+};
+
+export default userInfo;

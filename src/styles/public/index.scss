@@ -1,8 +1,37 @@
 @import "~normalize.css";
-// @import './var';
-// /* 改变 icon 字体路径变量，必需 */
 $--font-path: "~element-ui/lib/theme-chalk/fonts";
 @import "~element-ui/packages/theme-chalk/src/index";
-@import "../components/index.scss";
-@import "./micro.scss";
-@import "./progress.scss";
+@import "../modules/progress.scss";
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  min-width: 1280px;
+  background: #f3f3ff;
+  color: $--font-color;
+  height: 100%;
+  font-size: 14px;
+  font-family: pingfang SC, helvetica neue, arial, hiragino sans gb,
+    microsoft yahei ui, microsoft yahei, simsun, sans-serif !important;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+// 默认链接样式
+a {
+  color: $--link-color;
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}

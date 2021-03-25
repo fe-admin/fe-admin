@@ -1,9 +1,11 @@
 const path = require("path");
-const fs = require("fs-extra");
+const webpack = require("webpack");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+const GitRevisionPlugin = require("git-revision-webpack-plugin");
 
-const obj = fs.readJsonSync("package.json", { throws: false });
+const gitRevisionPlugin = new GitRevisionPlugin();
+const buildDate = JSON.stringify(new Date().toLocaleString());
 
 module.exports = {
   outputDir: "dist",
@@ -21,7 +23,7 @@ module.exports = {
     loaderOptions: {
       scss: {
         additionalData: `
-                @import "microservices-fe/src/styles/public/var.scss";
+                @import "@/styles/public/var.scss";
                 `,
       },
     },
@@ -36,10 +38,14 @@ module.exports = {
   },
   publicPath: process.env.publicPath,
   configureWebpack: {
-    externals: {
-      echarts: "echarts",
-    },
     plugins: [
+      gitRevisionPlugin,
+      new webpack.DefinePlugin({
+        VERSION: JSON.stringify(gitRevisionPlugin.version()),
+        COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash()),
+        BRANCH: JSON.stringify(gitRevisionPlugin.branch()),
+        BUILD_DATE: buildDate,
+      }),
       new ManifestPlugin({
         filter: ({ name }) => {
           return !/monaco-editor|\.map|\.png/.test(name);
