@@ -10,7 +10,6 @@ const loginRoutePath = "/user/login";
 const defaultRoutePath = "/dashbord";
 
 router.beforeEach((to, from, next) => {
-  console.info(to, from);
   NProgress.start({ showSpinner: false });
   if (getToken()) {
     if (to.path === loginRoutePath) {
@@ -20,6 +19,7 @@ router.beforeEach((to, from, next) => {
         store
           .dispatch("GenerateRoutes")
           .then((res) => {
+            console.info(res);
             addRoutes(router, getAsyncRouter(res));
             next({ path: to.path });
           })

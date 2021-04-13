@@ -158,7 +158,6 @@ export function getMenus() {
         ],
       },
     ];
-    console.info(list);
     resolve(list);
   });
 }

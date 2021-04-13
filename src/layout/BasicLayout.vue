@@ -6,7 +6,12 @@
     :toggleCollapse="toggleCollapse"
     :updateMenuId="updateMenuId"
   >
-    <template v-slot:logo> </template>
+    <template v-slot:logo>
+      <div class="logo-wrapper">
+        <img src="/favicon.png" width="32" height="32" />
+        <svg-icon iconName="fe-logo-text" />
+      </div>
+    </template>
     <template v-slot:headerMenu> <HeaderMenu /></template>
     <template v-slot:headerRightContent><HeaderRightContent /></template>
     <template v-if="menuTitle" v-slot:asideTitle>
@@ -53,7 +58,9 @@ export default {
 .fe-layout-collapse {
   .el-aside,
   .fe-aside {
-    transition: 0.3s all ease-in-out;
+    transition-property: width, height;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
     width: 54px !important;
   }
   .main-content {

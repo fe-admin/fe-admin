@@ -8,6 +8,7 @@ const rootRouter = {
   component: BasicLayout,
   redirect: "/dashboard",
   children: [],
+  meta: { title: "首页" },
 };
 
 function formatMenu(list, router) {

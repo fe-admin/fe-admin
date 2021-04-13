@@ -19,6 +19,7 @@ Vue.use(EventProxy);
 Vue.use(ElementUI);
 Vue.use(FeAdmin);
 
+console.log(FeAdmin);
 Vue.config.productionTip = false;
 // Vue.config.errorHandler = function(err) {
 //   Message.closeAll();

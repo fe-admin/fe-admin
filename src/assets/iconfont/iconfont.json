@@ -6,6 +6,20 @@
   "description": "fe-admin",
   "glyphs": [
     {
+      "icon_id": "20755339",
+      "name": "icon",
+      "font_class": "logo",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "20748183",
+      "name": "logo",
+      "font_class": "logo-text",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
       "icon_id": "17514974",
       "name": "result",
       "font_class": "result",
@@ -53,13 +67,6 @@
       "font_class": "user",
       "unicode": "e64c",
       "unicode_decimal": 58956
-    },
-    {
-      "icon_id": "3702615",
-      "name": "logo配置",
-      "font_class": "logo",
-      "unicode": "e63f",
-      "unicode_decimal": 58943
     },
     {
       "icon_id": "11556685",

@@ -4353,10 +4353,10 @@ faye-websocket@~0.11.1:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fe-admin-component@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.npm.taobao.org/fe-admin-component/download/fe-admin-component-0.0.6.tgz?cache=0&sync_timestamp=1616669433030&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffe-admin-component%2Fdownload%2Ffe-admin-component-0.0.6.tgz#29bea09e78d50f0b898f932e39af1e09932d52e5"
-  integrity sha1-Kb6gnnjVDwuJj5MuOa8eCZMtUuU=
+fe-admin-component@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.npmjs.org/fe-admin-component/-/fe-admin-component-0.0.8.tgz#a928fc4af315eab1b3b756b559752ec57267aafb"
+  integrity sha512-AssfKckwXRxaEHbotgWInsJ3cEaFtUs76HTxT/7Fk+zlOvE0wO23isJQDyCFt4s2HARxzukAwPX7Qp2wK3ZpFA==
   dependencies:
     core-js "^3.6.5"
     element-ui "^2.13.2"

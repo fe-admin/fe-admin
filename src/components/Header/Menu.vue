@@ -1,6 +1,6 @@
 <template>
   <el-menu class="header-nav" mode="horizontal">
-    <el-menu-item index="0" @click="go">管理控制台</el-menu-item>
+    <!-- <el-menu-item index="0" @click="go">管理控制台</el-menu-item> -->
   </el-menu>
 </template>
 <script>
