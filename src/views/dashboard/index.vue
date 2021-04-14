@@ -1,5 +1,6 @@
 <template>
   <with-header>
+    <canvas id="canvas" width="400" height="400"></canvas>
     <div class="dashboard">
       <el-row type="flex" class="dashboard-list" justify="space-between">
         <el-col :span="8"
@@ -110,6 +111,20 @@ export default {
   },
   mounted() {
     console.info(this);
+    const canvas = document.getElementById("canvas");
+    const cxt = canvas.getContext("2d");
+    cxt.moveTo(10, 10);
+    cxt.lineTo(150, 50);
+    cxt.lineTo(10, 50);
+    cxt.stroke();
+
+    cxt.fillStyle = "#FF0000";
+    cxt.fillRect(200, 200, 150, 75);
+
+    cxt.beginPath();
+    cxt.arc(70, 18, 15, 0, Math.PI * 2, true);
+    cxt.closePath();
+    cxt.fill();
   },
 };
 </script>
