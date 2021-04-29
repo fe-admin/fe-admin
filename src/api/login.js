@@ -164,7 +164,7 @@ export function getMenus() {
         redirect: "/editor/paper",
         meta: {
           title: "图形编辑器",
-          icon: "fe-result",
+          icon: "fe-shape",
           permission: ["result"],
         },
         children: [

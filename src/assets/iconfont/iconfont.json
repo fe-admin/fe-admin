@@ -6,11 +6,11 @@
   "description": "fe-admin",
   "glyphs": [
     {
-      "icon_id": "20755339",
-      "name": "icon",
-      "font_class": "logo",
-      "unicode": "e604",
-      "unicode_decimal": 58884
+      "icon_id": "4922681",
+      "name": "图形",
+      "font_class": "shape",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
     },
     {
       "icon_id": "20748183",

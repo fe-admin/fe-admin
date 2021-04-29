@@ -9,6 +9,9 @@ const permission = {
     SET_ROUTER_FLAG: (state) => {
       state.routerAdded = true;
     },
+    REMOVE_ROUTER_FLAG: (state) => {
+      state.routerAdded = false;
+    },
   },
   actions: {
     GenerateRoutes({ commit }, data) {
