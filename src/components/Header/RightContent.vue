@@ -14,10 +14,8 @@
 <script>
 import { mapGetters } from "vuex";
 import { removeToken } from "@/utils/auth";
-import mixins from "@/mixins";
 
 export default {
-  mixins: [mixins],
   name: "HeaderRightContent",
   computed: {
     ...mapGetters(["accountName"]),

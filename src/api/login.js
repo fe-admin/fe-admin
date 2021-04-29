@@ -157,6 +157,28 @@ export function getMenus() {
           },
         ],
       },
+      // editor
+      {
+        path: "/editor",
+        name: "RouteView",
+        redirect: "/editor/paper",
+        meta: {
+          title: "图形编辑器",
+          icon: "fe-result",
+          permission: ["result"],
+        },
+        children: [
+          {
+            path: "/editor/paper",
+            name: "EditorPaper",
+            meta: {
+              title: "paper编辑器",
+              keepAlive: false,
+              permission: ["result"],
+            },
+          },
+        ],
+      },
     ];
     resolve(list);
   });

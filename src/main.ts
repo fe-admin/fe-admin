@@ -21,19 +21,19 @@ Vue.use(FeAdmin);
 
 console.log(FeAdmin);
 Vue.config.productionTip = false;
-// Vue.config.errorHandler = function(err) {
-//   Message.closeAll();
-//   Message({
-//     type: "error",
-//     dangerouslyUseHTMLString: true,
-//     message: err.msg,
-//     duration: 5000,
-//     showClose: true,
-//   });
-// };
+Vue.config.errorHandler = function(err) {
+  // Message.closeAll();
+  // Message({
+  //   type: "error",
+  //   dangerouslyUseHTMLString: true,
+  //   message: err.msg,
+  //   duration: 5000,
+  //   showClose: true,
+  // });
+};
 
 Vue.config.warnHandler = function(msg) {
-  console.warn(`${msg}`);
+  // console.warn(`${msg}`);
 };
 Vue.prototype.$loading = Loading;
 

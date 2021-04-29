@@ -19,7 +19,6 @@ router.beforeEach((to, from, next) => {
         store
           .dispatch("GenerateRoutes")
           .then((res) => {
-            console.info(res);
             addRoutes(router, getAsyncRouter(res));
             next({ path: to.path });
           })
