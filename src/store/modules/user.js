@@ -21,7 +21,7 @@ const userInfo = {
     Logout({ commit, state }) {
       return loginOut(state.token).then(() => {
         removeToken();
-        commit("CLEAR_ROUTER_FLAG");
+        // commit("CLEAR_FLAG");
       });
     },
   },

@@ -137,6 +137,7 @@ export default {
       // if (this.checked) {
       //   localStorage.setItem("_userName", result.accountName);
       // }
+      console.info(result);
       this.Login(result);
       Object.keys(result).forEach((key) => {
         localStorage.setItem(key, result[key]);

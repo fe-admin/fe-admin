@@ -1,5 +1,4 @@
 import paper from "paper";
-
 export default class Paper {
   startPoint = null;
   path = null;

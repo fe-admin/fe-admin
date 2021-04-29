@@ -12,7 +12,7 @@
   </el-menu>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { removeToken } from "@/utils/auth";
 
 export default {
@@ -21,9 +21,9 @@ export default {
     ...mapGetters(["accountName"]),
   },
   methods: {
+    ...mapActions(["Logout"]),
     async logout() {
-      localStorage.clear();
-      removeToken();
+      await this.Logout();
       this.$router.replace("/user/login");
     },
   },

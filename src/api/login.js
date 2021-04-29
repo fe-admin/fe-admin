@@ -58,7 +58,7 @@ export function login(params, handler) {
  * @param {} params
  */
 export function loginOut() {
-  return ErrorBoundary(post(`${baseURL}${API.loginOut}`));
+  return Promise.resolve();
 }
 
 /**

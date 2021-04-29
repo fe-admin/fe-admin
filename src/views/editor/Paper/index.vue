@@ -24,7 +24,6 @@ export default {
       radio: 1,
     };
   },
-
   mounted() {
     const paperInstance = new paperState();
     this.paperInstance = paperInstance;
@@ -36,4 +35,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped></style>

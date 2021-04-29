@@ -12,5 +12,5 @@ export default {
   ResultFail: () =>
     import(/* webpackChunkName: "result" */ "@/views/result/Error"),
   EditorPaper: () =>
-    import(/* webpackChunkName: "editor" */ "@/views/editor/paper"),
+    import(/* webpackChunkName: "editor" */ "@/views/editor/Paper"),
 };

@@ -9,12 +9,11 @@ const permission = {
     SET_ROUTER_FLAG: (state) => {
       state.routerAdded = true;
     },
-    CLEAR_ROUTER_FLAG: (state) => {
-      state.routerAdded = false;
-    },
   },
   actions: {
     GenerateRoutes({ commit }, data) {
+      console.info(11111111);
+
       return getMenus().then((res) => {
         console.info(res);
         storage.set("menus", res);
