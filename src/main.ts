@@ -11,6 +11,8 @@ import { CreateElement } from "vue/types/index.d";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import "../mock";
+
 // import i18n from "./locales";
 
 import "@/styles/public/index.scss";
@@ -19,7 +21,6 @@ Vue.use(EventProxy);
 Vue.use(ElementUI);
 Vue.use(FeAdmin);
 
-console.log(FeAdmin);
 Vue.config.productionTip = false;
 Vue.config.errorHandler = function(err) {
   // Message.closeAll();

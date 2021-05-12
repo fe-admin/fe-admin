@@ -15,7 +15,6 @@ router.beforeEach((to, from, next) => {
     if (to.path === loginRoutePath) {
       next({ path: defaultRoutePath });
     } else {
-      console.info(store.getters.routerAdded);
       if (!store.getters.routerAdded) {
         store
           .dispatch("GenerateRoutes")

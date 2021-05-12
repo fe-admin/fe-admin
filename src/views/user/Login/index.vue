@@ -71,7 +71,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
-import { login } from "@/api";
+import { login, userTest } from "@/api";
 import { debounce, sleep, setFullBackground, $replace } from "@/utils";
 import { setToken } from "@/utils/auth";
 import mixins from "@/mixins";
@@ -124,6 +124,18 @@ export default {
     this.handleLogin = debounce(this.handleLogin);
   },
   async mounted() {
+    console.info(2222);
+
+    const [err, res] = await userTest(
+      {
+        name: 111,
+      },
+      () => {
+        console.info("handle");
+      }
+    );
+    console.info(1111111);
+    console.info(err, res);
     setFullBackground(".login");
     window.addEventListener("resize", this.debounceSetFullBackground);
   },

@@ -16,7 +16,7 @@ function formatMenu(list, router) {
     const route = {
       name: item.name,
       path: item.path,
-      component: routerMap[item.name],
+      component: routerMap[item.name] || routerMap.RouteView,
       redirect: item.redirect || "",
       meta: {
         title: item.meta.title,

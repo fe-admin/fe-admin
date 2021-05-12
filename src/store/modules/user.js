@@ -20,6 +20,7 @@ const userInfo = {
     },
     Logout({ commit, state }) {
       return loginOut(state.token).then(() => {
+        console.log(999);
         removeToken();
         commit("REMOVE_ROUTER_FLAG");
       });

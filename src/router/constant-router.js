@@ -23,7 +23,7 @@ export default [
 
   {
     path: "/404",
-    name: "404",
+    name: "404s",
     component: () =>
       import(/* webpackChunkName: "fail" */ "@/views/exception/404"),
   },

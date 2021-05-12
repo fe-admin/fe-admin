@@ -2,7 +2,7 @@
  * @Author: jubao.tian
  * @Date: 2020-07-15 10:55:28
  * @Last Modified by: jubao.tian
- * @Last Modified time: 2021-03-19 17:32:14
+ * @Last Modified time: 2021-05-12 15:58:41
  */
 import debounces from "lodash.debounce";
 
@@ -124,9 +124,13 @@ export function random(length = -6) {
 }
 
 export function addRoutes(router, list) {
+  const existRouter = router.getRoutes();
+  console.info(existRouter);
+
   if (Array.isArray(list) && router && router.addRoutes) {
     list.forEach((item) => {
-      router.addRoute(item);
+      const exist = existRouter.filter((row) => row.name === item.name).length;
+      !exist && router.addRoute(item);
     });
   }
 }
