@@ -11,8 +11,10 @@ import { CreateElement } from "vue/types/index.d";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import "../mock";
 
+if (process.env.NODE_ENV === "development") {
+  require("../mock");
+}
 // import i18n from "./locales";
 
 import "@/styles/public/index.scss";

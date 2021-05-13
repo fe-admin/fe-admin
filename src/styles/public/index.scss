@@ -1,4 +1,16 @@
 @import "~normalize.css";
+$--border-radius-base: 2px;
+$--button-padding-vertical: 8px;
+$--button-medium-padding-vertical: 8px;
+$--input-height: 32px;
+$--input-medium-height: 32px;
+$--input-mini-height: 32px;
+$--radio-font-weight: "inherit";
+$--checkbox-bordered-medium-height: 32px;
+$--checkbox-bordered-height: 32px;
+$--checkbox-font-weight: "inherit";
+$--checkbox-bordered-mini-height: 32px;
+$--input-small-height: 32px;
 $--font-path: "~element-ui/lib/theme-chalk/fonts";
 @import "~element-ui/packages/theme-chalk/src/index";
 @import "../modules/progress.scss";

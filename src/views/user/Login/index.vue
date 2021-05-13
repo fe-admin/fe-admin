@@ -124,8 +124,6 @@ export default {
     this.handleLogin = debounce(this.handleLogin);
   },
   async mounted() {
-    console.info(2222);
-
     const [err, res] = await userTest(
       {
         name: 111,

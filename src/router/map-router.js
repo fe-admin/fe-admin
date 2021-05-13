@@ -13,4 +13,6 @@ export default {
     import(/* webpackChunkName: "result" */ "@/views/result/Error"),
   EditorPaper: () =>
     import(/* webpackChunkName: "editor" */ "@/views/editor/Paper"),
+  TableList: () =>
+    import(/* webpackChunkName: "list" */ "@/views/list/TableList"),
 };

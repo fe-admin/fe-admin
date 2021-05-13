@@ -7,6 +7,25 @@ const routes = [
       icon: "fe-dashboard",
     },
   },
+  // table
+  {
+    name: "List",
+    path: "/list",
+    redirect: "/list/table-list",
+    meta: {
+      title: "列表页面",
+      icon: "fe-result",
+    },
+    children: [
+      {
+        path: "/list/table-list",
+        name: "TableList",
+        meta: {
+          title: "查询表格",
+        },
+      },
+    ],
+  },
   {
     name: "Exception",
     redirect: "/exception/403",
@@ -72,6 +91,7 @@ const routes = [
       },
     ],
   },
+
   // editor
   {
     name: "Editor",

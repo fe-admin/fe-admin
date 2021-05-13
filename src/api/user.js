@@ -5,7 +5,6 @@ const API = {
   login: "/user/login",
   register: "/user/register",
   loginOut: "/user/logout",
-  getMenus: "/role/getMenus",
 };
 
 /**
@@ -33,8 +32,4 @@ export function loginOut() {
  */
 export function register(params, handler) {
   return ErrorBoundary(post(`${baseURL}${API.register}`, params), handler);
-}
-
-export function getMenus() {
-  return ErrorBoundary(get(`${baseURL}${API.getMenus}`));
 }
