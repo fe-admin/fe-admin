@@ -31,7 +31,7 @@
         ></template>
         <el-form-item>
           <el-button>重置</el-button>
-          <el-button type="primary" :loading="true">查询</el-button>
+          <el-button type="primary" :loading="loading">查询</el-button>
           <CollapseButton :collapsed="collapsed" :onChange="onCollapse" />
         </el-form-item>
       </el-form>
@@ -44,29 +44,50 @@
         </div>
         <el-table
           ref="multipleTable"
+          v-loading="loading"
           :data="tableData"
           tooltip-effect="dark"
           style="width: 100%"
           @selection-change="handleSelectionChange"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column label="日期" width="120">
-            <template slot-scope="scope">{{ scope.row.date }}</template>
-          </el-table-column>
-          <el-table-column prop="name" label="姓名" width="120">
-          </el-table-column>
-          <el-table-column prop="address" label="地址" show-overflow-tooltip>
+          <template v-for="(item, index) in tableHead">
+            <el-table-column
+              sortable
+              :key="index"
+              :label="item.label"
+              :prop="item.name"
+              show-overflow-tooltip
+              tooltip-effect="dark"
+            >
+              <template slot-scope="scope">
+                <template v-if="scope.column.property !== 'statusStr'">{{
+                  scope.row[scope.column.property]
+                }}</template>
+                <template v-else>
+                  <span
+                    :class="`status-icon status-icon-${scope.row.status}`"
+                  ></span
+                  >{{ scope.row[scope.column.property] }}
+                </template>
+              </template>
+            </el-table-column>
+          </template>
+          <el-table-column label="操作">
+            <a>配置</a>
+            <el-divider direction="vertical"></el-divider>
+            <a>订阅报警</a>
           </el-table-column>
         </el-table>
 
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :current-page="currentPage4"
-          :page-sizes="[100, 200, 300, 400]"
-          :page-size="100"
+          :current-page="currentPage"
+          :page-sizes="pageSizes"
+          :page-size="pageSize"
           layout="total, sizes, prev, pager, next, jumper"
-          :total="400"
+          :total="total"
         >
         </el-pagination>
       </div>
@@ -76,11 +97,16 @@
 
 <script>
 import CollapseButton from "./CollapseButton";
+import { getTableList } from "@/api";
+import { sleep } from "@/utils";
+import { pageMixin } from "@/mixins";
 export default {
   name: "TableList",
   components: { CollapseButton },
+  mixins: [pageMixin],
   data() {
     return {
+      loading: false,
       collapsed: false,
       form: {
         name: "",
@@ -89,98 +115,45 @@ export default {
         status: "",
         updatedAt: "",
       },
-      tableData: [
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
+      tableHead: [
+        { name: "name", label: "规则名称" },
+        { name: "desc", label: "描述" },
+        { name: "callNo", label: "服务调用次数" },
+        { name: "statusStr", label: "状态" },
+        { name: "updatedAt", label: "上次调用时间" },
       ],
+      tableData: [],
     };
   },
+  mounted() {
+    this.getTableList();
+  },
   methods: {
+    async getTableList(page, pageSize) {
+      this.loading = true;
+      const [err, res] = await getTableList({
+        page: page || this.currentPage,
+        pageSize: pageSize || this.pageSize,
+      });
+      if (!err && res) {
+        await sleep(1000);
+        this.tableData = res.data;
+        this.total = res.total;
+        this.currentPage = res.currentPage;
+        this.loading = false;
+      }
+    },
+    handleSizeChange(pageSize) {
+      this.getTableList(null, pageSize);
+    },
+    handleCurrentChange(page) {
+      this.getTableList(page);
+    },
+
     onCollapse() {
       this.collapsed = !this.collapsed;
     },
   },
 };
 </script>
-<style lang="scss" scoped>
-.table-list {
-  .search-form {
-    display: flex;
-    margin-bottom: 16px;
-    padding: 24px 24px 0;
-    background: #fff;
-    overflow: hidden;
-    flex-wrap: wrap;
-  }
-  .el-form-item {
-    flex: 0 0 33.33333333%;
-    max-width: 33.33333333%;
-    /deep/ label:after {
-      content: ":";
-      margin: 0 -4px 0 2px;
-    }
-  }
-  .collapse-button {
-    margin-left: 10px;
-  }
-  .table-list-content {
-    padding: 0 24px;
-    background: #fff;
-    overflow: hidden;
-    /deep/thead th {
-      background-color: #fafafa;
-      color: rgba(0, 0, 0, 0.85);
-    }
-  }
-  .table-list-tools {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 0;
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: rgba(0, 0, 0, 0.85);
-      font-weight: 500;
-      font-size: 16px;
-    }
-  }
-  .el-pagination {
-    text-align: right;
-    margin: 16px 0;
-  }
-}
-</style>
+<style lang="scss" src="./style/index.scss" scoped></style>

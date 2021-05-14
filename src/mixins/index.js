@@ -25,15 +25,14 @@ export const authMixin = {
  * @date 2020-08-14
  * @returns {any}
  */
+
 export const pageMixin = {
   data() {
     return {
+      pageSizes: [10, 20, 50, 100],
       pageSize: 10, // 每页显示条目个数
-      count: 1, // 总条目数
-      perShow: false, // 分页是否显示
-      page: 1,
-      currPage: 1,
-      currentSize: 0,
+      total: 1, // 总条目数
+      currentPage: 1,
     };
   },
 };
