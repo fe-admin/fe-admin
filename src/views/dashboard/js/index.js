@@ -1,4 +1,9 @@
-import { renderBullet, renderSaleChart } from "./chart";
+import {
+  renderBullet,
+  renderArea,
+  renderColumn,
+  renderSaleChart,
+} from "./chart";
 export default {
   data() {
     return {
@@ -7,6 +12,8 @@ export default {
   },
   mounted() {
     renderBullet("bulletPlot");
+    renderArea("areaChart");
+    renderColumn("columChart");
     renderSaleChart("sale-chart");
   },
   methods: {

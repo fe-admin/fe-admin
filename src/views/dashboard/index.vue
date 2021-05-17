@@ -4,7 +4,7 @@
       <el-row type="flex" class="dashboard-list" justify="space-between">
         <div class="dashboard-list-item">
           <div class="title">
-            <span class="txt">账户信息</span
+            <span class="txt">总销售额</span
             ><i class="el-icon-warning-outline"></i>
           </div>
           <div class="dashboard-list-content">
@@ -22,38 +22,26 @@
         </div>
         <div class="dashboard-list-item">
           <div class="title">
-            <span class="txt">账户信息</span
+            <span class="txt">访问量</span
             ><i class="el-icon-warning-outline"></i>
           </div>
           <div class="dashboard-list-content">
             <div class="num">
-              ¥ 126,560
+              126,560
             </div>
-            <div class="chart">
-              <span class="tread-item"
-                >周同比<span class="trend-text">12%</span
-                ><i class="el-icon-caret-bottom"></i></span
-              >日同比<span class="trend-text">22%</span
-              ><i class="el-icon-caret-top"></i>
-            </div>
+            <div class="chart" id="areaChart"></div>
           </div>
         </div>
         <div class="dashboard-list-item">
           <div class="title">
-            <span class="txt">账户信息</span
+            <span class="txt">支付笔数</span
             ><i class="el-icon-warning-outline"></i>
           </div>
           <div class="dashboard-list-content">
             <div class="num">
-              ¥ 126,560
+              6,560
             </div>
-            <div class="chart">
-              <span class="tread-item"
-                >周同比<span class="trend-text">12%</span
-                ><i class="el-icon-caret-bottom"></i></span
-              >日同比<span class="trend-text">22%</span
-              ><i class="el-icon-caret-top"></i>
-            </div>
+            <div class="chart" id="columChart"></div>
           </div>
         </div>
         <div class="dashboard-list-item">
