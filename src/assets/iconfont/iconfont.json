@@ -6,6 +6,13 @@
   "description": "fe-admin",
   "glyphs": [
     {
+      "icon_id": "12550621",
+      "name": "表格",
+      "font_class": "table",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
       "icon_id": "4922681",
       "name": "图形",
       "font_class": "shape",

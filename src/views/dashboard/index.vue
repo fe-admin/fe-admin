@@ -2,182 +2,142 @@
   <with-header>
     <div class="dashboard">
       <el-row type="flex" class="dashboard-list" justify="space-between">
-        <el-col :span="8"
-          ><div class="grid-content bg-purple">
-            <div class="title">账户信息</div>
-            <div class="extra">
-              <svg aria-hidden="true" class="icon icon2">
-                <use xlink:href="#icon-yonghuming" />
-              </svg>
-              <div class="info">
-                账户名称：是是是<br />
-                角色类型：是懂法守法
-              </div>
+        <div class="dashboard-list-item">
+          <div class="title">
+            <span class="txt">账户信息</span
+            ><i class="el-icon-warning-outline"></i>
+          </div>
+          <div class="dashboard-list-content">
+            <div class="num">
+              ¥ 126,560
             </div>
-          </div></el-col
-        >
-        <el-col :span="8"
-          ><div class="grid-content bg-purple-light">
-            <div class="title">消息信息</div>
-            <div class="extra">
-              <svg aria-hidden="true" class="icon icon2">
-                <use xlink:href="#icon-yonghuming" />
-              </svg>
-              <div class="info">
-                账户名称：是是是<br />
-                角色类型：是懂法守法
-              </div>
+            <div class="chart">
+              <span class="tread-item"
+                >周同比<span class="trend-text">12%</span
+                ><i class="el-icon-caret-bottom"></i></span
+              >日同比<span class="trend-text">22%</span
+              ><i class="el-icon-caret-top"></i>
             </div>
-          </div></el-col
-        >
-        <el-col :span="8"
-          ><div class="grid-content bg-purple">
-            <div class="title">统计信息</div>
-            <div class="extra">
-              <svg aria-hidden="true" class="icon icon2">
-                <use xlink:href="#icon-yonghuming" />
-              </svg>
-              <div class="info">
-                账户名称：是是是<br />
-                角色类型：是懂法守法
-              </div>
+          </div>
+        </div>
+        <div class="dashboard-list-item">
+          <div class="title">
+            <span class="txt">账户信息</span
+            ><i class="el-icon-warning-outline"></i>
+          </div>
+          <div class="dashboard-list-content">
+            <div class="num">
+              ¥ 126,560
             </div>
-          </div></el-col
-        >
+            <div class="chart">
+              <span class="tread-item"
+                >周同比<span class="trend-text">12%</span
+                ><i class="el-icon-caret-bottom"></i></span
+              >日同比<span class="trend-text">22%</span
+              ><i class="el-icon-caret-top"></i>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-list-item">
+          <div class="title">
+            <span class="txt">账户信息</span
+            ><i class="el-icon-warning-outline"></i>
+          </div>
+          <div class="dashboard-list-content">
+            <div class="num">
+              ¥ 126,560
+            </div>
+            <div class="chart">
+              <span class="tread-item"
+                >周同比<span class="trend-text">12%</span
+                ><i class="el-icon-caret-bottom"></i></span
+              >日同比<span class="trend-text">22%</span
+              ><i class="el-icon-caret-top"></i>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-list-item">
+          <div class="title">
+            <span class="txt">运营活动效果 </span
+            ><i class="el-icon-warning-outline"></i>
+          </div>
+          <div class="dashboard-list-content">
+            <div class="num">
+              78%
+            </div>
+            <div class="chart" id="bulletPlot"></div>
+          </div>
+        </div>
       </el-row>
-      <div class="app-list">
-        <div class="tit">应用列表</div>
-        <el-row type="flex" justify="space-between">
-          <el-col :span="10"
-            ><div class="grid-content bg-purple">
-              <svg aria-hidden="true" class="icon icon2">
-                <use xlink:href="#fe-system2" />
-              </svg>
-              <div class="title">第三方信息系统</div>
-              <div class="extra">
-                文档<el-divider direction="vertical"></el-divider>点击进入
-              </div>
-            </div></el-col
-          >
-          <el-col :span="10"
-            ><div class="grid-content bg-purple">
-              <svg aria-hidden="true" class="icon icon2">
-                <use xlink:href="#fe-system2" />
-              </svg>
-              <div class="title">第三方信息系统</div>
-              <div class="extra">
-                文档<el-divider direction="vertical"></el-divider>点击进入
-              </div>
-            </div></el-col
-          >
-          <el-col :span="10"
-            ><div class="grid-content bg-purple">
-              <svg aria-hidden="true" class="icon icon2">
-                <use xlink:href="#fe-system2" />
-              </svg>
-              <div class="title">第三方信息系统</div>
-              <div class="extra">
-                文档<el-divider direction="vertical"></el-divider>点击进入
-              </div>
-            </div></el-col
-          >
-          <el-col :span="10"
-            ><div class="grid-content bg-purple">
-              <svg aria-hidden="true" class="icon icon2">
-                <use xlink:href="#fe-system2" />
-              </svg>
-              <div class="title">第三方信息系统</div>
-              <div class="extra">
-                文档<el-divider direction="vertical"></el-divider>点击进入
-              </div>
-            </div></el-col
-          >
-          <el-col :span="10"
-            ><div class="grid-content bg-purple-light"></div
-          ></el-col>
-          <el-col :span="10"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="10"><div class="grid-content bg-purple"></div></el-col>
-        </el-row>
+      <div class="tab-list">
+        <el-date-picker
+          v-model="value2"
+          type="datetimerange"
+          :picker-options="pickerOptions"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          align="right"
+        >
+        </el-date-picker>
+        <el-tabs v-model="activeName" @tab-click="tabClick">
+          <el-tab-pane label="销售量" name="sale">
+            <div class="chart-wrap">
+              <h5 class="tit">销售趋势</h5>
+              <div class="chart" id="sale-chart"></div>
+            </div>
+            <div class="top-list">
+              <h5 class="tit">门店销售额排名</h5>
+              <ul class="top-list-ul">
+                <li class="item">
+                  <span class="style">1</span>工专路 0 号店<span class="num"
+                    >323,234</span
+                  >
+                </li>
+                <li class="item">
+                  <span class="style">1</span>工专路 0 号店<span class="num"
+                    >323,234</span
+                  >
+                </li>
+                <li class="item">
+                  <span class="style">1</span>工专路 0 号店<span class="num"
+                    >323,234</span
+                  >
+                </li>
+                <li class="item">
+                  <span class="style">1</span>工专路 0 号店<span class="num"
+                    >323,234</span
+                  >
+                </li>
+                <li class="item">
+                  <span class="style">1</span>工专路 0 号店<span class="num"
+                    >323,234</span
+                  >
+                </li>
+                <li class="item">
+                  <span class="style">1</span>工专路 0 号店<span class="num"
+                    >323,234</span
+                  >
+                </li>
+                <li class="item">
+                  <span class="style">1</span>工专路 0 号店<span class="num"
+                    >323,234</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="访问量" name="visits">
+            <div class="chart-wrap"></div>
+            <div class="top-list"></div
+          ></el-tab-pane>
+        </el-tabs>
       </div>
     </div>
   </with-header>
 </template>
-
 <script>
-export default {
-  data() {
-    return {};
-  },
-};
+import dashboard from "./js";
+export default dashboard;
 </script>
-<style lang="scss" scoped>
-.dashboard {
-  &-list {
-    margin-bottom: 16px;
-    .title {
-      padding: 0 24px;
-      line-height: 54px;
-      font-weight: 600;
-    }
-    .extra {
-      display: flex;
-      padding: 0 24px 24px;
-      line-height: 22px;
-      color: #697b8c;
-    }
-    .icon {
-      width: 56px;
-      height: 56px;
-      margin-right: 12px;
-    }
-    .el-col {
-      min-height: 160px;
-    }
-    .grid-content {
-      height: 100%;
-      margin-right: 16px;
-      background-color: #fff;
-      border-radius: 2px;
-    }
-    .el-col:last-child .grid-content {
-      margin-right: 0;
-    }
-  }
-}
-.app-list {
-  padding: 0 24px 24px;
-  background-color: #fff;
-
-  .tit {
-    line-height: 54px;
-    font-weight: 600;
-  }
-  .el-row {
-    flex-wrap: wrap;
-  }
-  .el-col {
-    min-width: 50%;
-  }
-
-  .grid-content {
-    display: flex;
-    align-items: center;
-    border: 1px dashed #e9e9e9;
-    height: 72px;
-    margin: 0 10px 10px 0;
-    padding-left: 4px;
-    border-radius: 4px;
-    .icon {
-      width: 25px;
-      height: 25px;
-      margin: 0 12px;
-    }
-    .title {
-      flex: 1;
-    }
-    .extra {
-      padding: 0 12px;
-    }
-  }
-}
-</style>
+<style src="./style/index.scss" lang="scss" scoped></style>

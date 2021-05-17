@@ -14,7 +14,7 @@ const routes = [
     redirect: "/list/table-list",
     meta: {
       title: "列表页面",
-      icon: "fe-result",
+      icon: "fe-table",
     },
     children: [
       {

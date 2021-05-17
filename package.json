@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@antv/g2plot": "^2.3.21",
     "axios-encapsulation": "^1.0.3",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",

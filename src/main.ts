@@ -3,7 +3,7 @@ import EventProxy from "vue-event-proxy";
 import ElementUI, { Message, Loading } from "element-ui";
 import FeAdmin from "fe-admin-component";
 import "@/utils/log";
-import "./permission"; // permission control
+import "./permission";
 
 import "./assets/iconfont/iconfont";
 import "./assets/iconfont/iconfont.css";
@@ -12,9 +12,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-if (process.env.NODE_ENV === "development") {
-  require("../mock");
-}
+// if (process.env.NODE_ENV === "development") {
+require("../mock");
+// }
 // import i18n from "./locales";
 
 import "@/styles/public/index.scss";

@@ -5,32 +5,60 @@
     </template>
     <div class="table-list">
       <el-form
+        ref="searchForm"
         class="search-form"
         label-width="120px"
-        :model="form"
+        :model="searchForm"
         size="mini"
       >
-        <el-form-item label="规则名称" for="name">
-          <el-input id="name" v-model="form.name"></el-input>
+        <el-form-item prop="name" label="规则名称" for="name">
+          <el-input
+            placeholder="请输入"
+            id="name"
+            v-model="searchForm.name"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="描述" for="desc">
-          <el-input id="desc" v-model="form.desc"></el-input>
+        <el-form-item prop="desc" label="描述" for="desc">
+          <el-input
+            placeholder="请输入"
+            id="desc"
+            v-model="searchForm.desc"
+          ></el-input>
         </el-form-item>
         <template v-if="collapsed">
-          <el-form-item label="服务调用次数" for="callNo">
-            <el-input v-model="form.type" id="callNo"></el-input>
-          </el-form-item>
-          <el-form-item label="状态" for="status">
-            <el-input v-model="form.type" id="status"></el-input>
-          </el-form-item>
-          <el-form-item label="上次调度时间" for="updatedAt">
+          <el-form-item prop="callNo" label="服务调用次数" for="callNo">
             <el-input
-              v-model="form.type"
+              placeholder="请输入"
+              v-model="searchForm.callNo"
+              id="callNo"
+            ></el-input>
+          </el-form-item>
+          <el-form-item prop="status" label="状态" for="status">
+            <el-select
+              v-model="searchForm.status"
+              placeholder="请选择"
+              id="status"
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item prop="updatedAt" label="上次调度时间" for="updatedAt">
+            <el-date-picker
+              v-model="searchForm.updatedAt"
+              type="datetime"
               id="updatedAt"
-            ></el-input> </el-form-item
+              placeholder="选择日期时间"
+            >
+            </el-date-picker></el-form-item
         ></template>
         <el-form-item>
-          <el-button>重置</el-button>
+          <el-button @click="resetForm('searchForm')">重置</el-button>
           <el-button type="primary" :loading="loading">查询</el-button>
           <CollapseButton :collapsed="collapsed" :onChange="onCollapse" />
         </el-form-item>
@@ -108,7 +136,7 @@ export default {
     return {
       loading: false,
       collapsed: false,
-      form: {
+      searchForm: {
         name: "",
         desc: "",
         callNo: "",
@@ -129,6 +157,10 @@ export default {
     this.getTableList();
   },
   methods: {
+    resetForm(formName) {
+      console.log(this.$refs[formName]);
+      this.$refs[formName].resetFields();
+    },
     async getTableList(page, pageSize) {
       this.loading = true;
       const [err, res] = await getTableList({
