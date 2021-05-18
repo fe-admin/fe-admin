@@ -1,5 +1,5 @@
 import { mapActions } from "vuex";
-import { microId, showButton, isQiankun } from "../utils";
+import { microId, showButton } from "../utils";
 import { getButtonList } from "../api";
 
 export const authMixin = {
@@ -94,23 +94,6 @@ export default {
      * @param {any} appName 非微服务第三方跳转
      * @returns {any}
      */
-    pushState(microPath, appPath, appName) {
-      const current = localStorage.getItem("microId");
-      // 微服务
-      if (isQiankun()) {
-        if (current === appName) {
-          this.push(microPath);
-        } else {
-          history.pushState(null, microPath, microPath);
-        }
-      } else {
-        if (current === appName) {
-          this.push(appPath);
-        } else {
-          this.locationReplace(appPath, appName);
-        }
-      }
-    },
 
     /**
      * 根据appName切换origin
@@ -163,32 +146,6 @@ export default {
         }
       } else {
         this.push(appPath);
-      }
-    },
-
-    /**
-     * 跨应用路由跳转
-     * @date 2020-08-14
-     * @param {any} microPath 微服务path
-     * @param {any} appPath 应用内path
-     * @param {any} appName 非微服务第三方跳转
-     * @returns {any}
-     */
-    $replace(microPath, appPath, appName) {
-      const current = localStorage.getItem("microId");
-      // 微服务
-      if (isQiankun()) {
-        if (current === appName) {
-          this.push(microPath);
-        } else {
-          this.locationReplace(microPath);
-        }
-      } else {
-        if (current === appName) {
-          this.push(appPath);
-        } else {
-          this.locationReplace(appPath, appName);
-        }
       }
     },
   },

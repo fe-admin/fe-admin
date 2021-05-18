@@ -72,7 +72,7 @@
 <script>
 import { mapActions } from "vuex";
 import { login, userTest } from "@/api";
-import { debounce, sleep, setFullBackground, $replace } from "@/utils";
+import { debounce, sleep, setFullBackground } from "@/utils";
 import { setToken } from "@/utils/auth";
 import mixins from "@/mixins";
 export default {
@@ -118,9 +118,6 @@ export default {
     };
   },
   created() {
-    this.debounceSetFullBackground = debounce(() => {
-      setFullBackground(".login");
-    });
     this.handleLogin = debounce(this.handleLogin);
   },
   async mounted() {
@@ -132,10 +129,6 @@ export default {
         console.info("handle");
       }
     );
-    console.info(1111111);
-    console.info(err, res);
-    setFullBackground(".login");
-    window.addEventListener("resize", this.debounceSetFullBackground);
   },
   methods: {
     ...mapActions(["Login"]),
@@ -175,9 +168,6 @@ export default {
     change(field) {
       this.$refs.formData.validateField(field);
     },
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.debounceSetFullBackground);
   },
 };
 </script>

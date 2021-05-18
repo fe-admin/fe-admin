@@ -201,14 +201,10 @@ export default {
     };
   },
   created() {
-    this.debounceSetFullBackground = debounce(() => {
-      setFullBackground(".register");
-    });
+ 
     this.handleLogin = debounce(this.handleLogin);
   },
   async mounted() {
-    setFullBackground(".register");
-    window.addEventListener("resize", this.debounceSetFullBackground);
   },
   methods: {
     async register() {
@@ -238,9 +234,7 @@ export default {
       this.$refs.userForm.validateField(field);
     },
   },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.debounceSetFullBackground);
-  },
+
 };
 </script>
 <style lang="scss" scoped>

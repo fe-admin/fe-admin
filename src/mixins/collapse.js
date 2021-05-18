@@ -1,5 +1,5 @@
 import { mapGetters, mapActions } from "vuex";
-import { isQiankun, collapse } from "../utils";
+import { ccollapse } from "../utils";
 let collapseScope = () => {};
 
 export default {
@@ -10,11 +10,8 @@ export default {
   methods: {
     ...mapActions(["clear", "update"]),
     async setCollapse(payload) {
-      // if (isQiankun()) {
-      //   QianKun.emit("collapse", payload);
-      // }
+
       collapseScope(payload);
-      // this.collapseAnimate(payload);
     },
     collapseAnimate(payload) {
       collapseScope(payload);
