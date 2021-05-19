@@ -121,6 +121,41 @@
           ></el-tab-pane>
         </el-tabs>
       </div>
+
+      <div class="tab-line">
+        <el-tabs v-model="lineTabActiveName" @tab-click="lineTabClick">
+          <el-tab-pane name="line1">
+            <div class="line-label" slot="label">
+              <div class="tit">星期一</div>
+              <div class="label-wrap">
+                <div class="label-bd">
+                  <span class="name">转化率</span>
+                  <span class="num">59%</span>
+                </div>
+                <div class="chart">sdf</div>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="line-chart"></div>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane name="line2">
+            <div class="line-label" slot="label">
+              <div class="tit">星期一</div>
+              <div class="label-wrap">
+                <div class="label-bd">
+                  <span class="name">转化率</span>
+                  <span class="num">59%</span>
+                </div>
+                <div class="chart">sdf</div>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="line-chart"></div>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
     </div>
   </with-header>
 </template>

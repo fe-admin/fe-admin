@@ -4,6 +4,7 @@ import querystring from "querystring";
 import user from "./user";
 import role from "./role";
 import list from "./list";
+import message from "./message";
 
 function mockWrap(respond) {
   return function(options) {
@@ -24,6 +25,6 @@ function mockWrap(respond) {
   };
 }
 
-for (const i of [...user, ...role, ...list]) {
+for (const i of [...user, ...role, ...list, ...message]) {
   Mock.mock(new RegExp(i.url), i.type || "get", mockWrap(i.response));
 }

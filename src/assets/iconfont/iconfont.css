@@ -1,8 +1,8 @@
 @font-face {
   font-family: "fe-font"; /* Project id 2409716 */
-  src: url('iconfont.woff2?t=1620977145898') format('woff2'),
-       url('iconfont.woff?t=1620977145898') format('woff'),
-       url('iconfont.ttf?t=1620977145898') format('truetype');
+  src: url('iconfont.woff2?t=1621394747188') format('woff2'),
+       url('iconfont.woff?t=1621394747188') format('woff'),
+       url('iconfont.ttf?t=1621394747188') format('truetype');
 }
 
 .fe-font {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.fe-message:before {
+  content: "\e61b";
+}
+
+.fe-form:before {
+  content: "\e631";
+}
+
+.fe-tips:before {
+  content: "\e601";
 }
 
 .fe-table:before {

@@ -2,7 +2,7 @@
   .search-form {
     display: flex;
     margin-bottom: 16px;
-    padding: 16px 16px 0;
+    padding: 16px;
     background: #fff;
     overflow: hidden;
     flex-wrap: wrap;
@@ -35,13 +35,9 @@
     display: flex;
     justify-content: space-between;
     padding: 16px 0;
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: rgba(0, 0, 0, 0.85);
-      font-weight: 500;
-      font-size: 16px;
+    .el-radio-group {
+      vertical-align: bottom;
+      margin-left: 10px;
     }
   }
   .el-pagination {

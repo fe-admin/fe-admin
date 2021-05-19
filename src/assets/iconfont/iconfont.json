@@ -6,6 +6,27 @@
   "description": "fe-admin",
   "glyphs": [
     {
+      "icon_id": "953665",
+      "name": "消息",
+      "font_class": "message",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "20172949",
+      "name": "表单申请",
+      "font_class": "form",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "20981744",
+      "name": "tips",
+      "font_class": "tips",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
       "icon_id": "12550621",
       "name": "表格",
       "font_class": "table",

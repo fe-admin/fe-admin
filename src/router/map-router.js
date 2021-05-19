@@ -8,11 +8,19 @@ export default {
   404: () => import(/* webpackChunkName: "fail" */ "@/views/exception/404"),
   500: () => import(/* webpackChunkName: "fail" */ "@/views/exception/500"),
   ResultSuccess: () =>
-    import(/* webpackChunkName: "result" */ "@/views/result/Success"),
+    import(/* webpackChunkName: "ResultSuccess" */ "@/views/result/Success"),
   ResultFail: () =>
-    import(/* webpackChunkName: "result" */ "@/views/result/Error"),
+    import(/* webpackChunkName: "ResultFail" */ "@/views/result/Error"),
   EditorPaper: () =>
     import(/* webpackChunkName: "editor" */ "@/views/editor/Paper"),
   TableList: () =>
-    import(/* webpackChunkName: "list" */ "@/views/list/TableList"),
+    import(/* webpackChunkName: "TableList" */ "@/views/list/TableList"),
+  MessageList: () =>
+    import(/* webpackChunkName: "MessageList" */ "@/views/message/MessageList"),
+  MessageSubscribe: () =>
+    import(
+      /* webpackChunkName: "MessageSubscribe" */ "@/views/message/MessageSubscribe"
+    ),
+  MessageType: () =>
+    import(/* webpackChunkName: "MessageType" */ "@/views/message/MessageType"),
 };

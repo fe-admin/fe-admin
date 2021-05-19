@@ -27,6 +27,38 @@ const routes = [
     ],
   },
   {
+    name: "Message",
+    redirect: "/message/index",
+    path: "/message",
+    meta: { title: "消息中心", icon: "fe-message" },
+    children: [
+      {
+        path: "/message/index",
+        name: "MessageList",
+        meta: {
+          title: "站内信",
+          permission: ["message"],
+        },
+      },
+      {
+        path: "/message/subscribe",
+        name: "MessageSubscribe",
+        meta: {
+          title: "消息订阅",
+          permission: ["message"],
+        },
+      },
+      {
+        path: "/message/type",
+        name: "MessageType",
+        meta: {
+          title: "消息类型",
+          permission: ["message"],
+        },
+      },
+    ],
+  },
+  {
     name: "Exception",
     redirect: "/exception/403",
     path: "/exception",

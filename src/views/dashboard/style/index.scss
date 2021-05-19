@@ -61,6 +61,7 @@
   padding-bottom: 24px;
   background-color: #fff;
   border-radius: 2px;
+  margin-bottom: 16px;
   /deep/.el-tabs__item {
     line-height: 57px;
     height: 57px;
@@ -123,5 +124,57 @@
         text-align: right;
       }
     }
+  }
+}
+.tab-line {
+  position: relative;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 2px;
+  /deep/.el-tabs__item {
+    height: 124px;
+    padding: 0;
+    margin-right: 32px;
+  }
+  .line-label {
+    width: 138px;
+    .chart {
+    }
+  }
+  .tit {
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 16px;
+  }
+  .name {
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
+    line-height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    font-weight: normal;
+  }
+  .num {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: inline-block;
+    height: 32px;
+    margin-right: 32px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .label-wrap {
+    display: flex;
+    align-items: center;
+  }
+  .label-bd {
+    width: 60px;
   }
 }

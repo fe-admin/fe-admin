@@ -124,7 +124,7 @@
 </template>
 
 <script>
-import CollapseButton from "./CollapseButton";
+import CollapseButton from "@/components/CollapseButton";
 import { getTableList } from "@/api";
 import { sleep } from "@/utils";
 import { pageMixin } from "@/mixins";
