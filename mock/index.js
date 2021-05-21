@@ -5,6 +5,7 @@ import user from "./user";
 import role from "./role";
 import list from "./list";
 import message from "./message";
+import dashboard from "./dashboard";
 
 function mockWrap(respond) {
   return function(options) {
@@ -25,6 +26,6 @@ function mockWrap(respond) {
   };
 }
 
-for (const i of [...user, ...role, ...list, ...message]) {
+for (const i of [...user, ...role, ...list, ...message, ...dashboard]) {
   Mock.mock(new RegExp(i.url), i.type || "get", mockWrap(i.response));
 }

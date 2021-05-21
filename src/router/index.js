@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import constantRouter from "@/router/constant-router";
+import constantRouter, { length } from "@/router/constant-router";
 
 Vue.use(Router);
 
@@ -24,3 +24,5 @@ export const instance = () => {
 };
 
 export default instance();
+
+export const constantLength = length;

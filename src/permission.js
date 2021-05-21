@@ -2,7 +2,7 @@ import NProgress from "nprogress";
 import { getToken } from "@/utils/auth";
 import { addRoutes } from "@/utils";
 import getAsyncRouter, { getCacheRouter } from "@/router/async-router";
-import router from "@/router";
+import router, { constantLength } from "@/router";
 import store from "@/store";
 
 const whiteList = ["/user/login", "/user/register"];
@@ -27,7 +27,7 @@ router.beforeEach((to, from, next) => {
               next({ path: loginRoutePath, query: { redirect: to.fullPath } });
             });
           });
-      } else if (router.getRoutes().length <= 4) {
+      } else if (router.getRoutes().length <= constantLength) {
         addRoutes(router, getCacheRouter());
         next({ path: to.path });
       } else {

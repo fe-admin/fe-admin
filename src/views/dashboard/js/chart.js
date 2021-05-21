@@ -1,4 +1,4 @@
-import { Bullet, Area, Column, Line } from "@antv/g2plot";
+import { Bullet, Area, Column, Line, Pie } from "@antv/g2plot";
 
 const data = [
   { month: "1", value: 1078 },
@@ -31,6 +31,16 @@ export function renderSaleChart(container) {
       },
       month: {
         formatter: (val) => `${val} 月`,
+      },
+    },
+    yAxis: {
+      grid: {
+        line: {
+          style: {
+            stroke: "#e9e9e9",
+            lineDash: [2, 5],
+          },
+        },
       },
     },
     xAxis: {
@@ -4503,8 +4513,44 @@ export function renderLine(container) {
     yField: "value",
     seriesField: "category",
     slider: {},
-    padding: [10, 20, 80, 30], // 需要设置底部 padding 值，同 css
+    legend: {
+      position: "top",
+    },
+    yAxis: {
+      grid: {
+        line: {
+          style: {
+            stroke: "#e9e9e9",
+            lineDash: [2, 5],
+          },
+        },
+      },
+    },
+    padding: [20, 30, 20, 50],
   });
 
   line.render();
+}
+
+export function renderTabPie(container, value) {
+  console.info(value);
+  const data = [
+    { type: "全部", value: 100 - value },
+    { type: "其他", value },
+  ];
+  const piePlot = new Pie(container, {
+    color: ["#f3f4f6", "#64afff"],
+    data,
+    angleField: "value",
+    colorField: "type",
+    radius: 1,
+    innerRadius: 0.6,
+    label: null,
+    interactions: [{ type: "element-selected" }, { type: "element-active" }],
+    statistic: null,
+    legend: false,
+    tooltip: false,
+    interactions: [{ type: "tooltip", enable: false }],
+  });
+  piePlot.render();
 }

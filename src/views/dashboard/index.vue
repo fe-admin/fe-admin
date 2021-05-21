@@ -77,40 +77,13 @@
             <div class="top-list">
               <h5 class="tit">门店销售额排名</h5>
               <ul class="top-list-ul">
-                <li class="item">
-                  <span class="style">1</span>工专路 0 号店<span class="num"
-                    >323,234</span
-                  >
-                </li>
-                <li class="item">
-                  <span class="style">1</span>工专路 0 号店<span class="num"
-                    >323,234</span
-                  >
-                </li>
-                <li class="item">
-                  <span class="style">1</span>工专路 0 号店<span class="num"
-                    >323,234</span
-                  >
-                </li>
-                <li class="item">
-                  <span class="style">1</span>工专路 0 号店<span class="num"
-                    >323,234</span
-                  >
-                </li>
-                <li class="item">
-                  <span class="style">1</span>工专路 0 号店<span class="num"
-                    >323,234</span
-                  >
-                </li>
-                <li class="item">
-                  <span class="style">1</span>工专路 0 号店<span class="num"
-                    >323,234</span
-                  >
-                </li>
-                <li class="item">
-                  <span class="style">1</span>工专路 0 号店<span class="num"
-                    >323,234</span
-                  >
+                <li
+                  class="item"
+                  v-for="(item, index) in saleListData"
+                  :key="item.id"
+                >
+                  <span class="style">{{ index + 1 }}</span
+                  >{{ item.title }}<span class="num">{{ item.value }}</span>
                 </li>
               </ul>
             </div>
@@ -124,34 +97,23 @@
 
       <div class="tab-line">
         <el-tabs v-model="lineTabActiveName" @tab-click="lineTabClick">
-          <el-tab-pane name="line1">
+          <el-tab-pane
+            v-for="(item, i) in tabLineData"
+            :key="item.id"
+            :name="`line${i}`"
+          >
             <div class="line-label" slot="label">
-              <div class="tit">星期一</div>
+              <div class="tit">{{ item.title }}</div>
               <div class="label-wrap">
                 <div class="label-bd">
-                  <span class="name">转化率</span>
-                  <span class="num">59%</span>
+                  <span class="name">{{ item.desc }}</span>
+                  <span class="num">{{ item.value }}%</span>
                 </div>
-                <div class="chart">sdf</div>
+                <div class="chart" :id="`linePie${i}`"></div>
               </div>
             </div>
             <div class="chart-wrap">
-              <div class="chart" id="line-chart"></div>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane name="line2">
-            <div class="line-label" slot="label">
-              <div class="tit">星期一</div>
-              <div class="label-wrap">
-                <div class="label-bd">
-                  <span class="name">转化率</span>
-                  <span class="num">59%</span>
-                </div>
-                <div class="chart">sdf</div>
-              </div>
-            </div>
-            <div class="chart-wrap">
-              <div class="chart" id="line-chart"></div>
+              <div class="chart" :id="`lineChart${i}`"></div>
             </div>
           </el-tab-pane>
         </el-tabs>

@@ -83,9 +83,7 @@
   /deep/.el-tabs__header {
     margin-bottom: 24px;
   }
-  /deep/.el-tabs__nav-wrap::after {
-    height: 1px;
-  }
+
   .tit {
     font-size: 14px;
     margin-top: 0;
@@ -133,12 +131,13 @@
   border-radius: 2px;
   /deep/.el-tabs__item {
     height: 124px;
-    padding: 0;
-    margin-right: 32px;
   }
   .line-label {
     width: 138px;
     .chart {
+      height: 60px;
+      flex: 1;
+      padding-bottom: 12px;
     }
   }
   .tit {
@@ -177,4 +176,7 @@
   .label-bd {
     width: 60px;
   }
+}
+/deep/.el-tabs__nav-wrap::after {
+  height: 1px;
 }
