@@ -1,4 +1,4 @@
-import { getTabLine, getSaleList } from "@/api/dashboard";
+import { getCardList, getTabLine, getSaleList } from "@/api/dashboard";
 import {
   renderBullet,
   renderArea,
@@ -13,21 +13,25 @@ export default {
     return {
       activeName: "sale",
       lineTabActiveName: "line0",
+      cardList: [],
       tabLineData: [],
       saleListData: [],
       tabLineMap: new Map(),
     };
   },
   async mounted() {
-    renderBullet("bulletPlot");
-    renderArea("areaChart");
-    renderColumn("columChart");
-    renderSaleChart("sale-chart");
+    const [, cardList] = await getCardList();
+    this.cardList = cardList;
     const [, res] = await getSaleList();
     this.saleListData = res;
     const [, data] = await getTabLine();
     this.tabLineData = data;
+
     await this.$nextTick();
+    renderBullet("bulletPlot", parseInt(cardList[3].value));
+    renderArea("areaChart");
+    renderColumn("columChart");
+    renderSaleChart("sale-chart");
     this.tabLineData.forEach((item, i) => {
       renderTabPie(`linePie${i}`, item.value);
     });

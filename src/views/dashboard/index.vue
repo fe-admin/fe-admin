@@ -1,62 +1,33 @@
 <template>
   <with-header>
     <div class="dashboard">
-      <el-row type="flex" class="dashboard-list" justify="space-between">
-        <div class="dashboard-list-item">
+      <div class="dashboard-card">
+        <div
+          class="dashboard-card-item"
+          v-for="card in cardList"
+          :key="card.id"
+        >
           <div class="title">
-            <span class="txt">总销售额</span
-            ><i class="el-icon-warning-outline"></i>
+            <span class="txt">{{ card.title }}</span>
+            <el-tooltip effect="dark" content="指标说明" placement="top">
+              <i class="el-icon-warning-outline"></i
+            ></el-tooltip>
           </div>
-          <div class="dashboard-list-content">
+          <div class="dashboard-card-content">
             <div class="num">
-              ¥ 126,560
+              {{ card.value }}
             </div>
-            <div class="chart">
+            <div class="chart" v-if="card.element" :id="card.element"></div>
+            <div class="chart" v-else>
               <span class="tread-item"
-                >周同比<span class="trend-text">12%</span
+                >周同比<span class="trend-text">{{ card.percentage[0] }}</span
                 ><i class="el-icon-caret-bottom"></i></span
-              >日同比<span class="trend-text">22%</span
+              >日同比<span class="trend-text">{{ card.percentage[1] }}</span
               ><i class="el-icon-caret-top"></i>
             </div>
           </div>
         </div>
-        <div class="dashboard-list-item">
-          <div class="title">
-            <span class="txt">访问量</span
-            ><i class="el-icon-warning-outline"></i>
-          </div>
-          <div class="dashboard-list-content">
-            <div class="num">
-              126,560
-            </div>
-            <div class="chart" id="areaChart"></div>
-          </div>
-        </div>
-        <div class="dashboard-list-item">
-          <div class="title">
-            <span class="txt">支付笔数</span
-            ><i class="el-icon-warning-outline"></i>
-          </div>
-          <div class="dashboard-list-content">
-            <div class="num">
-              6,560
-            </div>
-            <div class="chart" id="columChart"></div>
-          </div>
-        </div>
-        <div class="dashboard-list-item">
-          <div class="title">
-            <span class="txt">运营活动效果 </span
-            ><i class="el-icon-warning-outline"></i>
-          </div>
-          <div class="dashboard-list-content">
-            <div class="num">
-              78%
-            </div>
-            <div class="chart" id="bulletPlot"></div>
-          </div>
-        </div>
-      </el-row>
+      </div>
       <div class="tab-list">
         <el-date-picker
           v-model="value2"
