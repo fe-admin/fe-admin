@@ -1,8 +1,8 @@
 @font-face {
   font-family: "fe-font"; /* Project id 2409716 */
-  src: url('iconfont.woff2?t=1621394747188') format('woff2'),
-       url('iconfont.woff?t=1621394747188') format('woff'),
-       url('iconfont.ttf?t=1621394747188') format('truetype');
+  src: url('iconfont.woff2?t=1622014059520') format('woff2'),
+       url('iconfont.woff?t=1622014059520') format('woff'),
+       url('iconfont.ttf?t=1622014059520') format('truetype');
 }
 
 .fe-font {
@@ -11,6 +11,50 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.fe-phone:before {
+  content: "\e611";
+}
+
+.fe-setting:before {
+  content: "\e605";
+}
+
+.fe-logout:before {
+  content: "\e604";
+}
+
+.fe-visible:before {
+  content: "\e7d6";
+}
+
+.fe-invisible:before {
+  content: "\e6c5";
+}
+
+.fe-zhifubao:before {
+  content: "\e63c";
+}
+
+.fe-taobao:before {
+  content: "\e610";
+}
+
+.fe-weixin:before {
+  content: "\e77e";
+}
+
+.fe-talk:before {
+  content: "\e603";
+}
+
+.fe-user:before {
+  content: "\e6e1";
+}
+
+.fe-lock:before {
+  content: "\e686";
 }
 
 .fe-message:before {
@@ -59,10 +103,6 @@
 
 .fe-girl:before {
   content: "\e6af";
-}
-
-.fe-user:before {
-  content: "\e64c";
 }
 
 .fe-menu-close:before {

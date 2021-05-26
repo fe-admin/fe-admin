@@ -2,12 +2,18 @@
   <el-menu class="header-user" mode="horizontal">
     <el-submenu index="1">
       <template slot="title">
-        <svg aria-hidden="true" class="icon">
-          <use xlink:href="#fe-user" />
-        </svg>
+        <svg-icon iconName="fe-boy" />
         <span class="text">{{ accountName }}</span>
       </template>
-      <el-menu-item index="1-1" @click="logout">退出</el-menu-item>
+      <el-menu-item index="1-1" @click="logout"
+        ><svg-icon iconName="fe-user" />个人中心</el-menu-item
+      >
+      <el-menu-item index="1-2" @click="logout"
+        ><svg-icon iconName="fe-setting" />个人设置</el-menu-item
+      >
+      <el-menu-item index="1-3" @click="logout"
+        ><svg-icon iconName="fe-logout" />退出登录</el-menu-item
+      >
     </el-submenu>
   </el-menu>
 </template>
@@ -36,11 +42,10 @@ export default {
   .el-submenu {
     display: flex;
     align-items: center;
-    height: 46px;
-    line-height: 46px;
+    height: 48px;
+    line-height: 48px;
     border: none !important;
     color: #fff !important;
-    padding: 0 9px;
     font-weight: 400;
   }
 }
@@ -60,8 +65,8 @@ export default {
     display: flex;
     align-items: center;
     background: transparent !important;
-    height: 46px !important;
-    line-height: 46px !important;
+    height: 48px !important;
+    line-height: 48px !important;
     border: none !important;
     color: #fff !important;
     padding: 0;
@@ -82,10 +87,17 @@ export default {
     color: #fff;
   }
 }
-.el-menu--popup-bottom-start {
-  margin-top: 0 !important;
-}
-.el-menu--popup {
-  min-width: 100px !important;
+.el-menu--horizontal {
+  .el-menu .el-menu-item,
+  .el-menu .el-submenu__title {
+    height: 32px !important;
+    line-height: 32px !important;
+    color: #909399;
+    min-width: 160px;
+  }
+
+  .icon {
+    margin-right: 8px;
+  }
 }
 </style>

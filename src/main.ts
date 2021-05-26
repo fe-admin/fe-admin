@@ -22,22 +22,22 @@ import "@/styles/public/index.scss";
 Vue.use(EventProxy);
 Vue.use(ElementUI);
 Vue.use(FeAdmin);
-
+console.info(FeAdmin);
 Vue.config.productionTip = false;
-Vue.config.errorHandler = function(err) {
-  // Message.closeAll();
-  // Message({
-  //   type: "error",
-  //   dangerouslyUseHTMLString: true,
-  //   message: err.msg,
-  //   duration: 5000,
-  //   showClose: true,
-  // });
-};
+// Vue.config.errorHandler = function(err) {
+// Message.closeAll();
+// Message({
+//   type: "error",
+//   dangerouslyUseHTMLString: true,
+//   message: err.msg,
+//   duration: 5000,
+//   showClose: true,
+// });
+// };
 
-Vue.config.warnHandler = function(msg) {
-  // console.warn(`${msg}`);
-};
+// Vue.config.warnHandler = function(msg) {
+//   console.warn(`${msg}`);
+// };
 Vue.prototype.$loading = Loading;
 
 new Vue({

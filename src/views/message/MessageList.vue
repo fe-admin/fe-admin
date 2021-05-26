@@ -1,5 +1,17 @@
 <template>
   <with-header>
+    <template #content>
+      <template v-if="readType === 0"
+        >共{{ total }}封，其中{{ unread }}封未读，<a @click="changeReadType(1)"
+          >仅查看未读消息</a
+        ></template
+      >
+      <template v-else
+        >未读{{ unread }}封，<a @click="changeReadType(0)"
+          >查看全部消息</a
+        ></template
+      >
+    </template>
     <div class="table-list">
       <div class="search-form">
         <el-radio-group v-model.number="type" @change="getMessageList">
@@ -93,6 +105,8 @@ export default {
       loading: false,
       collapsed: false,
       type: 0,
+      unread: 0,
+      readType: 0,
       columWidth: [500],
       tableHead: [
         { name: "content", label: "消息内容" },
@@ -118,15 +132,17 @@ export default {
   methods: {
     async getMessageList(page, pageSize) {
       this.loading = true;
-      const { type, currentPage } = this;
+      const { type, currentPage, readType } = this;
       const [err, res] = await getMessageList({
         type,
         page: page || currentPage,
         pageSize: pageSize || this.pageSize,
+        readType,
       });
       if (!err && res) {
         await sleep(1000);
         this.tableData = res.data;
+        this.unread = res.unread;
         this.total = res.total;
         this.currentPage = res.currentPage;
         this.loading = false;
@@ -137,6 +153,10 @@ export default {
     },
     handleCurrentChange(page) {
       this.getMessageList(page);
+    },
+    changeReadType(type) {
+      this.getMessageList();
+      this.readType = type;
     },
   },
 };

@@ -6,6 +6,83 @@
   "description": "fe-admin",
   "glyphs": [
     {
+      "icon_id": "11621317",
+      "name": "积分-绑定手机",
+      "font_class": "phone",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "13164226",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "4268026",
+      "name": "log-out",
+      "font_class": "logout",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "5120486",
+      "name": "Eye",
+      "font_class": "visible",
+      "unicode": "e7d6",
+      "unicode_decimal": 59350
+    },
+    {
+      "icon_id": "7028240",
+      "name": "eye-invisible",
+      "font_class": "invisible",
+      "unicode": "e6c5",
+      "unicode_decimal": 59077
+    },
+    {
+      "icon_id": "356490",
+      "name": "支付宝",
+      "font_class": "zhifubao",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "3979173",
+      "name": "淘宝",
+      "font_class": "taobao",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "11758475",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e77e",
+      "unicode_decimal": 59262
+    },
+    {
+      "icon_id": "15618750",
+      "name": "抖音",
+      "font_class": "talk",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "4503727",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e6e1",
+      "unicode_decimal": 59105
+    },
+    {
+      "icon_id": "18592433",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
       "icon_id": "953665",
       "name": "消息",
       "font_class": "message",
@@ -88,13 +165,6 @@
       "font_class": "girl",
       "unicode": "e6af",
       "unicode_decimal": 59055
-    },
-    {
-      "icon_id": "14821563",
-      "name": "用户名",
-      "font_class": "user",
-      "unicode": "e64c",
-      "unicode_decimal": 58956
     },
     {
       "icon_id": "11556685",

@@ -21,6 +21,9 @@
         flex: 1;
       }
     }
+    .el-icon-warning-outline {
+      cursor: pointer;
+    }
     .el-col {
       min-height: 160px;
     }
@@ -119,6 +122,9 @@
         margin-right: 16px;
         background-color: #314659;
         color: #fff;
+      }
+      .normal {
+        background-color: #d9dde0;
       }
       .num {
         flex: 1;
