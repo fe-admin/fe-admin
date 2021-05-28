@@ -1,6 +1,6 @@
 import { mapActions } from "vuex";
 import { login } from "@/api";
-import { debounce, sleep, setFullBackground } from "@/utils";
+import { debounce, sleep } from "@/utils";
 import { setToken } from "@/utils/auth";
 import mixins from "@/mixins";
 export default {
@@ -8,13 +8,17 @@ export default {
   mixins: [mixins],
   data() {
     return {
+      pwdAlert: false,
+      alertMsg: "",
       activeName: "password",
       pwdType: true,
       checked: true,
       loading: false,
-      formData: {
-        accountName: localStorage.getItem("_userName") || "",
+      userForm: {
+        accountName: "",
         password: "",
+      },
+      phoneForm: {
         phone: "",
         smsNumber: "",
       },
@@ -71,23 +75,38 @@ export default {
   },
 
   methods: {
-    ...mapActions(["Login"]),
+    ...mapActions(["user/Login"]),
     async login() {
       this.loading = true;
-      const result = Object.assign(this.formData, { token: 1 });
-      // const [, result] = await login(this.formData);
+      const { activeName } = this;
+      const Form = activeName === "password" ? "userForm" : "phoneForm";
+      const [err, result] = await login(this[Form]);
+      if (err) {
+        this.pwdAlert = true;
+        this.alertMsg = err.message;
+      } else {
+        this["user/Login"](result);
+        Object.keys(result).forEach((key) => {
+          localStorage.setItem(key, result[key]);
+        });
+        setToken(result.token);
+        await sleep(1000);
+        this.loginSuccess();
+      }
       // if (result) {
       // if (this.checked) {
       //   localStorage.setItem("_userName", result.accountName);
       // }
-      console.info(result);
-      this.Login(result);
-      Object.keys(result).forEach((key) => {
-        localStorage.setItem(key, result[key]);
-      });
-      setToken(result.token);
-      await sleep(1000);
-      this.loginSuccess();
+
+      console.info(err, result);
+
+      // this.Login(result);
+      // Object.keys(result).forEach((key) => {
+      //   localStorage.setItem(key, result[key]);
+      // });
+      // setToken(result.token);
+      // await sleep(1000);
+      // this.loginSuccess();
       // }
       this.loading = false;
     },
@@ -98,27 +117,21 @@ export default {
     // 账号密码非空验证
     handleLogin() {
       const { activeName } = this;
-      if (activeName === "password") {
-        const s = this.validat(["accountName", "password"]);
-        console.info(s);
-        // this.$refs.loginForm.validate((v) => {
-        //   if (v) this.login();
-        // });
-      } else {
-        this.$refs.loginForm.validate((v) => {
-          if (v) this.login();
-        });
-      }
+      const Form = activeName === "password" ? "userForm" : "phoneForm";
+      this.$refs[Form].validate((v) => {
+        if (v) this.login();
+      });
     },
-    validat(field) {
-      return this.$refs.loginForm.validateField(field);
+    validate(field, cb) {
+      // this.$refs.loginForm.validateField(field, cb);
     },
     getSmsNumber() {},
     changePwdType() {
       this.pwdType = !this.pwdType;
     },
     handleClick() {
-      this.$refs.loginForm.resetFields();
+      const Form = this.activeName === "password" ? "userForm" : "phoneForm";
+      this.$refs[Form].resetFields();
     },
   },
 };

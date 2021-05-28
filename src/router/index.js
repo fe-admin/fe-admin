@@ -4,25 +4,32 @@ import constantRouter, { length } from "@/router/constant-router";
 
 Vue.use(Router);
 
-let RouterInstance = null;
-export const instance = () => {
-  RouterInstance = new Router({
+export const createRouter = (routes) => {
+  const instance = new Router({
     mode: "hash",
-    routes: constantRouter,
+    routes,
   });
 
-  const originalPush = RouterInstance.push.bind(RouterInstance);
-  RouterInstance.push = (location) => {
+  const originalPush = instance.push.bind(instance);
+  instance.push = (location) => {
     return originalPush(location).catch((err) => err);
   };
 
-  const originalReplace = RouterInstance.replace.bind(RouterInstance);
-  RouterInstance.replace = (location) => {
+  const originalReplace = instance.replace.bind(instance);
+  instance.replace = (location) => {
     return originalReplace(location).catch((err) => err);
   };
-  return RouterInstance;
+  return instance;
 };
 
-export default instance();
+const routeInstance = createRouter(constantRouter);
+
+export default routeInstance;
 
 export const constantLength = length;
+
+// https://github.com/vuejs/vue-router/issues/1234
+export function resetRouter() {
+  const newRouter = createRouter(constantRouter);
+  routeInstance.matcher = newRouter.matcher; // the relevant part
+}

@@ -1,5 +1,4 @@
 import { BasicLayout } from "@/layout";
-import storage from "store";
 import routerMap from "./map-router";
 
 const rootRouter = {
@@ -8,7 +7,10 @@ const rootRouter = {
   component: BasicLayout,
   redirect: "/dashboard",
   children: [],
-  meta: { title: "首页" },
+  meta: {
+    // 面包屑使用
+    title: "首页",
+  },
 };
 
 function formatMenu(list, router) {
@@ -42,8 +44,4 @@ export default function getAsyncRouter(menus) {
       hidden: true,
     },
   ];
-}
-
-export function getCacheRouter() {
-  return getAsyncRouter(storage.get("menus"));
 }

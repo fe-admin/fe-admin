@@ -26,6 +26,7 @@ const routes = [
       },
     ],
   },
+  // 消息
   {
     name: "Message",
     redirect: "/message/index",
@@ -37,7 +38,6 @@ const routes = [
         name: "MessageList",
         meta: {
           title: "站内信",
-          permission: ["message"],
         },
       },
       {
@@ -45,7 +45,6 @@ const routes = [
         name: "MessageSubscribe",
         meta: {
           title: "消息订阅",
-          permission: ["message"],
         },
       },
       {
@@ -53,11 +52,11 @@ const routes = [
         name: "MessageType",
         meta: {
           title: "消息类型",
-          permission: ["message"],
         },
       },
     ],
   },
+  // 错误
   {
     name: "Exception",
     redirect: "/exception/403",
@@ -69,7 +68,6 @@ const routes = [
         name: "403",
         meta: {
           title: "403",
-          permission: ["exception"],
         },
       },
       {
@@ -77,7 +75,6 @@ const routes = [
         name: "404",
         meta: {
           title: "404",
-          permission: ["exception"],
         },
       },
       {
@@ -85,7 +82,6 @@ const routes = [
         name: "500",
         meta: {
           title: "500",
-          permission: ["exception"],
         },
       },
     ],
@@ -98,7 +94,6 @@ const routes = [
     meta: {
       title: "结果页面",
       icon: "fe-result",
-      permission: ["result"],
     },
     children: [
       {
@@ -108,7 +103,6 @@ const routes = [
           title: "成功",
           keepAlive: false,
           hiddenHeaderContent: true,
-          permission: ["result"],
         },
       },
       {
@@ -118,7 +112,6 @@ const routes = [
           title: "失败",
           keepAlive: false,
           hiddenHeaderContent: true,
-          permission: ["result"],
         },
       },
     ],
@@ -132,7 +125,7 @@ const routes = [
     meta: {
       title: "图形编辑器",
       icon: "fe-shape",
-      permission: ["result"],
+      permission: ["admin"],
     },
     children: [
       {
@@ -141,11 +134,37 @@ const routes = [
         meta: {
           title: "paper编辑器",
           keepAlive: false,
-          permission: ["result"],
         },
       },
     ],
   },
+  {
+    name: "System",
+    path: "/system",
+    redirect: "/system/page",
+    meta: {
+      title: "权限配置",
+      icon: "fe-system",
+    },
+    children: [
+      {
+        path: "/system/page",
+        name: "SystemPage",
+        meta: {
+          title: "页面权限",
+        },
+      },
+      {
+        path: "/system/directive",
+        name: "SystemDirective",
+        meta: {
+          title: "指令权限",
+        },
+      },
+    ],
+  },
+
+  // fe-system
 ];
 
 module.exports = [

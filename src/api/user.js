@@ -3,7 +3,6 @@ import { baseURL } from "@/config";
 
 const API = {
   login: "/user/login",
-  register: "/user/register",
   loginOut: "/user/logout",
 };
 
@@ -21,15 +20,4 @@ export function login(params, handler) {
  */
 export function loginOut() {
   return Promise.resolve();
-}
-
-/**
- * 用户注册
- * @date 2020-08-13
- * @param {any} params
- * @param {any} handler
- * @returns {any}
- */
-export function register(params, handler) {
-  return ErrorBoundary(post(`${baseURL}${API.register}`, params), handler);
 }

@@ -2,6 +2,7 @@ import { loginOut } from "@/api";
 import { removeToken } from "@/utils/auth";
 
 const userInfo = {
+  namespaced: true,
   state: {
     accountName: "",
     userId: "",
@@ -18,11 +19,9 @@ const userInfo = {
     Login({ commit }, userInfo) {
       commit("SET_USERINFO", userInfo);
     },
-    Logout({ commit, state }) {
+    Logout({ state }) {
       return loginOut(state.token).then(() => {
-        console.log(999);
         removeToken();
-        commit("REMOVE_ROUTER_FLAG");
       });
     },
   },

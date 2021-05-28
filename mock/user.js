@@ -1,33 +1,27 @@
-const Mock = require("mockjs");
-
 module.exports = [
   {
-    url: "user/test",
-    type: "get",
-    response: () => {
-      return {
-        code: 200,
-        data: {
-          total: 20,
-          "items|20": [
-            {
-              order_no: "@guid()",
-              timestamp: +Mock.Random.date("T"),
-              username: "@name()",
-              price: "@float(1000, 15000, 0, 2)",
-              "status|1": ["success", "pending"],
-            },
-          ],
-        },
-      };
+    url: "user/login",
+    type: "post",
+    response: ({ body: { accountName, password } }) => {
+      if (
+        password === "fe-admin" &&
+        (accountName === "admin" || accountName === "user")
+      ) {
+        return {
+          code: 200,
+          data: {
+            uid: "@guid()",
+            accountName,
+            roles: JSON.stringify([accountName]),
+            token: "@guid()",
+          },
+        };
+      } else {
+        return {
+          code: 2000,
+          message: "错误的用户名和密码（admin/fe-admin)",
+        };
+      }
     },
   },
-  // {
-  //   url: "user/test.*",
-  //   type: "get",
-  //   response: {
-  //     code: 200,
-  //     data: { id: Mock.Random.guid(), "name|5-10": "★" },
-  //   },
-  // },
 ];

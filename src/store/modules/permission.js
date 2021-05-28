@@ -1,25 +1,51 @@
 import { getMenus } from "@/api";
-import storage from "store";
+
+function hasPermission(roles, route) {
+  if (route.meta && route.meta.permission) {
+    return roles.some((role) => route.meta.permission.includes(role));
+  } else {
+    return true;
+  }
+}
+
+export function filterAsyncRoutes(routes, roles) {
+  const res = [];
+  routes.forEach((route) => {
+    const tmp = { ...route };
+    if (hasPermission(roles, tmp)) {
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, roles);
+      }
+      res.push(tmp);
+    }
+  });
+
+  return res;
+}
 
 const permission = {
+  namespaced: true,
   state: {
-    routerAdded: false,
+    routers: [],
   },
   mutations: {
-    SET_ROUTER_FLAG: (state) => {
-      state.routerAdded = true;
+    SET_ROUTES: (state, routers) => {
+      state.routers = routers;
     },
-    REMOVE_ROUTER_FLAG: (state) => {
-      state.routerAdded = false;
+    REMOVE_ROUTES: (state) => {
+      state.routers = [];
     },
   },
   actions: {
-    GenerateRoutes({ commit }, data) {
+    GenerateRoutes({ commit }, roles) {
       return getMenus().then(([, res]) => {
-        storage.set("menus", res);
-        commit("SET_ROUTER_FLAG");
-        return res;
+        const accessedRoutes = filterAsyncRoutes(res, roles);
+        commit("SET_ROUTES", accessedRoutes);
+        return accessedRoutes;
       });
+    },
+    RemoveRoutes({ commit }) {
+      commit("REMOVE_ROUTES");
     },
   },
 };

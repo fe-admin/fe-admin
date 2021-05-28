@@ -11,29 +11,6 @@
       <%= htmlWebpackPlugin.options.title %>
     </title>
     <link rel="icon" type="image/png" href="<%=BASE_URL%>favicon.png" />
-    <script>
-      // (function(d, t) {
-      //   var g = d.createElement(t),
-      //     s = d.getElementsByTagName(t)[0];
-      //   g.src = "http://192.168.1.212:3000/embed.js";
-      //   s.parentNode.insertBefore(g, s);
-      //   g.onload = function() {
-      //     new window.ChaskiqMessengerEncrypted({
-      //       domain: "http://192.168.1.212:3000",
-      //       ws: "ws://192.168.1.212:3000/cable",
-      //       app_id: "tgokrCobNDEmELzmftzB7FVk",
-      //       data: {
-      //         email: "admin@tusdao.com",
-      //         identifier_key:
-      //           "e47ff4f5137ce6dc3cfd54ddfacf9ed95ab21b1dbd25661b4952278d0453eb3a",
-      //         properties: {},
-      //       },
-      //       lang: "USER_LANG_OR_DEFAULTS_TO_BROWSER_LANG",
-      //     });
-      //   };
-      // })(document, "script");
-    </script>
-
     <style>
       .first-loading {
         display: flex;
@@ -42,10 +19,6 @@
         flex-direction: column;
         min-height: 420px;
         height: 100%;
-      }
-
-      .first-loading > h1 {
-        font-size: 30px;
       }
 
       .first-loading .loading-wrp {
@@ -123,16 +96,17 @@
   <body>
     <div id="app">
       <div class="first-loading">
-        <h1>Fe-Admin</h1>
+        <svg
+          data-v-6729ba62=""
+          aria-hidden="true"
+          style="width: 150px;height: 54px;fill: #000;margin-top: 70px;"
+        >
+          <use xlink:href="#fe-logo-text"></use>
+        </svg>
         <div class="loading-wrp">
           <div class="loader-anim">
             <div class="loader">Loading...</div>
           </div>
-        </div>
-        <div
-          style="display: flex; justify-content: center; align-items: center;"
-        >
-          Fe-Admin
         </div>
       </div>
     </div>

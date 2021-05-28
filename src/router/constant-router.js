@@ -12,12 +12,6 @@ const router = [
         component: () =>
           import(/* webpackChunkName: "user" */ "@/views/user/Login"),
       },
-      {
-        path: "register",
-        name: "register",
-        component: () =>
-          import(/* webpackChunkName: "user" */ "@/views/user/Register"),
-      },
     ],
   },
 

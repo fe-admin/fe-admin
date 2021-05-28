@@ -30,6 +30,7 @@ export default {
     ...mapActions(["Logout"]),
     async logout() {
       await this.Logout();
+      this.$store.dispatch("permission/RemoveRoutes");
       this.$router.replace("/user/login");
     },
   },

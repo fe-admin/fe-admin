@@ -22,7 +22,6 @@ import "@/styles/public/index.scss";
 Vue.use(EventProxy);
 Vue.use(ElementUI);
 Vue.use(FeAdmin);
-console.info(FeAdmin);
 Vue.config.productionTip = false;
 // Vue.config.errorHandler = function(err) {
 // Message.closeAll();

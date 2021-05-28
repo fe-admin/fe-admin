@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     &-item {
       min-width: calc((100% - 48px) / 4);
+      max-width: calc((100% - 48px) / 4);
       padding: 20px 24px 18px;
       background-color: #fff;
       border-radius: 2px;

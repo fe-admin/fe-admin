@@ -1,7 +1,7 @@
 <template>
   <fe-layout
     :isCollapse="isCollapse"
-    :menuData="menuData"
+    :menuData="routers"
     :menuId="menuId"
     :toggleCollapse="toggleCollapse"
     :updateMenuId="updateMenuId"
@@ -38,12 +38,11 @@ export default {
     return {
       title: defaultSettings.title,
       menuTitle: "前端中台系统",
-      menuData: storage.get("menus"),
       menuId: this.$route.name,
     };
   },
   computed: {
-    ...mapGetters(["isCollapse"]),
+    ...mapGetters(["isCollapse", "routers"]),
   },
   methods: {
     ...mapActions(["toggleCollapse", "updateMenuId"]),

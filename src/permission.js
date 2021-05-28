@@ -1,11 +1,12 @@
 import NProgress from "nprogress";
 import { getToken } from "@/utils/auth";
 import { addRoutes } from "@/utils";
-import getAsyncRouter, { getCacheRouter } from "@/router/async-router";
+import getAsyncRouter from "@/router/async-router";
 import router, { constantLength } from "@/router";
 import store from "@/store";
+import storage from "store";
 
-const whiteList = ["/user/login", "/user/register"];
+const whiteList = ["/user/login"];
 const loginRoutePath = "/user/login";
 const defaultRoutePath = "/dashbord";
 
@@ -15,21 +16,20 @@ router.beforeEach((to, from, next) => {
     if (to.path === loginRoutePath) {
       next({ path: defaultRoutePath });
     } else {
-      if (!store.getters.routerAdded) {
+      const roles = storage.get("roles");
+      if (router.getRoutes().length <= constantLength) {
         store
-          .dispatch("GenerateRoutes")
+          .dispatch("permission/GenerateRoutes", roles)
           .then((res) => {
-            addRoutes(router, getAsyncRouter(res));
+            // addRoutes(router, getAsyncRouter(res));
+            router.addRoutes(getAsyncRouter(res));
             next({ path: to.path });
           })
           .catch(() => {
-            store.dispatch("Logout").then(() => {
+            store.dispatch("user/Logout").then(() => {
               next({ path: loginRoutePath, query: { redirect: to.fullPath } });
             });
           });
-      } else if (router.getRoutes().length <= constantLength) {
-        addRoutes(router, getCacheRouter());
-        next({ path: to.path });
       } else {
         next();
       }

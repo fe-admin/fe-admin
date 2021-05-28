@@ -23,4 +23,6 @@ export default {
     ),
   MessageType: () =>
     import(/* webpackChunkName: "MessageType" */ "@/views/message/MessageType"),
+  SystemPage: () => import("@/views/system/SystemPage"),
+  SystemDirective: () => import("@/views/system/SystemDirective"),
 };
