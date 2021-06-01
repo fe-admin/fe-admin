@@ -4604,10 +4604,10 @@ faye-websocket@~0.11.1:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fe-admin-component@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/fe-admin-component/-/fe-admin-component-0.0.12.tgz#053b5fdc8311010c5ff6f5203014d51e10248de2"
-  integrity sha512-gZo6YNZCLxvNxcF9zhBrB+AiPojaRJQu/qZpgC8Ik2fEC5FLwg8zS9GceI222JhS2ouIuqV/zwJov+xYB+lo0w==
+fe-admin-component@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.npmjs.org/fe-admin-component/-/fe-admin-component-0.0.13.tgz#19ac2667cd97ede1e40a9cc147dcdf3e17b539c8"
+  integrity sha512-umT2kt3wZuUroK9Gr4QbfaT1HSHh280DJf5s1C4WJJej7ynZfop9DZvJnVED2e7M3X/A2RK9EGf2ziPnTHqyWQ==
   dependencies:
     core-js "^3.6.5"
     element-ui "^2.13.2"

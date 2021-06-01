@@ -13,7 +13,7 @@
     "axios-encapsulation": "^1.0.3",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.2",
-    "fe-admin-component": "^0.0.12",
+    "fe-admin-component": "^0.0.13",
     "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
