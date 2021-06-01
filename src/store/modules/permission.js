@@ -1,4 +1,4 @@
-import { getMenus } from "@/api";
+import { getMenus, getMenus2 } from "@/api";
 
 function hasPermission(roles, route) {
   if (route.meta && route.meta.permission) {

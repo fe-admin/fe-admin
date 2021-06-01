@@ -3,15 +3,17 @@
     <template #content>
       最少选择一种用户角色类型
     </template>
+
     <el-checkbox-group
       :min="1"
       v-model="checkList"
       @change="handleCheckedChange"
     >
-      <el-checkbox label="admin"></el-checkbox>
-      <el-checkbox label="user"></el-checkbox>
+      <el-checkbox-button v-for="role in roles" :label="role" :key="role">{{
+        role
+      }}</el-checkbox-button>
     </el-checkbox-group>
-    <el-button type="primary">切换</el-button>
+    <h2>当前用户角色为：{{ checkList }}</h2>
   </with-header>
 </template>
 
@@ -25,16 +27,19 @@ export default {
   name: "SystemPage",
   data() {
     return {
-      checkList: ["admin"],
+      roles: ["admin", "user"],
+      checkList: storage.get("roles"),
     };
   },
   methods: {
     async handleCheckedChange(roles) {
-      console.info(roles);
       storage.set("roles", roles);
       resetRouter();
       this.$store.dispatch("permission/GenerateRoutes", roles).then((res) => {
         router.addRoutes(getAsyncRouter(res));
+        this.$nextTick().then(() => {
+          roles.toString() === "user" && this.$router.push("/system/directive");
+        });
       });
     },
   },

@@ -19,8 +19,13 @@
         flex-direction: column;
         min-height: 420px;
         height: 100%;
+        background: #f0f2f5;
       }
-
+      .first-loading .logo {
+        width: 155px;
+        height: 38px;
+        margin-top: 70px;
+      }
       .first-loading .loading-wrp {
         padding: 98px;
         display: flex;
@@ -96,13 +101,7 @@
   <body>
     <div id="app">
       <div class="first-loading">
-        <svg
-          data-v-6729ba62=""
-          aria-hidden="true"
-          style="width: 150px;height: 54px;fill: #000;margin-top: 70px;"
-        >
-          <use xlink:href="#fe-logo-text"></use>
-        </svg>
+        <img src="./logo.jpg" class="logo" />
         <div class="loading-wrp">
           <div class="loader-anim">
             <div class="loader">Loading...</div>

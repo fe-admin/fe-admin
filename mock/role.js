@@ -152,6 +152,7 @@ const routes = [
         name: "SystemPage",
         meta: {
           title: "页面权限",
+          permission: ["admin"],
         },
       },
       {
@@ -163,10 +164,7 @@ const routes = [
       },
     ],
   },
-
-  // fe-system
 ];
-
 module.exports = [
   {
     url: "role/getMenus",
