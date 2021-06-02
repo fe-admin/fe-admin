@@ -40,7 +40,7 @@
               id="status"
             >
               <el-option
-                v-for="item in options"
+                v-for="item in []"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
@@ -60,7 +60,7 @@
         <el-form-item>
           <el-button @click="resetForm('searchForm')">重置</el-button>
           <el-button type="primary" :loading="loading">查询</el-button>
-          <CollapseButton :collapsed="collapsed" :onChange="onCollapse" />
+          <CollapseButton :collapsed="collapsed" :onCollapse="onCollapse" />
         </el-form-item>
       </el-form>
       <div class="table-list-content">
@@ -157,6 +157,7 @@ export default {
     this.getTableList();
   },
   methods: {
+    handleSelectionChange() {},
     resetForm(formName) {
       console.log(this.$refs[formName]);
       this.$refs[formName].resetFields();

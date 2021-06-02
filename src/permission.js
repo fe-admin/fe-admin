@@ -21,8 +21,7 @@ router.beforeEach((to, from, next) => {
         store
           .dispatch("permission/GenerateRoutes", roles)
           .then((res) => {
-            // addRoutes(router, getAsyncRouter(res));
-            router.addRoutes(getAsyncRouter(res));
+            addRoutes(router, getAsyncRouter(res));
             next({ path: to.path });
           })
           .catch(() => {

@@ -25,9 +25,8 @@
     </div>
     <div class="tab-list">
       <el-date-picker
-        v-model="value2"
+        v-model="picker"
         type="datetimerange"
-        :picker-options="pickerOptions"
         range-separator="至"
         start-placeholder="开始日期"
         end-placeholder="结束日期"

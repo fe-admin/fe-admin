@@ -11,6 +11,7 @@ import {
 export default {
   data() {
     return {
+      picker: [],
       activeName: "sale",
       lineTabActiveName: "line0",
       cardList: [],
@@ -40,9 +41,7 @@ export default {
   },
 
   methods: {
-    tabClick({ name }) {
-      console.info(name);
-    },
+    tabClick({ name }) {},
     lineTabClick({ name }) {
       const { tabLineMap } = this;
       if (!tabLineMap.get(name)) {

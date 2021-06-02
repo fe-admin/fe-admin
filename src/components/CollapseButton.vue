@@ -9,7 +9,7 @@ import { debounce } from "@/utils";
 
 export default {
   name: "CollapseButton",
-  props: ["collapsed", "onChange"],
+  props: ["collapsed", "onCollapse"],
   data() {
     return {};
   },
@@ -22,6 +22,11 @@ export default {
   },
   mounted() {
     this.onChange = debounce(this.onChange, 150, { leading: true });
+  },
+  methods: {
+    onChange() {
+      this.onCollapse();
+    },
   },
 };
 </script>

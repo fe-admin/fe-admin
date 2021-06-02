@@ -2,7 +2,7 @@
  * @Author: jubao.tian
  * @Date: 2020-07-15 10:55:28
  * @Last Modified by: jubao.tian
- * @Last Modified time: 2021-05-18 10:17:45
+ * @Last Modified time: 2021-06-02 17:47:46
  */
 import debounces from "lodash.debounce";
 
@@ -42,7 +42,7 @@ export function random(length = -6) {
 
 export function addRoutes(router, list) {
   const existRouter = router.getRoutes();
-  if (Array.isArray(list) && router && router.addRoutes) {
+  if (Array.isArray(list) && router) {
     list.forEach((item) => {
       const exist = existRouter.filter((row) => row.name === item.name).length;
       !exist && router.addRoute(item);

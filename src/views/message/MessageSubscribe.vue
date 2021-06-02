@@ -42,9 +42,13 @@
                 <template
                   v-if="item.name !== 'msgType' && item.name !== 'receiveUser'"
                 >
-                  <el-checkbox v-model="checked"></el-checkbox>
+                  <el-checkbox
+                    :indeterminate="isIndeterminate[item.name]"
+                    v-model="checkAll[item.name]"
+                    @change="(val) => handleCheckAllChange(item.name, val)"
+                    >{{ item.label }}</el-checkbox
+                  >
                 </template>
-                {{ item.label }}
               </template>
               <template slot-scope="scope">
                 <template
@@ -54,7 +58,12 @@
                     ) && scope.row.web !== undefined
                   "
                 >
-                  <el-checkbox v-model="checked"></el-checkbox>
+                  <el-checkbox
+                    @change="
+                      (val) => handleCheckChange(scope.column.property, val)
+                    "
+                    v-model="scope.row[scope.column.property]"
+                  ></el-checkbox>
                 </template>
                 <template v-else>
                   {{ scope.row[scope.column.property] }}
@@ -78,6 +87,14 @@ export default {
   name: "messageSubscribe",
   data() {
     return {
+      // 不确定属性
+      isIndeterminate: {
+        web: false,
+        email: false,
+        mobile: false,
+      },
+      // 全选动作
+      checkAll: { web: false, email: false, mobile: false },
       search: "",
       loading: false,
       tableHead: [
@@ -107,12 +124,56 @@ export default {
     async getSubscribeList() {
       this.loading = true;
       const [err, res] = await getSubscribeList();
-      console.info(res);
       if (!err && res) {
         await sleep(1000);
         this.tableData = res;
+        this.reset(Object.keys(this.isIndeterminate));
         this.loading = false;
       }
+    },
+    reset(type) {
+      const numMap = {
+        total: 0,
+        web: 0,
+        email: 0,
+        mobile: 0,
+      };
+      this.tableData.forEach((item) => {
+        if (item.children) {
+          item.children.forEach((row) => {
+            numMap.total += 1; // 总条数
+            if (row.web) numMap.web += 1;
+            if (row.email) numMap.email += 1;
+            if (row.mobile) numMap.mobile += 1;
+          });
+        }
+      });
+      if (numMap.total) {
+        if (Array.isArray(type)) {
+          type.forEach((item) => this.setCheck(numMap, item));
+        } else {
+          this.setCheck(numMap, type);
+        }
+      }
+    },
+    setCheck(numMap, type) {
+      if (numMap.total === numMap[type]) {
+        this.isIndeterminate[type] = false;
+        this.checkAll[type] = true;
+      } else {
+        this.isIndeterminate[type] = true;
+      }
+    },
+    handleCheckAllChange(type, val) {
+      this.isIndeterminate[type] = false;
+      this.tableData.forEach((item) => {
+        if (item.children) {
+          item.children.forEach((row) => (row[type] = val));
+        }
+      });
+    },
+    handleCheckChange(type, val) {
+      this.reset(type);
     },
   },
 };
