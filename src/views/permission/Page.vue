@@ -38,9 +38,7 @@ export default {
         "permission/GenerateRoutes",
         roles
       );
-      router.addRoutes(getAsyncRouter(res));
-      await this.$nextTick();
-      // roles.toString() === "admin" && this.$router.push("/system/directive");
+      addRoutes(router, getAsyncRouter(res));
     },
   },
 };

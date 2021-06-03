@@ -1,18 +1,6 @@
 import { BasicLayout } from "@/layout";
 import routerMap from "./map-router";
 
-const rootRouter = {
-  path: "/",
-  name: "index",
-  component: BasicLayout,
-  redirect: "/dashboard",
-  children: [],
-  meta: {
-    // 面包屑使用
-    title: "首页",
-  },
-};
-
 function formatMenu(list, router) {
   list.forEach((item) => {
     const route = {
@@ -33,6 +21,18 @@ function formatMenu(list, router) {
 }
 
 export default function getAsyncRouter(menus) {
+  const rootRouter = {
+    path: "/",
+    name: "index",
+    component: BasicLayout,
+    redirect: "/dashboard",
+    children: [],
+    meta: {
+      // 面包屑使用
+      title: "首页",
+    },
+  };
+
   if (Array.isArray(menus)) {
     formatMenu(menus, rootRouter);
   }

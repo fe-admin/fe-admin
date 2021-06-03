@@ -37,7 +37,6 @@ export default {
   },
   methods: {
     async handleCheckedChange(roles) {
-      console.info(roles);
       await this.$store.dispatch("user/SetRoles", roles);
       this.key++;
       resetRouter();
