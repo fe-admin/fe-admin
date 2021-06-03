@@ -144,20 +144,20 @@ const routes = [
     redirect: "/system/page",
     meta: {
       title: "权限配置",
-      icon: "fe-system",
+      icon: "fe-permission",
     },
     children: [
       {
-        path: "/system/page",
-        name: "SystemPage",
+        path: "/permission/page",
+        name: "PermissionPage",
         meta: {
           title: "页面权限",
           permission: ["admin"],
         },
       },
       {
-        path: "/system/directive",
-        name: "SystemDirective",
+        path: "/permission/directive",
+        name: "PermissionDirective",
         meta: {
           title: "指令权限",
         },

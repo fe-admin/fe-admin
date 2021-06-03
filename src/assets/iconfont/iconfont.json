@@ -1,7 +1,7 @@
 {
   "id": "2409716",
   "name": "fe-admin",
-  "font_family": "fe-font",
+  "font_family": "fe-admin",
   "css_prefix_text": "fe-",
   "description": "fe-admin",
   "glyphs": [
@@ -148,7 +148,7 @@
     {
       "icon_id": "9118054",
       "name": "系统配置",
-      "font_class": "system",
+      "font_class": "permission",
       "unicode": "e630",
       "unicode_decimal": 58928
     },

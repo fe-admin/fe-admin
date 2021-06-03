@@ -4,7 +4,6 @@ import { addRoutes } from "@/utils";
 import getAsyncRouter from "@/router/async-router";
 import router, { constantLength } from "@/router";
 import store from "@/store";
-import storage from "store";
 
 const whiteList = ["/user/login"];
 const loginRoutePath = "/user/login";
@@ -16,7 +15,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === loginRoutePath) {
       next({ path: defaultRoutePath });
     } else {
-      const roles = storage.get("roles");
+      const { roles } = store.getters;
       if (router.getRoutes().length <= constantLength) {
         store
           .dispatch("permission/GenerateRoutes", roles)

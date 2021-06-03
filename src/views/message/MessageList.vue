@@ -12,6 +12,7 @@
         ></template
       >
     </template>
+
     <div class="table-list">
       <div class="search-form">
         <el-radio-group v-model.number="type" @change="getMessageList">
@@ -40,6 +41,7 @@
             </el-input>
           </div>
         </div>
+        <div v-if="selectNum">{{ selectNum }}</div>
         <el-table
           ref="multipleTable"
           v-loading="loading"
@@ -55,8 +57,7 @@
               :key="index"
               :label="item.label"
               :prop="item.name"
-              show-overflow-tooltip
-              tooltip-effect="dark"
+              :show-overflow-tooltip="true"
               :width="columWidth[index]"
             >
               <template slot-scope="scope">
@@ -103,7 +104,7 @@ export default {
     return {
       search: "",
       loading: false,
-      collapsed: false,
+      selectNum: 0,
       type: 0,
       unread: 0,
       readType: 0,
@@ -157,6 +158,9 @@ export default {
     changeReadType(type) {
       this.getMessageList();
       this.readType = type;
+    },
+    handleSelectionChange(v) {
+      this.selectNum = v.length;
     },
   },
 };

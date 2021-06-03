@@ -23,6 +23,7 @@ export default {
     ),
   MessageType: () =>
     import(/* webpackChunkName: "MessageType" */ "@/views/message/MessageType"),
-  SystemPage: () => import("@/views/system/SystemPage"),
-  SystemDirective: () => import("@/views/system/SystemDirective"),
+  // 权限页面
+  PermissionPage: () => import("@/views/permission/Page"),
+  PermissionDirective: () => import("@/views/permission/Directive"),
 };

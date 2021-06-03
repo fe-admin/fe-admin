@@ -12,7 +12,7 @@ module.exports = [
           data: {
             uid: "@guid()",
             accountName,
-            roles: JSON.stringify([accountName]),
+            roles: [accountName],
             token: "@guid()",
           },
         };

@@ -2,7 +2,7 @@ const userInfo = {
   namespaced: true,
   state: {
     accountName: "",
-    userId: "",
+    roles: [],
   },
   mutations: {
     updateUserInfo: (state, payload) => {
@@ -11,10 +11,17 @@ const userInfo = {
     SET_USERINFO: (state, payload) => {
       Object.assign(state, payload);
     },
+    SET_ROLES: (state, payload) => {
+      state.roles = payload;
+    },
   },
   actions: {
     Login({ commit }, userInfo) {
       commit("SET_USERINFO", userInfo);
+    },
+    Logout() {},
+    SetRoles({ commit }, roles) {
+      commit("SET_ROLES", roles);
     },
   },
 };

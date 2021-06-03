@@ -1,6 +1,7 @@
 import Vue from "vue";
 import EventProxy from "vue-event-proxy";
 import ElementUI, { Message, Loading } from "element-ui";
+import directive from "@/directive";
 import FeAdmin from "fe-admin-component";
 import "@/utils/log";
 import "./permission";
@@ -22,6 +23,7 @@ import "@/styles/public/index.scss";
 Vue.use(EventProxy);
 Vue.use(ElementUI);
 Vue.use(FeAdmin);
+Vue.use(directive);
 Vue.config.productionTip = false;
 // Vue.config.errorHandler = function(err) {
 // Message.closeAll();

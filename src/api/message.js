@@ -7,11 +7,9 @@ const API = {
 };
 
 export function getMessageList(params) {
-  console.info(params);
   return ErrorBoundary(get(`${baseURL}${API.getMessageList}`, { params }));
 }
 
 export function getSubscribeList(params) {
-  console.info(params);
   return ErrorBoundary(get(`${baseURL}${API.getSubscribeList}`, { params }));
 }

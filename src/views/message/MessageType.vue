@@ -90,7 +90,6 @@ export default {
     async getSubscribeList() {
       this.loading = true;
       const [err, res] = await getSubscribeList();
-      console.info(res);
       if (!err && res) {
         await sleep(1000);
         this.tableData = res;

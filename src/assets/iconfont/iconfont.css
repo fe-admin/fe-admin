@@ -1,12 +1,12 @@
 @font-face {
-  font-family: "fe-font"; /* Project id 2409716 */
-  src: url('iconfont.woff2?t=1622014059520') format('woff2'),
-       url('iconfont.woff?t=1622014059520') format('woff'),
-       url('iconfont.ttf?t=1622014059520') format('truetype');
+  font-family: "fe-admin"; /* Project id 2409716 */
+  src: url('iconfont.woff2?t=1622701875199') format('woff2'),
+       url('iconfont.woff?t=1622701875199') format('woff'),
+       url('iconfont.ttf?t=1622701875199') format('truetype');
 }
 
-.fe-font {
-  font-family: "fe-font" !important;
+.fe-admin {
+  font-family: "fe-admin" !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -93,7 +93,7 @@
   content: "\e62a";
 }
 
-.fe-system:before {
+.fe-permission:before {
   content: "\e630";
 }
 

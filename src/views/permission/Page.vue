@@ -21,26 +21,26 @@
 import router, { resetRouter } from "@/router";
 import getAsyncRouter from "@/router/async-router";
 import { addRoutes } from "@/utils";
-import storage from "store";
 
 export default {
-  name: "SystemDirective",
+  name: "PermissionPage",
   data() {
     return {
       roles: ["admin", "user"],
-      checkList: storage.get("roles"),
+      checkList: this.$store.getters.roles,
     };
   },
   methods: {
     async handleCheckedChange(roles) {
-      storage.set("roles", roles);
+      await this.$store.dispatch("user/SetRoles", roles);
       resetRouter();
-      this.$store.dispatch("permission/GenerateRoutes", roles).then((res) => {
-        router.addRoutes(getAsyncRouter(res));
-        this.$nextTick().then(() => {
-          roles.toString() === "admin" && this.$router.push("/system/page");
-        });
-      });
+      const res = await this.$store.dispatch(
+        "permission/GenerateRoutes",
+        roles
+      );
+      router.addRoutes(getAsyncRouter(res));
+      await this.$nextTick();
+      // roles.toString() === "admin" && this.$router.push("/system/directive");
     },
   },
 };
