@@ -3,20 +3,34 @@
     <template #content>
       最少选择一种用户角色类型
     </template>
-
-    <el-checkbox-group
-      :min="1"
-      v-model="checkList"
-      @change="handleCheckedChange"
-    >
-      <el-checkbox-button v-for="role in roles" :label="role" :key="role">{{
-        role
-      }}</el-checkbox-button>
-    </el-checkbox-group>
-    <h2>当前用户角色为：{{ checkList }}</h2>
-    <div :key="key">
-      <div v-permission="['admin']">admin</div>
-      <div v-permission="['user']">user</div>
+    <div class="directive">
+      <el-checkbox-group
+        :min="1"
+        v-model="checkList"
+        @change="handleCheckedChange"
+      >
+        <el-checkbox-button v-for="role in roles" :label="role" :key="role">{{
+          role
+        }}</el-checkbox-button>
+      </el-checkbox-group>
+      <h2>当前用户角色为：{{ checkList }}</h2>
+      <div :key="key">
+        当前按钮角色包含[admin]下显示：<el-tag
+          type="success"
+          v-permission="['admin']"
+          >admin</el-tag
+        ><br /><br />
+        当前按钮角色包含[user]</el-tag>下显示：<el-tag
+          type="danger"
+          v-permission="['user']"
+          >user</el-tag
+        ><br /><br />
+        当前按钮角色包含[admin, user]</el-tag>下显示：<el-tag
+          type="success"
+          v-permission="['admin', 'user']"
+          >admin</el-tag
+        ><el-tag type="danger" v-permission="['admin', 'user']">user</el-tag>
+      </div>
     </div>
   </with-header>
 </template>
@@ -44,7 +58,7 @@ export default {
         "permission/GenerateRoutes",
         roles
       );
-      router.addRoutes(getAsyncRouter(res));
+      addRoutes(router, getAsyncRouter(res));
     },
   },
 };

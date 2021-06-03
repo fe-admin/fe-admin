@@ -1,44 +1,43 @@
 <template>
-  <a :class="collapseCls" @click="onChange"
-    >{{ collapsed ? "收起" : "展开"
-    }}<i class="el-icon-arrow-down el-icon--right"></i
-  ></a>
+  <div class="table-alert">
+    <div class="table-alert-message">
+      <div class="table-alert-info">
+        <div class="table-alert-info-content">已选择 {{ selectNum }} 项</div>
+        <div class="table-alert-info-option">
+          <a @click="clearSelection">取消选择</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import { debounce } from "@/utils";
 
 export default {
   name: "TableAlert",
-  props: ["collapsed", "onCollapse"],
+  props: ["selectNum", "clearSelection"],
   data() {
     return {};
   },
-  computed: {
-    collapseCls() {
-      return this.collapsed
-        ? "collapse-button collapse-button-ed"
-        : "collapse-button";
-    },
-  },
-  mounted() {
-    this.onChange = debounce(this.onChange, 150, { leading: true });
-  },
-  methods: {
-    onChange() {
-      this.onCollapse();
-    },
-  },
+
+  mounted() {},
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>
-.el-icon-arrow-down {
-  transition: all 0.3s ease 0s;
-  transform: rotate(0.5turn);
-}
-.collapse-button-ed {
-  .el-icon-arrow-down {
-    transition: all 0.3s ease 0s;
-    transform: rotate(0turn);
+.table-alert {
+  margin-bottom: 16px;
+  &-message {
+    padding: 12px 24px;
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
+  }
+  &-info {
+    display: flex;
+    align-items: center;
+    &-content {
+      flex: 1;
+    }
   }
 }
 </style>

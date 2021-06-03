@@ -34,7 +34,7 @@
                 v-model.trim="userForm.accountName"
                 clearable
               >
-                <i slot="prefix" class="el-input__icon fe-font fe-user"></i>
+                <i slot="prefix" class="el-input__icon fe-admin fe-user"></i>
               </el-input>
             </el-form-item>
             <el-form-item prop="password">
@@ -47,12 +47,12 @@
                 placeholder="密码: fe-admin"
                 clearable
               >
-                <i slot="prefix" class="el-input__icon fe-font fe-lock"></i>
+                <i slot="prefix" class="el-input__icon fe-admin fe-lock"></i>
                 <i
                   slot="suffix"
                   @click="changePwdType"
                   :class="
-                    `el-input__icon fe-font fe-visible ${
+                    `el-input__icon fe-admin fe-visible ${
                       pwdType ? 'fe-invisible' : 'fe-visible'
                     }`
                   "
@@ -77,7 +77,7 @@
                 placeholder="请输入手机号！"
                 v-model.trim="phoneForm.phone"
               >
-                <i slot="prefix" class="el-input__icon fe-font fe-phone"></i>
+                <i slot="prefix" class="el-input__icon fe-admin fe-phone"></i>
               </el-input>
             </el-form-item>
             <el-form-item class="sms-item" prop="smsNumber">
@@ -87,7 +87,7 @@
                 v-model.trim="phoneForm.smsNumber"
                 placeholder="请输入验证码！"
               >
-                <i slot="prefix" class="el-input__icon fe-font fe-message"></i>
+                <i slot="prefix" class="el-input__icon fe-admin fe-message"></i>
               </el-input>
               <el-button @click="getSmsNumber">获取验证码</el-button>
             </el-form-item>

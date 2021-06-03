@@ -86,28 +86,10 @@ export default {
         this.alertMsg = err.message;
       } else {
         this["user/Login"](result);
-        Object.keys(result).forEach((key) => {
-          localStorage.setItem(key, result[key]);
-        });
         setToken(result.token);
         await sleep(1000);
         this.loginSuccess();
       }
-      // if (result) {
-      // if (this.checked) {
-      //   localStorage.setItem("_userName", result.accountName);
-      // }
-
-      console.info(err, result);
-
-      // this.Login(result);
-      // Object.keys(result).forEach((key) => {
-      //   localStorage.setItem(key, result[key]);
-      // });
-      // setToken(result.token);
-      // await sleep(1000);
-      // this.loginSuccess();
-      // }
       this.loading = false;
     },
 

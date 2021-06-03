@@ -7,6 +7,7 @@ Vue.use(Router);
 export const createRouter = (routes) => {
   const instance = new Router({
     mode: "hash",
+    scrollBehavior: () => ({ y: 0, behavior: "smooth" }),
     routes,
   });
 

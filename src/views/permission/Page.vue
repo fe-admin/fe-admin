@@ -3,17 +3,18 @@
     <template #content>
       最少选择一种用户角色类型
     </template>
-
-    <el-checkbox-group
-      :min="1"
-      v-model="checkList"
-      @change="handleCheckedChange"
-    >
-      <el-checkbox-button v-for="role in roles" :label="role" :key="role">{{
-        role
-      }}</el-checkbox-button>
-    </el-checkbox-group>
-    <h2>当前用户角色为：{{ checkList }}</h2>
+    <div class="directive">
+      <el-checkbox-group
+        :min="1"
+        v-model="checkList"
+        @change="handleCheckedChange"
+      >
+        <el-checkbox-button v-for="role in roles" :label="role" :key="role">{{
+          role
+        }}</el-checkbox-button>
+      </el-checkbox-group>
+      <h2>当前用户角色为：{{ checkList }}</h2>
+    </div>
   </with-header>
 </template>
 

@@ -41,7 +41,11 @@
             </el-input>
           </div>
         </div>
-        <div v-if="selectNum">{{ selectNum }}</div>
+        <TableAlert
+          v-if="selectNum"
+          :selectNum="selectNum"
+          :clearSelection="clearSelection"
+        />
         <el-table
           ref="multipleTable"
           v-loading="loading"
@@ -97,9 +101,11 @@
 import { getMessageList } from "@/api";
 import { sleep } from "@/utils";
 import { pageMixin } from "@/mixins";
+import TableAlert from "@/components/TableAlert";
 export default {
   name: "MessageList",
   mixins: [pageMixin],
+  components: { TableAlert },
   data() {
     return {
       search: "",
@@ -161,6 +167,9 @@ export default {
     },
     handleSelectionChange(v) {
       this.selectNum = v.length;
+    },
+    clearSelection() {
+      this.$refs.multipleTable.clearSelection();
     },
   },
 };
