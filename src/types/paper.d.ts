@@ -1,0 +1,2 @@
+interface Color {}
+interface Tool {}

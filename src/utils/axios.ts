@@ -2,7 +2,7 @@
  * @Author: jubao.tian
  * @Date: 2020-08-13 16:38:58
  * @Last Modified by: jubao.tian
- * @Last Modified time: 2021-03-22 09:37:47
+ * @Last Modified time: 2021-06-04 15:18:12
  */
 import set from "lodash.set";
 import { Message } from "element-ui";
@@ -97,25 +97,25 @@ export function ErrorBoundary<T>(
     });
 }
 
-// window.addEventListener("error", (e) => {
-//   console.info(e);
-//   e.preventDefault();
-//   let message = (lodashGet(e, "message") || "").replace(
-//     /Uncaught Error: /i,
-//     ""
-//   );
-//   if (message === "undefined" || message === "Uncaught Error") {
-//     message = "";
-//   }
-//   const msg: string = message;
-//   // ResizeObserver loop limit exceeded
-//   if (/ResizeObserver|Script error|qiankun/.test(msg)) return;
-//   Message.closeAll();
-//   Message({
-//     type: "error",
-//     dangerouslyUseHTMLString: true,
-//     message: msg,
-//     duration: 5000,
-//     showClose: true,
-//   });
-// });
+window.addEventListener("error", (e) => {
+  console.info(e);
+  e.preventDefault();
+  let message = (lodashGet(e, "message") || "").replace(
+    /Uncaught Error: /i,
+    ""
+  );
+  if (message === "undefined" || message === "Uncaught Error") {
+    message = "";
+  }
+  const msg: string = message;
+  // ResizeObserver loop limit exceeded
+  if (/ResizeObserver|Script error|qiankun/.test(msg)) return;
+  Message.closeAll();
+  Message({
+    type: "error",
+    dangerouslyUseHTMLString: true,
+    message: msg,
+    duration: 5000,
+    showClose: true,
+  });
+});

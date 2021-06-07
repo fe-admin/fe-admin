@@ -10,3 +10,4 @@ module.exports = {
     ],
   ],
 };
+// https://github.com/vuejs/eslint-plugin-vue/issues/811

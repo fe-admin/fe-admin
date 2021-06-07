@@ -12,23 +12,20 @@
   </with-header>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
 import paperState from "./paper";
 
-export default {
-  data() {
-    return {
-      radio: 1,
-    };
-  },
+@Component({
   mounted() {
     const paperInstance = new paperState();
     this.paperInstance = paperInstance;
   },
-  methods: {
-    change(v) {
-      this.paperInstance.setState(v);
-    },
-  },
-};
+})
+export default class PaperClass extends Vue {
+  radio = 1;
+  change(v: number): void {
+    this.paperInstance.setState(v);
+  }
+}
 </script>

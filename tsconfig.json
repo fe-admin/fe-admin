@@ -1,39 +1,25 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "esnext",
+    "module": "es2015",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
+    "suppressImplicitAnyIndexErrors": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "checkJs": false,
     "baseUrl": ".",
     "types": ["webpack-env"],
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": ["es2015", "dom", "dom.iterable", "scripthost"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "src/main.js",
-    "src/components/Aside/MenuRender.jsx",
-    "src/components/Logo/index.jsx",
-    "src/fe-admin-component/SvgIcon/index.jsx",
-    "src/fe-admin-component/Aside/index.jsx",
-    "src/fe-admin-component/Aside/index.jsx",
-    "src/fe-admin-component/Breadcrumb/index.jsx",
-    "src/fe-admin-component/Collapse/index.jsx",
-    "src/fe-admin-component/Header/index.jsx",
-    "src/fe-admin-component/Footers/index.jsx"
-  ],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/main.ts"],
+  "exclude": ["node_modules", "src/**/*.js", "src/views/editor/Paper/paper.ts"]
 }

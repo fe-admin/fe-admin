@@ -83,6 +83,7 @@
     "track",
     "wbr"
   ],
+  "vetur.validation.template": false,
   // *设置使用该插件的开发语言，如果支持所有语言的话用["*"]
   "auto-close-tag.activationOnLanguage": [
     "xml",

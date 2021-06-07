@@ -20,12 +20,12 @@
           v-permission="['admin']"
           >admin</el-tag
         ><br /><br />
-        当前按钮角色包含[user]</el-tag>下显示：<el-tag
+        当前按钮角色包含[user]下显示：<el-tag
           type="danger"
           v-permission="['user']"
           >user</el-tag
         ><br /><br />
-        当前按钮角色包含[admin, user]</el-tag>下显示：<el-tag
+        当前按钮角色包含[admin, user]下显示：<el-tag
           type="success"
           v-permission="['admin', 'user']"
           >admin</el-tag
@@ -35,32 +35,26 @@
   </with-header>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+
 import router, { resetRouter } from "@/router";
 import getAsyncRouter from "@/router/async-router";
 import { addRoutes } from "@/utils";
 
-export default {
-  name: "PermissionDirective",
-  data() {
-    return {
-      key: 0,
-      roles: ["admin", "user"],
-      checkList: this.$store.getters.roles,
-    };
-  },
-  methods: {
-    async handleCheckedChange(roles) {
-      await this.$store.dispatch("user/SetRoles", roles);
-      this.key++;
-      resetRouter();
-      const res = await this.$store.dispatch(
-        "permission/GenerateRoutes",
-        roles
-      );
-      addRoutes(router, getAsyncRouter(res));
-    },
-  },
-};
+@Component
+export default class PermissionDirective extends Vue {
+  key = 0;
+  roles: [] = ["admin", "user"];
+  checkList: [] = this.$store.getters.roles;
+
+  async handleCheckedChange(roles: []): void {
+    await this.$store.dispatch("user/SetRoles", roles);
+    this.key++;
+    resetRouter();
+    const res = await this.$store.dispatch("permission/GenerateRoutes", roles);
+    addRoutes(router, getAsyncRouter(res));
+  }
+}
 </script>
 <style lang="scss" src="./style/index.scss" scoped></style>

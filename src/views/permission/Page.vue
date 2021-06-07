@@ -5,7 +5,7 @@
     </template>
     <div class="directive">
       <el-checkbox-group
-        :min="1"
+        min="1"
         v-model="checkList"
         @change="handleCheckedChange"
       >
@@ -17,31 +17,23 @@
     </div>
   </with-header>
 </template>
-
-<script>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
 import router, { resetRouter } from "@/router";
 import getAsyncRouter from "@/router/async-router";
 import { addRoutes } from "@/utils";
 
-export default {
-  name: "PermissionPage",
-  data() {
-    return {
-      roles: ["admin", "user"],
-      checkList: this.$store.getters.roles,
-    };
-  },
-  methods: {
-    async handleCheckedChange(roles) {
-      await this.$store.dispatch("user/SetRoles", roles);
-      resetRouter();
-      const res = await this.$store.dispatch(
-        "permission/GenerateRoutes",
-        roles
-      );
-      addRoutes(router, getAsyncRouter(res));
-    },
-  },
-};
+@Component
+export default class PermissionPage extends Vue {
+  roles: [string, string] = ["admin", "user"];
+  checkList: [] = this.$store.getters.roles;
+
+  async handleCheckedChange(roles: []): Promise<unknown> {
+    await this.$store.dispatch("user/SetRoles", roles);
+    resetRouter();
+    const res = await this.$store.dispatch("permission/GenerateRoutes", roles);
+    return addRoutes(router, getAsyncRouter(res));
+  }
+}
 </script>
 <style lang="scss" src="./style/index.scss" scoped></style>

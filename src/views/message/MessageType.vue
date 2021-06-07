@@ -61,12 +61,12 @@
   </with-header>
 </template>
 
-<script>
+<script lang="ts">
 import { getSubscribeList } from "@/api";
 import { sleep } from "@/utils";
 export default {
   name: "messageSubscribe",
-  data() {
+  data():void {
     return {
       search: "",
       loading: false,
@@ -75,7 +75,7 @@ export default {
     };
   },
   computed: {
-    filterData() {
+    filterData():void {
       const { tableData, search } = this;
       return tableData.filter(
         (data) =>
@@ -83,11 +83,11 @@ export default {
       );
     },
   },
-  mounted() {
+  mounted():void {
     this.getSubscribeList();
   },
   methods: {
-    async getSubscribeList() {
+    async getSubscribeList():void {
       this.loading = true;
       const [err, res] = await getSubscribeList();
       if (!err && res) {

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import paper from "paper";
 export default class Paper {
   startPoint = null;
@@ -32,7 +33,7 @@ export default class Paper {
     this.bindEvent();
   }
 
-  bindEvent() {
+  bindEvent(): void {
     const { tool } = this;
     tool.onMouseDown = (event) => {
       this.mouseDown(event);
@@ -41,21 +42,13 @@ export default class Paper {
     tool.onMouseDrag = (event) => {
       this.mouseDrag(event);
     };
-
-    // tool.onMouseUp = (event) => {
-    //   this.mouseUp(event);
-    // };
-
-    // tool.onMouseMove = (event) => {
-    //   // this.mouseMove(event);
-    // };
   }
 
-  setState(State) {
+  setState(State: boolean): void {
     this.radio = State;
   }
 
-  mouseDown(event) {
+  mouseDown(event): void {
     const { point } = event;
     const { hitOptions, radio } = this;
 
@@ -75,7 +68,6 @@ export default class Paper {
           project.activeLayer.style = this.defaultStyle;
           // item.selected = true;
           // item.style = this.selectStyle;
-        } else if (type === "stroke") {
         }
         item.selected = true;
         item.style = this.selectStyle;
@@ -103,16 +95,9 @@ export default class Paper {
     }
   }
 
-  mouseUp() {
-    // this.startPoint = null;
-    // if (this.path) {
-    //   this.path = null;
-    // }
-  }
-
-  mouseDrag(event) {
+  mouseDrag(event): void {
     const { point } = event;
-    let { startPoint, selectItem, path, radio } = this;
+    const { startPoint, selectItem, path, radio } = this;
     // 选择功能
     if (this.radio === 0) {
       if (selectItem) {
@@ -139,7 +124,7 @@ export default class Paper {
   //   }
   // }
 
-  addPoint(point) {
+  addPoint(point): void {
     if (this.radio === 3 && this.path) {
       // const path = new Path();
       // path.style = this.defaultStyle;
@@ -153,15 +138,14 @@ export default class Paper {
       // this.path.add(point);
     }
   }
-  hitMatchFilter(hitResult) {
+  hitMatchFilter(hitResult): void {
     let flag_obj_is_first = false;
     if (hitResult.item) {
-      let hititem = hitResult.item;
+      const hititem = hitResult.item;
       if (hititem.parent.children[0] == hititem) {
         flag_obj_is_first = true;
       }
     }
-    console.info(flag_obj_is_first);
     return flag_obj_is_first;
   }
 }

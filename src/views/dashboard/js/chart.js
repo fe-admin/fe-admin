@@ -899,7 +899,6 @@ export function renderTabPie(container, value) {
     statistic: null,
     legend: false,
     tooltip: false,
-    interactions: [{ type: "tooltip", enable: false }],
   });
   piePlot.render();
 }

@@ -37,16 +37,16 @@
   </fe-result>
 </template>
 
-<script>
-export default {
-  name: "Error",
-  computed: {
-    result() {
-      return {
-        title: "result.fail.error.title",
-        description: "result.fail.error.description",
-      };
-    },
-  },
-};
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
+@Component
+export default class Error extends Vue {
+  get result() {
+    return {
+      title: "result.fail.error.title",
+      description: "result.fail.error.description",
+    };
+  }
+}
 </script>

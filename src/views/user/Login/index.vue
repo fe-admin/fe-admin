@@ -10,7 +10,7 @@
     </div>
     <div class="login-form">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="账户密码登录" name="password">
+        <el-tab-pane label="账户密码登录" name="userForm">
           <el-alert
             v-if="pwdAlert"
             :closable="false"
@@ -29,7 +29,6 @@
               <el-input
                 @keyup.enter.native="handleLogin"
                 :maxlength="11"
-                @change="validate('accountName')"
                 placeholder="用户名: admin or user"
                 v-model.trim="userForm.accountName"
                 clearable
@@ -41,7 +40,6 @@
               <el-input
                 @keyup.enter.native="handleLogin"
                 :maxlength="12"
-                @change="validate('password')"
                 :type="pwdType ? 'password' : ''"
                 v-model.trim="userForm.password"
                 placeholder="密码: fe-admin"
@@ -62,7 +60,7 @@
           </el-form>
         </el-tab-pane>
 
-        <el-tab-pane label="手机号登录" name="phone">
+        <el-tab-pane label="手机号登录" name="phoneForm">
           <el-form
             :model="phoneForm"
             :rules="formRule"
@@ -73,7 +71,6 @@
               <el-input
                 @keyup.enter.native="handleLogin"
                 :maxlength="11"
-                @change="validate('phone')"
                 placeholder="请输入手机号！"
                 v-model.trim="phoneForm.phone"
               >
@@ -89,7 +86,7 @@
               >
                 <i slot="prefix" class="el-input__icon fe-admin fe-message"></i>
               </el-input>
-              <el-button @click="getSmsNumber">获取验证码</el-button>
+              <el-button>获取验证码</el-button>
             </el-form-item>
           </el-form>
         </el-tab-pane>
@@ -115,7 +112,7 @@
     <fe-footer />
   </div>
 </template>
-<script>
+<script lang="ts">
 import Login from "../js/login";
 export default Login;
 </script>
