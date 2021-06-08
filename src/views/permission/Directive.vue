@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 import router, { resetRouter } from "@/router";
 import getAsyncRouter from "@/router/async-router";
@@ -45,15 +45,15 @@ import { addRoutes } from "@/utils";
 @Component
 export default class PermissionDirective extends Vue {
   key = 0;
-  roles: [] = ["admin", "user"];
+  roles: [string, string] = ["admin", "user"];
   checkList: [] = this.$store.getters.roles;
 
-  async handleCheckedChange(roles: []): void {
+  async handleCheckedChange(roles: []): Promise<unknown> {
     await this.$store.dispatch("user/SetRoles", roles);
     this.key++;
     resetRouter();
     const res = await this.$store.dispatch("permission/GenerateRoutes", roles);
-    addRoutes(router, getAsyncRouter(res));
+    return addRoutes(router, getAsyncRouter(res));
   }
 }
 </script>

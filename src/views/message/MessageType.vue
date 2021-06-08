@@ -62,42 +62,41 @@
 </template>
 
 <script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
 import { getSubscribeList } from "@/api";
 import { sleep } from "@/utils";
-export default {
-  name: "messageSubscribe",
-  data():void {
-    return {
-      search: "",
-      loading: false,
-      tableHead: [{ name: "msgType", label: "消息类型" }],
-      tableData: [],
-    };
-  },
-  computed: {
-    filterData():void {
-      const { tableData, search } = this;
-      return tableData.filter(
-        (data) =>
-          !search || data.msgType.toLowerCase().includes(search.toLowerCase())
-      );
-    },
-  },
-  mounted():void {
+
+@Component
+export default class messageSubscribe extends Vue {
+  search = "";
+  loading = false;
+  tableHead = [{ name: "msgType", label: "消息类型" }];
+  tableData = [];
+
+  get filterData() {
+    const { tableData, search } = this;
+    return tableData.filter(
+      (data: { msgType: string }) =>
+        !search || data.msgType.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  mounted(): void {
     this.getSubscribeList();
-  },
-  methods: {
-    async getSubscribeList():void {
-      this.loading = true;
-      const [err, res] = await getSubscribeList();
-      if (!err && res) {
-        await sleep(1000);
-        this.tableData = res;
-        this.loading = false;
-      }
-    },
-  },
-};
+  }
+
+  async getSubscribeList(): Promise<unknown> {
+    this.loading = true;
+    const [err, res] = await getSubscribeList();
+    if (!err && res) {
+      await sleep(1000);
+      this.tableData = res;
+      this.loading = false;
+    }
+    return;
+  }
+}
 </script>
 
 <style lang="scss" src="./style/index.scss" scoped></style>

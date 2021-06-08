@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import paper from "paper";
 export default class Paper {
   startPoint = null;
@@ -138,7 +137,7 @@ export default class Paper {
       // this.path.add(point);
     }
   }
-  hitMatchFilter(hitResult): void {
+  hitMatchFilter(hitResult: Pointer): boolean {
     let flag_obj_is_first = false;
     if (hitResult.item) {
       const hititem = hitResult.item;

@@ -16,14 +16,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import paperState from "./paper";
 
-@Component({
-  mounted() {
-    const paperInstance = new paperState();
-    this.paperInstance = paperInstance;
-  },
-})
+@Component
 export default class PaperClass extends Vue {
   radio = 1;
+  mounted(): void {
+    const paperInstance = new paperState();
+    this.paperInstance = paperInstance;
+  }
   change(v: number): void {
     this.paperInstance.setState(v);
   }
