@@ -9,8 +9,7 @@ const router = [
       {
         path: "login",
         name: "login",
-        component: () =>
-          import(/* webpackChunkName: "user" */ "@/views/user/Login"),
+        component: () => import("@/views/user/Login"),
       },
     ],
   },
@@ -18,8 +17,7 @@ const router = [
   {
     path: "/404",
     name: "404s",
-    component: () =>
-      import(/* webpackChunkName: "fail" */ "@/views/exception/404"),
+    component: () => import("@/views/exception/404"),
   },
 ];
 export default router;

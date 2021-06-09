@@ -1,11 +1,11 @@
-interface UserInfo {
+export interface UserInfo {
   uid: string;
   accountName: string;
   roles: [];
   token: string;
 }
 
-interface Loginfo {
+export interface Loginfo {
   [key: string]: any;
   accountName: string;
   password: string;

@@ -37,7 +37,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
 import router, { resetRouter } from "@/router";
 import getAsyncRouter from "@/router/async-router";
 import { addRoutes } from "@/utils";
@@ -57,4 +56,4 @@ export default class PermissionDirective extends Vue {
   }
 }
 </script>
-<style lang="scss" src="./style/index.scss" scoped></style>
+<style lang="scss" src="../style/index.scss" scoped></style>

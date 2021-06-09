@@ -81,97 +81,98 @@
             <a>删除</a>
           </el-table-column>
         </el-table>
-
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="pageSizes"
-          :page-size="pageSize"
-          layout="total, sizes, prev, pager, next, jumper"
+        <FePage
           :total="total"
-        >
-        </el-pagination>
+          :page-size.sync="pageSize"
+          :current-page.sync="currentPage"
+          @pagination="getMessageList"
+        />
       </div>
     </div>
   </with-header>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Ref, Vue } from "vue-property-decorator";
 import { getMessageList } from "@/api";
 import { sleep } from "@/utils";
-import { pageMixin } from "@/mixins";
 import TableAlert from "@/components/TableAlert";
-export default {
-  name: "MessageList",
-  mixins: [pageMixin],
-  components: { TableAlert },
-  data() {
-    return {
-      search: "",
-      loading: false,
-      selectNum: 0,
-      type: 0,
-      unread: 0,
-      readType: 0,
-      columWidth: [500],
-      tableHead: [
-        { name: "content", label: "消息内容" },
-        { name: "type", label: "消息类型" },
-        { name: "subType", label: "消息子类型" },
-        { name: "receiveTime", label: "接收时间" },
-      ],
-      tableData: [],
-    };
-  },
-  computed: {
-    filterData() {
-      const { tableData, search } = this;
-      return tableData.filter(
-        (data) =>
-          !search || data.content.toLowerCase().includes(search.toLowerCase())
-      );
-    },
-  },
-  mounted() {
+import { ElTable } from "element-ui/types/table";
+import { MsgItem, MsgList } from "@/types/message";
+import FePage from "@/components/Pagination";
+
+@Component({
+  components: { TableAlert, FePage },
+})
+export default class MessageList extends Vue {
+  search = "";
+  loading = false;
+  selectNum = 0;
+  type = 0;
+  unread = 0;
+  currentPage = 1;
+  pageSize = 10;
+  total = 0;
+  readType = 0;
+  columWidth = [500];
+  tableHead = [
+    { name: "content", label: "消息内容" },
+    { name: "type", label: "消息类型" },
+    { name: "subType", label: "消息子类型" },
+    { name: "receiveTime", label: "接收时间" },
+  ];
+  tableData = [];
+  @Ref("multipleTable") readonly multipleTableEle!: ElTable;
+  get filterData(): MsgList {
+    const { tableData, search } = this;
+    return tableData.filter(
+      (data: MsgItem) =>
+        !search || data.content.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  mounted(): void {
     this.getMessageList();
-  },
-  methods: {
-    async getMessageList(page, pageSize) {
-      this.loading = true;
-      const { type, currentPage, readType } = this;
-      const [err, res] = await getMessageList({
-        type,
-        page: page || currentPage,
-        pageSize: pageSize || this.pageSize,
-        readType,
+  }
+  async getMessageList(
+    page?: number | undefined | Record<string, unknown>
+  ): Promise<unknown> {
+    this.loading = true;
+    const { type, currentPage, pageSize, readType } = this;
+    const params = {
+      type,
+      readType,
+    };
+    if (typeof page === "object") {
+      Object.assign(params, page);
+    } else {
+      Object.assign(params, {
+        page: currentPage,
+        pageSize,
       });
-      if (!err && res) {
-        await sleep(1000);
-        this.tableData = res.data;
-        this.unread = res.unread;
-        this.total = res.total;
-        this.currentPage = res.currentPage;
-        this.loading = false;
-      }
-    },
-    handleSizeChange(pageSize) {
-      this.getMessageList(null, pageSize);
-    },
-    handleCurrentChange(page) {
-      this.getMessageList(page);
-    },
-    changeReadType(type) {
-      this.getMessageList();
-      this.readType = type;
-    },
-    handleSelectionChange(v) {
-      this.selectNum = v.length;
-    },
-    clearSelection() {
-      this.$refs.multipleTable.clearSelection();
-    },
-  },
-};
+    }
+    const [err, res] = await getMessageList(params);
+    if (!err && res) {
+      await sleep(1000);
+      this.tableData = res.data;
+      this.unread = res.unread;
+      this.total = res.total;
+      this.loading = false;
+    }
+    return;
+  }
+
+  async changeReadType(type: number): Promise<unknown> {
+    this.readType = type;
+    await this.$nextTick();
+    return this.getMessageList();
+  }
+  handleSelectionChange(v: []): void {
+    this.selectNum = v.length;
+  }
+  clearSelection(): void {
+    this.multipleTableEle.clearSelection();
+  }
+}
 </script>
-<style lang="scss" src="./style/index.scss" scoped></style>
+<style lang="scss" src="../style/index.scss" scoped></style>

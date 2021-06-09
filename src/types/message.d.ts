@@ -1,4 +1,4 @@
-interface MsgItem {
+export interface MsgItem {
   id: string;
   type: string;
   subType: string;
@@ -8,6 +8,6 @@ interface MsgItem {
   statusStr: string;
 }
 
-interface MsgList {
+export interface MsgList {
   [index: number]: MsgItem;
 }

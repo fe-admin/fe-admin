@@ -99,7 +99,7 @@ export default class messageSubscribe extends Vue {
 }
 </script>
 
-<style lang="scss" src="./style/index.scss" scoped></style>
+<style lang="scss" src="../style/index.scss" scoped></style>
 <style lang="scss" scoped>
 .table-list-subscribe .table-list-content {
   padding-bottom: 16px;

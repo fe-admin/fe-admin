@@ -36,4 +36,4 @@ export default class PermissionPage extends Vue {
   }
 }
 </script>
-<style lang="scss" src="./style/index.scss" scoped></style>
+<style lang="scss" src="../style/index.scss" scoped></style>

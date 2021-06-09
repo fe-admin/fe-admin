@@ -20,6 +20,6 @@
     },
     "lib": ["es2015", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/main.ts", "src/views/dashboard/js/index.ts_"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/main.ts"],
   "exclude": ["node_modules", "src/**/*.js", "src/views/editor/**/*"]
 }
