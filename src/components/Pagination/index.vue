@@ -13,22 +13,38 @@
 <script>
 export default {
   name: "FePagination",
-  props: ["pageSize", "currentPage", "total"],
+  props: ["limit", "page", "total"],
   data() {
     return {
       pageSizes: [10, 20, 50, 100],
     };
   },
+  computed: {
+    pageSize: {
+      get() {
+        return this.limit;
+      },
+      set(val) {
+        this.$emit("update:limit", val);
+      },
+    },
+    currentPage: {
+      get() {
+        return this.page;
+      },
+      set(val) {
+        this.$emit("update:page", val);
+      },
+    },
+  },
   methods: {
     handleSizeChange(pageSize) {
       const { currentPage } = this;
-      this.$emit("update:pageSize", pageSize);
-      this.$emit("pagination", { pageSize, currentPage });
+      this.$emit("pageChange", { pageSize, currentPage });
     },
     handleCurrentChange(currentPage) {
       const { pageSize } = this;
-      this.$emit("update:currentPage", currentPage);
-      this.$emit("pagination", { pageSize, currentPage });
+      this.$emit("pageChange", { pageSize, currentPage });
     },
   },
 };

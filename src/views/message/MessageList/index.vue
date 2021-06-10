@@ -82,10 +82,10 @@
           </el-table-column>
         </el-table>
         <FePage
-          :total="total"
-          :page-size.sync="pageSize"
-          :current-page.sync="currentPage"
-          @pagination="getMessageList"
+          :total="pagination.total"
+          :limit.sync="pagination.pageSize"
+          :page.sync="pagination.currentPage"
+          @pageChange="getMessageList"
         />
       </div>
     </div>
@@ -93,26 +93,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Ref, Vue } from "vue-property-decorator";
+import { Component, Ref, Mixins, Vue } from "vue-property-decorator";
 import { getMessageList } from "@/api";
 import { sleep } from "@/utils";
+import { PageMixin } from "@/mixins";
 import TableAlert from "@/components/TableAlert";
 import { ElTable } from "element-ui/types/table";
 import { MsgItem, MsgList } from "@/types/message";
 import FePage from "@/components/Pagination";
 
 @Component({
+  name: "MessageList",
   components: { TableAlert, FePage },
 })
-export default class MessageList extends Vue {
+export default class MessageList extends Mixins(PageMixin) {
   search = "";
   loading = false;
   selectNum = 0;
   type = 0;
   unread = 0;
-  currentPage = 1;
-  pageSize = 10;
-  total = 0;
   readType = 0;
   columWidth = [500];
   tableHead = [
@@ -133,12 +132,17 @@ export default class MessageList extends Vue {
 
   mounted(): void {
     this.getMessageList();
+    console.info(this);
   }
   async getMessageList(
     page?: number | undefined | Record<string, unknown>
   ): Promise<unknown> {
     this.loading = true;
-    const { type, currentPage, pageSize, readType } = this;
+    const {
+      type,
+      pagination: { currentPage, pageSize },
+      readType,
+    } = this;
     const params = {
       type,
       readType,
@@ -156,7 +160,7 @@ export default class MessageList extends Vue {
       await sleep(1000);
       this.tableData = res.data;
       this.unread = res.unread;
-      this.total = res.total;
+      this.pagination.total = res.total;
       this.loading = false;
     }
     return;
@@ -167,6 +171,7 @@ export default class MessageList extends Vue {
     await this.$nextTick();
     return this.getMessageList();
   }
+
   handleSelectionChange(v: []): void {
     this.selectNum = v.length;
   }
