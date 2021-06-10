@@ -63,17 +63,14 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
 import { getSubscribeList } from "@/api";
 import { sleep } from "@/utils";
-
 @Component
 export default class messageSubscribe extends Vue {
   search = "";
   loading = false;
   tableHead = [{ name: "msgType", label: "消息类型" }];
   tableData = [];
-
   get filterData() {
     const { tableData, search } = this;
     return tableData.filter(

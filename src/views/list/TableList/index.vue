@@ -76,9 +76,7 @@
           :data="tableData"
           tooltip-effect="dark"
           style="width: 100%"
-          @selection-change="handleSelectionChange"
         >
-          <el-table-column type="selection" width="55"> </el-table-column>
           <template v-for="(item, index) in tableHead">
             <el-table-column
               sortable
@@ -107,86 +105,78 @@
             <a>订阅报警</a>
           </el-table-column>
         </el-table>
-
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="pageSizes"
-          :page-size="pageSize"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="total"
-        >
-        </el-pagination>
+        <FePage
+          :total="pagination.total"
+          :limit.sync="pagination.pageSize"
+          :page.sync="pagination.currentPage"
+          @pageChange="getTableList"
+        />
       </div>
     </div>
   </with-header>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Ref, Mixins } from "vue-property-decorator";
 import CollapseButton from "@/components/CollapseButton";
 import { getTableList } from "@/api";
 import { sleep } from "@/utils";
-import { pageMixin } from "@/mixins";
-export default {
-  name: "TableList",
-  components: { CollapseButton },
-  mixins: [pageMixin],
-  data() {
-    return {
-      loading: false,
-      collapsed: false,
-      searchForm: {
-        name: "",
-        desc: "",
-        callNo: "",
-        status: "",
-        updatedAt: "",
-      },
-      tableHead: [
-        { name: "name", label: "规则名称" },
-        { name: "desc", label: "描述" },
-        { name: "callNo", label: "服务调用次数" },
-        { name: "statusStr", label: "状态" },
-        { name: "updatedAt", label: "上次调用时间" },
-      ],
-      tableData: [],
-    };
-  },
-  mounted() {
-    this.getTableList();
-  },
-  methods: {
-    handleSelectionChange() {},
-    resetForm(formName) {
-      console.log(this.$refs[formName]);
-      this.$refs[formName].resetFields();
-    },
-    async getTableList(page, pageSize) {
-      this.loading = true;
-      const [err, res] = await getTableList({
-        page: page || this.currentPage,
-        pageSize: pageSize || this.pageSize,
-      });
-      if (!err && res) {
-        await sleep(1000);
-        this.tableData = res.data;
-        this.total = res.total;
-        this.currentPage = res.currentPage;
-        this.loading = false;
-      }
-    },
-    handleSizeChange(pageSize) {
-      this.getTableList(null, pageSize);
-    },
-    handleCurrentChange(page) {
-      this.getTableList(page);
-    },
+import { PageMixin } from "@/mixins";
+import { paginationType, getPageParamsType } from "@/types/element";
+import FePage from "@/components/Pagination";
+import { ElForm } from "element-ui/types/form";
 
-    onCollapse() {
-      this.collapsed = !this.collapsed;
-    },
-  },
-};
+@Component({
+  components: { CollapseButton, FePage },
+})
+export default class TableList extends Mixins(PageMixin) {
+  pagination!: paginationType;
+  getPageParams!: getPageParamsType;
+  @Ref("searchForm") readonly searchFormEle!: ElForm;
+  loading = false;
+  collapsed = false;
+  searchForm = {
+    name: "",
+    desc: "",
+    callNo: "",
+    status: "",
+    updatedAt: "",
+  };
+  tableHead = [
+    { name: "name", label: "规则名称" },
+    { name: "desc", label: "描述" },
+    { name: "callNo", label: "服务调用次数" },
+    { name: "statusStr", label: "状态" },
+    { name: "updatedAt", label: "上次调用时间" },
+  ];
+  tableData = [];
+
+  mounted(): void {
+    this.getTableList();
+  }
+
+  resetForm(): void {
+    this.searchFormEle.resetFields();
+  }
+  async getTableList(
+    page?: undefined | Record<string, unknown>
+  ): Promise<unknown> {
+    this.loading = true;
+    const defaultParams = {};
+    const params = this.getPageParams(defaultParams, page);
+    const [err, res] = await getTableList(params);
+    if (!err && res) {
+      await sleep(1000);
+      this.tableData = res.data;
+      this.pagination.total = res.total;
+      this.loading = false;
+    }
+    return;
+  }
+
+  onCollapse(): void {
+    this.collapsed = !this.collapsed;
+  }
+}
 </script>
 <style lang="scss" src="./style.scss" scoped></style>

@@ -12,13 +12,12 @@
   </fe-result>
 </template>
 
-<script>
-export default {
-  name: "Exception500",
-  methods: {
-    toHome() {
-      this.$router.push({ path: "/" });
-    },
-  },
-};
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+@Component
+export default class Exception500 extends Vue {
+  toHome(): void {
+    this.$router.push({ path: "/" });
+  }
+}
 </script>

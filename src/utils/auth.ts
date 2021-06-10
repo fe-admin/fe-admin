@@ -7,6 +7,7 @@ export function getToken(): string {
 }
 
 export function setToken(token: string): string {
+  Cookies.set("SameSite", "Strict");
   return Cookies.set(TokenKey, token);
 }
 

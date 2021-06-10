@@ -12,13 +12,12 @@
   </fe-result>
 </template>
 
-<script>
-export default {
-  name: "Exception403",
-  methods: {
-    toHome() {
-      this.$router.push({ path: "/" });
-    },
-  },
-};
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+@Component
+export default class Exception403 extends Vue {
+  toHome(): void {
+    this.$router.push({ path: "/" });
+  }
+}
 </script>

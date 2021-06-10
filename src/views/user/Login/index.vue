@@ -1,17 +1,16 @@
 <template src="./tpl.html"></template>
 <script lang="ts">
-import { Component, Mixins, Ref } from "vue-property-decorator";
+import { Component, Vue, Ref } from "vue-property-decorator";
 import { Action } from "vuex-class";
 import { login } from "@/api";
 import { debounce, sleep } from "@/utils";
 import { setToken } from "@/utils/auth";
-import { pageMixin } from "@/mixins";
 import { ElForm } from "element-ui/types/form";
 import { UserInfo } from "@/types/user";
 import { tabComponent } from "@/types/element";
 
 @Component
-export default class Login extends Mixins(pageMixin) {
+export default class Login extends Vue {
   pwdAlert = false;
   alertMsg = "";
   activeName = "userForm";

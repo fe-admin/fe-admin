@@ -2,6 +2,7 @@ import Vue from "vue";
 import EventProxy from "vue-event-proxy";
 import ElementUI, { Message, Loading } from "element-ui";
 import directive from "@/directive";
+import "default-passive-events";
 import FeAdmin from "fe-admin-component";
 import "@/utils/log";
 import "./permission";

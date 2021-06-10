@@ -2,7 +2,8 @@
   <with-header>
     <template #content>
       <template v-if="readType === 0"
-        >共{{ total }}封，其中{{ unread }}封未读，<a @click="changeReadType(1)"
+        >共{{ pagination.total }}封，其中{{ unread }}封未读，<a
+          @click="changeReadType(1)"
           >仅查看未读消息</a
         ></template
       >
@@ -93,20 +94,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Ref, Mixins, Vue } from "vue-property-decorator";
+import { Component, Ref, Mixins } from "vue-property-decorator";
 import { getMessageList } from "@/api";
 import { sleep } from "@/utils";
 import { PageMixin } from "@/mixins";
 import TableAlert from "@/components/TableAlert";
 import { ElTable } from "element-ui/types/table";
 import { MsgItem, MsgList } from "@/types/message";
+import { paginationType, getPageParamsType } from "@/types/element";
 import FePage from "@/components/Pagination";
 
 @Component({
-  name: "MessageList",
   components: { TableAlert, FePage },
 })
 export default class MessageList extends Mixins(PageMixin) {
+  pagination!: paginationType;
+  getPageParams!: getPageParamsType;
   search = "";
   loading = false;
   selectNum = 0;
@@ -132,35 +135,23 @@ export default class MessageList extends Mixins(PageMixin) {
 
   mounted(): void {
     this.getMessageList();
-    console.info(this);
   }
   async getMessageList(
-    page?: number | undefined | Record<string, unknown>
+    page?: undefined | Record<string, unknown>
   ): Promise<unknown> {
     this.loading = true;
-    const {
-      type,
-      pagination: { currentPage, pageSize },
-      readType,
-    } = this;
-    const params = {
+    const { type, readType } = this;
+    const defaultParams = {
       type,
       readType,
     };
-    if (typeof page === "object") {
-      Object.assign(params, page);
-    } else {
-      Object.assign(params, {
-        page: currentPage,
-        pageSize,
-      });
-    }
+    const params = this.getPageParams(defaultParams, page);
     const [err, res] = await getMessageList(params);
     if (!err && res) {
       await sleep(1000);
       this.tableData = res.data;
       this.unread = res.unread;
-      this.pagination.total = res.total;
+      if (this.pagination) this.pagination.total = res.total;
       this.loading = false;
     }
     return;

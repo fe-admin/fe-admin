@@ -12,6 +12,7 @@
     "@antv/g2plot": "^2.3.21",
     "axios-encapsulation": "^1.0.3",
     "core-js": "^3.6.5",
+    "default-passive-events": "^2.0.0",
     "element-ui": "^2.15.2",
     "fe-admin-component": "^0.0.13",
     "js-cookie": "^2.2.1",
