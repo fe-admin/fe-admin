@@ -3,6 +3,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import { getSubscribeList } from "@/api";
 import { sleep } from "@/utils";
+import {
+  SubscribeNumMap,
+  SubscribeItem,
+  SubscribeChildrenItem,
+} from "@/types/message";
 
 @Component
 export default class MessageSubscribe extends Vue {
@@ -25,10 +30,10 @@ export default class MessageSubscribe extends Vue {
   tableData = [];
   columWidth = [400];
 
-  get filterData() {
+  get filterData(): SubscribeItem[] {
     const { tableData, search } = this;
     return tableData.filter(
-      (data) =>
+      (data: SubscribeItem) =>
         !search || data.msgType.toLowerCase().includes(search.toLowerCase())
     );
   }
@@ -48,16 +53,16 @@ export default class MessageSubscribe extends Vue {
     }
     return;
   }
-  reset(type) {
-    const numMap = {
+  reset(type: string | string[]): void {
+    const numMap: SubscribeNumMap = {
       total: 0,
       web: 0,
       email: 0,
       mobile: 0,
     };
-    this.tableData.forEach((item) => {
+    this.tableData.forEach((item: SubscribeItem) => {
       if (item.children) {
-        item.children.forEach((row) => {
+        item.children.forEach((row: SubscribeChildrenItem) => {
           numMap.total += 1; // 总条数
           if (row.web) numMap.web += 1;
           if (row.email) numMap.email += 1;
@@ -67,13 +72,13 @@ export default class MessageSubscribe extends Vue {
     });
     if (numMap.total) {
       if (Array.isArray(type)) {
-        type.forEach((item) => this.setCheck(numMap, item));
+        type.forEach((row) => this.setCheck(numMap, row));
       } else {
         this.setCheck(numMap, type);
       }
     }
   }
-  setCheck(numMap, type) {
+  setCheck(numMap: SubscribeNumMap, type: string): void {
     if (numMap.total === numMap[type]) {
       this.isIndeterminate[type] = false;
       this.checkAll[type] = true;
@@ -81,15 +86,17 @@ export default class MessageSubscribe extends Vue {
       this.isIndeterminate[type] = true;
     }
   }
-  handleCheckAllChange(type, val) {
+  handleCheckAllChange(type: string, val: boolean): void {
     this.isIndeterminate[type] = false;
-    this.tableData.forEach((item) => {
+    this.tableData.forEach((item: SubscribeItem) => {
       if (item.children) {
-        item.children.forEach((row) => (row[type] = val));
+        item.children.forEach(
+          (row: SubscribeChildrenItem) => (row[type] = val)
+        );
       }
     });
   }
-  handleCheckChange(type, val) {
+  handleCheckChange(type: string): void {
     this.reset(type);
   }
 }

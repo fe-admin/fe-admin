@@ -39,10 +39,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import { ResultInfo } from "@/types/result";
 @Component
 export default class Error extends Vue {
-  get result() {
+  get result(): ResultInfo {
     return {
       title: "result.fail.error.title",
       description: "result.fail.error.description",

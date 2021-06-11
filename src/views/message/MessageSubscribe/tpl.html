@@ -59,7 +59,7 @@
               >
                 <el-checkbox
                   @change="
-                    (val) => handleCheckChange(scope.column.property, val)
+                    (val) => handleCheckChange(scope.column.property)
                   "
                   v-model="scope.row[scope.column.property]"
                 ></el-checkbox>

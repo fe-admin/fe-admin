@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import { ResultInfo } from "@/types/result";
 @Component
 export default class Success extends Vue {
   directionType = {
@@ -26,7 +26,7 @@ export default class Success extends Vue {
     vertical: "vertical",
   };
 
-  get result() {
+  get result(): ResultInfo {
     return {
       title: "result.success.title",
       description: "result.success.description",
