@@ -23,17 +23,18 @@ import { mapGetters } from "vuex";
 import { removeToken } from "@/utils/auth";
 
 export default {
-  name: "HeaderRightContent",
-  computed: {
-    ...mapGetters(["accountName"]),
-  },
-  methods: {
-    async logout() {
-      await loginOut();
-      removeToken();
-      this.$router.push("/user/login");
+    name: "HeaderRightContent",
+    computed: {
+        ...mapGetters(["accountName"]),
     },
-  },
+
+    methods: {
+        async logout() {
+            await loginOut();
+            removeToken();
+            this.$router.push("/user/login");
+        },
+    },
 };
 </script>
 <style lang="scss">

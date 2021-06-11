@@ -10,19 +10,13 @@
     </div>
   </div>
 </template>
-<script>
-import { debounce } from "@/utils";
-
-export default {
-  name: "TableAlert",
-  props: ["selectNum", "clearSelection"],
-  data() {
-    return {};
-  },
-
-  mounted() {},
-  methods: {},
-};
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+@Component
+export default class TableAlert extends Vue {
+  @Prop(Number) readonly selectNum!: number;
+  @Prop(Function) readonly clearSelection!: () => void;
+}
 </script>
 <style lang="scss" scoped>
 .table-alert {

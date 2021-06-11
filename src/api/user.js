@@ -2,8 +2,8 @@ import { ErrorBoundary, get, post } from "@/utils/axios";
 import { baseURL } from "@/config";
 
 const API = {
-  login: "/user/login",
-  loginOut: "/user/logout",
+    login: "/user/login",
+    loginOut: "/user/logout",
 };
 
 /**
@@ -11,7 +11,7 @@ const API = {
  * @param {} params
  */
 export function login(params, handler) {
-  return ErrorBoundary(post(`${baseURL}${API.login}`, params), handler);
+    return ErrorBoundary(post(`${baseURL}${API.login}`, params), handler);
 }
 
 /**
@@ -19,5 +19,5 @@ export function login(params, handler) {
  * @param {} params
  */
 export function loginOut() {
-  return Promise.resolve();
+    return Promise.resolve();
 }

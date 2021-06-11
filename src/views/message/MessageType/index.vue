@@ -73,26 +73,26 @@ export default class messageSubscribe extends Vue {
   tableHead = [{ name: "msgType", label: "消息类型" }];
   tableData = [];
   get filterData(): SubscribeItem[] {
-    const { tableData, search } = this;
-    return tableData.filter(
-      (data: { msgType: string }) =>
-        !search || data.msgType.toLowerCase().includes(search.toLowerCase())
-    );
+      const { tableData, search } = this;
+      return tableData.filter(
+          (data: { msgType: string }) =>
+              !search || data.msgType.toLowerCase().includes(search.toLowerCase())
+      );
   }
 
   mounted(): void {
-    this.getSubscribeList();
+      this.getSubscribeList();
   }
 
   async getSubscribeList(): Promise<unknown> {
-    this.loading = true;
-    const [err, res] = await getSubscribeList();
-    if (!err && res) {
-      await sleep(1000);
-      this.tableData = res;
-      this.loading = false;
-    }
-    return;
+      this.loading = true;
+      const [err, res] = await getSubscribeList();
+      if (!err && res) {
+          await sleep(1000);
+          this.tableData = res;
+          this.loading = false;
+      }
+      return;
   }
 }
 </script>

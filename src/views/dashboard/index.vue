@@ -3,12 +3,12 @@
 import { Component, Vue } from "vue-property-decorator";
 import { getCardList, getTabLine, getSaleList } from "@/api/dashboard";
 import {
-  renderBullet,
-  renderArea,
-  renderColumn,
-  renderSaleChart,
-  renderLine,
-  renderTabPie,
+    renderBullet,
+    renderArea,
+    renderColumn,
+    renderSaleChart,
+    renderLine,
+    renderTabPie,
 } from "./js/chart";
 import { tabComponent } from "@/types/element";
 import { tabLineItem } from "@/types/dashboard";
@@ -24,35 +24,35 @@ export default class Dashboard extends Vue {
   tabLineMap = new Map();
 
   async mounted(): Promise<unknown> {
-    const [, cardList] = await getCardList();
-    this.cardList = cardList;
-    const [, res] = await getSaleList();
-    this.saleListData = res;
-    const [, data] = await getTabLine();
-    this.tabLineData = data;
-    await this.$nextTick();
-    renderBullet("bulletPlot", parseInt(cardList[3].value));
-    renderArea("areaChart");
-    renderColumn("columChart");
-    renderSaleChart("sale-chart");
-    this.tabLineData.forEach((item: tabLineItem, i) => {
-      renderTabPie(`linePie${i}`, item.value);
-    });
-    renderLine(`lineChart0`);
-    this.tabLineMap.set("line0", true);
-    return;
+      const [, cardList] = await getCardList();
+      this.cardList = cardList;
+      const [, res] = await getSaleList();
+      this.saleListData = res;
+      const [, data] = await getTabLine();
+      this.tabLineData = data;
+      await this.$nextTick();
+      renderBullet("bulletPlot", parseInt(cardList[3].value));
+      renderArea("areaChart");
+      renderColumn("columChart");
+      renderSaleChart("sale-chart");
+      this.tabLineData.forEach((item: tabLineItem, i) => {
+          renderTabPie(`linePie${i}`, item.value);
+      });
+      renderLine(`lineChart0`);
+      this.tabLineMap.set("line0", true);
+      return;
   }
 
   tabClick({ name }: tabComponent): string {
-    return name;
+      return name;
   }
 
   lineTabClick({ name }: tabComponent): void {
-    const { tabLineMap } = this;
-    if (!tabLineMap.get(name)) {
-      tabLineMap.set(name, true);
-      renderLine(`lineChart${name.replace("line", "")}`);
-    }
+      const { tabLineMap } = this;
+      if (!tabLineMap.get(name)) {
+          tabLineMap.set(name, true);
+          renderLine(`lineChart${name.replace("line", "")}`);
+      }
   }
 }
 </script>

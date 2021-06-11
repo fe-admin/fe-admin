@@ -29,10 +29,10 @@ export default class PermissionPage extends Vue {
   checkList: [] = this.$store.getters.roles;
 
   async handleCheckedChange(roles: []): Promise<unknown> {
-    await this.$store.dispatch("user/SetRoles", roles);
-    resetRouter();
-    const res = await this.$store.dispatch("permission/GenerateRoutes", roles);
-    return addRoutes(router, getAsyncRouter(res));
+      await this.$store.dispatch("user/SetRoles", roles);
+      resetRouter();
+      const res = await this.$store.dispatch("permission/GenerateRoutes", roles);
+      return addRoutes(router, getAsyncRouter(res));
   }
 }
 </script>

@@ -10,7 +10,7 @@ import FePage from "@/components/Pagination";
 import { ElForm } from "element-ui/types/form";
 
 @Component({
-  components: { CollapseButton, FePage },
+    components: { CollapseButton, FePage },
 })
 export default class TableList extends Mixins(PageMixin) {
   pagination!: paginationType;
@@ -19,46 +19,46 @@ export default class TableList extends Mixins(PageMixin) {
   loading = false;
   collapsed = false;
   searchForm = {
-    name: "",
-    desc: "",
-    callNo: "",
-    status: "",
-    updatedAt: "",
+      name: "",
+      desc: "",
+      callNo: "",
+      status: "",
+      updatedAt: "",
   };
   tableHead = [
-    { name: "name", label: "规则名称" },
-    { name: "desc", label: "描述" },
-    { name: "callNo", label: "服务调用次数" },
-    { name: "statusStr", label: "状态" },
-    { name: "updatedAt", label: "上次调用时间" },
+      { name: "name", label: "规则名称" },
+      { name: "desc", label: "描述" },
+      { name: "callNo", label: "服务调用次数" },
+      { name: "statusStr", label: "状态" },
+      { name: "updatedAt", label: "上次调用时间" },
   ];
   tableData = [];
 
   mounted(): void {
-    this.getTableList();
+      this.getTableList();
   }
 
   resetForm(): void {
-    this.searchFormEle.resetFields();
+      this.searchFormEle.resetFields();
   }
   async getTableList(
-    page?: undefined | Record<string, unknown>
+      page?: undefined | Record<string, unknown>
   ): Promise<unknown> {
-    this.loading = true;
-    const defaultParams = {};
-    const params = this.getPageParams(defaultParams, page);
-    const [err, res] = await getTableList(params);
-    if (!err && res) {
-      await sleep(1000);
-      this.tableData = res.data;
-      this.pagination.total = res.total;
-      this.loading = false;
-    }
-    return;
+      this.loading = true;
+      const defaultParams = {};
+      const params = this.getPageParams(defaultParams, page);
+      const [err, res] = await getTableList(params);
+      if (!err && res) {
+          await sleep(1000);
+          this.tableData = res.data;
+          this.pagination.total = res.total;
+          this.loading = false;
+      }
+      return;
   }
 
   onCollapse(): void {
-    this.collapsed = !this.collapsed;
+      this.collapsed = !this.collapsed;
   }
 }
 </script>

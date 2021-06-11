@@ -8,26 +8,26 @@
 import { debounce } from "@/utils";
 
 export default {
-  name: "CollapseButton",
-  props: ["collapsed", "onCollapse"],
-  data() {
-    return {};
-  },
-  computed: {
-    collapseCls() {
-      return this.collapsed
-        ? "collapse-button collapse-button-ed"
-        : "collapse-button";
+    name: "CollapseButton",
+    props: ["collapsed", "onCollapse"],
+    data() {
+        return {};
     },
-  },
-  mounted() {
-    this.onChange = debounce(this.onChange, 150, { leading: true });
-  },
-  methods: {
-    onChange() {
-      this.onCollapse();
+    computed: {
+        collapseCls() {
+            return this.collapsed
+                ? "collapse-button collapse-button-ed"
+                : "collapse-button";
+        },
     },
-  },
+    mounted() {
+        this.onChange = debounce(this.onChange, 150, { leading: true });
+    },
+    methods: {
+        onChange() {
+            this.onCollapse();
+        },
+    },
 };
 </script>
 <style lang="scss" scoped>

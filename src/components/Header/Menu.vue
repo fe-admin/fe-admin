@@ -7,12 +7,12 @@
 import { loginOut } from "@/api";
 
 export default {
-  name: "HeaderMenu",
-  methods: {
-    go() {
-      this.$router.replace("/dashboard");
+    name: "HeaderMenu",
+    methods: {
+        go() {
+            this.$router.replace("/dashboard");
+        },
     },
-  },
 };
 </script>
 <style lang="scss">

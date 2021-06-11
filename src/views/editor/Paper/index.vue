@@ -20,11 +20,11 @@ import paperState from "./paper";
 export default class PaperClass extends Vue {
   radio = 1;
   mounted(): void {
-    const paperInstance = new paperState();
-    this.paperInstance = paperInstance;
+      const paperInstance = new paperState();
+      this.paperInstance = paperInstance;
   }
   change(v: number): void {
-    this.paperInstance.setState(v);
+      this.paperInstance.setState(v);
   }
 }
 </script>

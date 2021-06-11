@@ -9,15 +9,15 @@ import permission from "./modules/permission";
 
 Vue.use(Vuex);
 const state = {
-  menuId: "0",
-  isCollapse: false,
+    menuId: "0",
+    isCollapse: false,
 };
 
 export default new Vuex.Store({
-  state,
-  getters,
-  mutations,
-  actions,
-  modules: { user, permission },
-  plugins: [createPersistedState()],
+    state,
+    getters,
+    mutations,
+    actions,
+    modules: { user, permission },
+    plugins: [createPersistedState()],
 });

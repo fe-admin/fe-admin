@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ESLint Results (lite)</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+  
+    .eslint-report {
+      font-family: "Helvetica Neue", sans-serif;
+      font-size: 14px;
+      padding: 20px 40px;
+    }
+  
+    .eslint-report h1 {
+      border-bottom: 1px solid #ddd;
+      line-height: 1;
+      padding-bottom: 12px;
+    }
+  
+    .eslint-report h2 {
+      padding-bottom: 9px;
+      line-height: 1;
+      margin-top: 24px;
+      margin-bottom: 9px;
+    }
+  
+    .eslint-report h3 {
+      line-height: 1;
+      margin-top: 0;
+    }
+  
+    .eslint-report a {
+      text-decoration: none;
+    }
+  
+    .eslint-report table {
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+  
+    .toggle-all-link {
+      font-size: 14px;
+    }
+  
+    .report-table {
+      font-size: 14px;
+      min-width: 800px;
+      border: 1px solid #e6e6e6;
+      margin: 10px;
+    }
+  
+    .report-table thead {
+      background-color: #eee;
+    }
+  
+    .report-table th {
+      text-align: left;
+      vertical-align: middle;
+    }
+  
+    .report-table th,
+    .report-table td {
+      padding: 4px 9px;
+      border: 1px solid #ccc;
+    }
+  
+    .report-table td {
+      line-height: 1.5;
+      vertical-align: top;
+    }
+  
+    .report-table .error-col {
+      width: 41px;
+    }
+  
+    .report-table .warning-col {
+      width: 63px;
+    }
+  
+    .report-table .toggle-link {
+      display: block;
+    }
+  
+    .report-table .danger td {
+      background-color: rgba(242, 222, 222, 0.8);
+    }
+  
+    .report-table .danger:hover td {
+      background-color: rgba(242, 222, 222, 1);
+    }
+  
+    .report-table .warning td {
+      background-color: rgba(252, 248, 227, 0.8);
+    }
+  
+    .report-table .warning:hover td {
+      background-color: rgba(252, 248, 227, 1);
+    }
+  
+    .report-table .success td {
+      background-color: rgba(223, 240, 216, 0.8);
+    }
+  
+    .report-table .success:hover td {
+      background-color: rgba(223, 240, 216, 1);
+    }
+  
+    .table-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      width: 600px;
+      align-items: flex-end;
+    }
+  
+    .table-wrapper.occurrences {
+      align-items: flex-start;
+    }
+  
+    .table-wrapper.occurrences .table-column {
+      height: 180px;
+      overflow-y: auto;
+    }
+  
+    .table-column {
+      flex: 1;
+      margin: 10px;
+    }
+  
+    .summary-table {
+      width: 100%;
+    }
+  
+    .summary-table a {
+      display: block;
+    }
+  
+    .summary-table td {
+      padding: 4px 0;
+    }
+  
+    .summary-table td:last-child {
+      text-align: right;
+    }
+  
+    .summary-table tfoot td {
+      border-top: 2px solid #666;
+      font-weight: bold;
+    }
+  
+    .details-row.hidden {
+      display: none;
+    }
+  
+    .details-table {
+      font-size: 12px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .details-table td {
+      border: 0;
+      padding: 1px 6px;
+    }
+  
+    .details-table td:first-child {
+      padding-left: 0;
+    }
+  
+    .details-table .location-col {
+      width: 25px;
+    }
+  
+    .details-table .rule-col {
+      white-space: nowrap;
+      width: 100px;
+    }
+  
+    .details-table .rule-col a {
+      display: block;
+    }
+  
+    .details-table .rule-col a:hover {
+      text-decoration: underline;
+    }
+  
+    .details-table .severity-col {
+      width: 45px;
+    }
+  
+    .details-table .msg-danger .severity-col {
+      color: #900;
+    }
+  
+    .details-table .msg-warning .severity-col {
+      color: #f90;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="eslint-report">
+    <h1>ESLint Results (lite)</h1>
+
+      <h2>Summary</h2>
+      
+      <div class="table-wrapper">
+        <div class="table-column">
+          <table class="summary-table">
+              <tbody>
+                <tr>
+                  <td>Errors</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>Warnings</td>
+                  <td>171</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Total alerts</td>
+                  <td>176</td>
+                </tr>
+              </tfoot>
+          </table>
+        </div>
+        <div class="table-column">
+          <table class="summary-table">
+              <tbody>
+                <tr>
+                  <td>Files with errors</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>Files with only warnings</td>
+                  <td>26</td>
+                </tr>
+                <tr>
+                  <td>Clean files</td>
+                  <td>54</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Total files linted</td>
+                  <td>83</td>
+                </tr>
+              </tfoot>
+          </table>
+        </div>
+      </div>
+
+        <h2>Most-Common Errors and Warnings</h2>
+        
+        <div class="table-wrapper occurrences">
+          <div class="table-column">
+            <h3>Errors</h3>
+        
+              <table class="summary-table">
+                <tbody>
+                    <tr class="occurrence row-0">
+                        <td><a href="http://eslint.org/docs/rules/vue/custom-event-name-casing">vue/custom-event-name-casing</a></td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="occurrence row-1">
+                        <td><a href="http://eslint.org/docs/rules/no-undef">no-undef</a></td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="occurrence row-2">
+                        <td><a href="http://eslint.org/docs/rules/@typescript-eslint/no-empty-function">@typescript-eslint/no-empty-function</a></td>
+                      <td>1</td>
+                    </tr>
+                </tbody>
+              </table>
+          </div>
+          <div class="table-column">
+            <h3>Warnings</h3>
+        
+              <table class="summary-table">
+                <tbody>
+                    <tr class="occurrence row-0">
+                        <td><a href="http://eslint.org/docs/rules/@typescript-eslint/explicit-module-boundary-types">@typescript-eslint/explicit-module-boundary-types</a></td>
+                      <td>162</td>
+                    </tr>
+                    <tr class="occurrence row-1">
+                        <td><a href="http://eslint.org/docs/rules/@typescript-eslint/no-unused-vars">@typescript-eslint/no-unused-vars</a></td>
+                      <td>9</td>
+                    </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+
+      <h2>File Breakdown
+      </h2>
+      
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>File</th>
+            <th class="error-col">Errors</th>
+            <th class="warning-col">Warnings</th>
+          </tr>
+        </thead>
+        <tbody><tr class="danger"><td>/Users/wolong/Documents/workspace/fe-admin/src/components/Pagination/index.vue</td>
+              <td>2</td>
+              <td>11</td></tr><tr class="danger"><td>/Users/wolong/Documents/workspace/fe-admin/src/config/index.js</td>
+              <td>2</td>
+              <td>0</td></tr><tr class="danger"><td>/Users/wolong/Documents/workspace/fe-admin/src/components/TableAlert/index.vue</td>
+              <td>1</td>
+              <td>3</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/dashboard/js/chart.js</td>
+              <td>0</td>
+              <td>14</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/router/map-router.js</td>
+              <td>0</td>
+              <td>13</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/store/modules/permission.js</td>
+              <td>0</td>
+              <td>13</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/store/modules/user.js</td>
+              <td>0</td>
+              <td>12</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/store/actions.js</td>
+              <td>0</td>
+              <td>11</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/store/mutations.js</td>
+              <td>0</td>
+              <td>11</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/store/getters.js</td>
+              <td>0</td>
+              <td>10</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/utils/index.js</td>
+              <td>0</td>
+              <td>10</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/api/dashboard.js</td>
+              <td>0</td>
+              <td>7</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/api/role.js</td>
+              <td>0</td>
+              <td>6</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/directive/index.js</td>
+              <td>0</td>
+              <td>6</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/api/message.js</td>
+              <td>0</td>
+              <td>5</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/api/user.js</td>
+              <td>0</td>
+              <td>5</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/lib/index.js</td>
+              <td>0</td>
+              <td>5</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/components/CollapseButton/index.vue</td>
+              <td>0</td>
+              <td>4</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/lib/validator.js</td>
+              <td>0</td>
+              <td>4</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/api/list.js</td>
+              <td>0</td>
+              <td>3</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/layout/BasicLayout.vue</td>
+              <td>0</td>
+              <td>3</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/index.js</td>
+              <td>0</td>
+              <td>3</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/router/index.js</td>
+              <td>0</td>
+              <td>3</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/components/Header/Menu.vue</td>
+              <td>0</td>
+              <td>2</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/router/async-router.js</td>
+              <td>0</td>
+              <td>2</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/router/constant-router.js</td>
+              <td>0</td>
+              <td>2</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/components/Header/RightContent.vue</td>
+              <td>0</td>
+              <td>1</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/main.ts</td>
+              <td>0</td>
+              <td>1</td></tr><tr class="warning"><td>/Users/wolong/Documents/workspace/fe-admin/src/utils/axios.ts</td>
+              <td>0</td>
+              <td>1</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/App.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/api/index.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/assets/iconfont/iconfont.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/layout/RouteView.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/layout/UserLayout.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/layout/index.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/lib/index.d.ts</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/account.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/account/settings.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/dashboard.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/dashboard/analysis.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/form.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/form/basicForm.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/global.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/menu.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/result.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/result/fail.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/result/success.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/setting.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/en-US/user.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/account.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/account/settings.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/dashboard.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/dashboard/analysis.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/form.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/form/basicForm.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/global.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/menu.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/result.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/result/fail.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/result/success.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/setting.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/locales/lang/zh-CN/user.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/mixins/index.ts</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/permission.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/store/index.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/utils/auth.ts</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/utils/log.js</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/dashboard/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/editor/Paper/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/exception/403.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/exception/404.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/exception/500.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/list/TableList/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/message/MessageList/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/message/MessageSubscribe/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/message/MessageType/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/permission/Directive/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/permission/Page/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/result/Error/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/result/Success/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr><tr class="success"><td>/Users/wolong/Documents/workspace/fe-admin/src/views/user/Login/index.vue</td>
+              <td>0</td>
+              <td>0</td></tr></tbody>
+      </table>
+
+  </div>
+</body>
+</html>

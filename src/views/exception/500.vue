@@ -16,8 +16,8 @@
 import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class Exception500 extends Vue {
-  toHome(): void {
-    this.$router.push({ path: "/" });
-  }
+    toHome(): void {
+        this.$router.push({ path: "/" });
+    }
 }
 </script>

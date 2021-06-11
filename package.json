@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "dev": "vue-cli-service serve",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "report": "./node_modules/.bin/eslint src --ext ts,js,vue -f node_modules/eslint-html-reporter/reporter-lite.js -o report.html"
   },
   "dependencies": {
     "@antv/g2plot": "^2.3.21",
@@ -51,8 +52,9 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
-    "eslint": "^7.12.1",
+    "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.1",
+    "eslint-html-reporter": "^0.7.4",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",

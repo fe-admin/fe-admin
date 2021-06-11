@@ -22,15 +22,15 @@ import { ResultInfo } from "@/types/result";
 @Component
 export default class Success extends Vue {
   directionType = {
-    horizontal: "horizontal",
-    vertical: "vertical",
+      horizontal: "horizontal",
+      vertical: "vertical",
   };
 
   get result(): ResultInfo {
-    return {
-      title: "result.success.title",
-      description: "result.success.description",
-    };
+      return {
+          title: "result.success.title",
+          description: "result.success.description",
+      };
   }
 }
 </script>

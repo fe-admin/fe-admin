@@ -32,25 +32,25 @@ import HeaderRightContent from "@/components/Header/RightContent";
 import storage from "store";
 
 export default {
-  name: "BasicLayout",
-  components: { HeaderMenu, HeaderRightContent },
-  data() {
-    return {
-      title: defaultSettings.title,
-      menuTitle: "前端中台系统",
-      menuId: this.$route.name,
-    };
-  },
-  computed: {
-    ...mapGetters(["isCollapse", "routers"]),
-  },
-  methods: {
-    ...mapActions(["toggleCollapse", "updateMenuId"]),
-  },
-  updated() {
-    const { name } = this.$route;
-    this.menuId = name;
-  },
+    name: "BasicLayout",
+    components: { HeaderMenu, HeaderRightContent },
+    data() {
+        return {
+            title: defaultSettings.title,
+            menuTitle: "前端中台系统",
+            menuId: this.$route.name,
+        };
+    },
+    computed: {
+        ...mapGetters(["isCollapse", "routers"]),
+    },
+    methods: {
+        ...mapActions(["toggleCollapse", "updateMenuId"]),
+    },
+    updated() {
+        const { name } = this.$route;
+        this.menuId = name;
+    },
 };
 </script>
 <style lang="scss">

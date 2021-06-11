@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: "RouteView",
+    name: "RouteView",
 };
 </script>

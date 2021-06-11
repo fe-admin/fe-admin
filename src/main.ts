@@ -43,8 +43,8 @@ Vue.config.productionTip = false;
 Vue.prototype.$loading = Loading;
 
 new Vue({
-  // i18n,
-  router: router,
-  store,
-  render: (h: CreateElement) => h(App),
+    // i18n,
+    router: router,
+    store,
+    render: (h: CreateElement) => h(App),
 }).$mount("#app");
