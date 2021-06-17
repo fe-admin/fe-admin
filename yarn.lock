@@ -2296,18 +2296,18 @@ aws4@^1.8.0:
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
   integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
 
-axios-encapsulation@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npm.taobao.org/axios-encapsulation/download/axios-encapsulation-1.0.3.tgz#7a8d98c570c3d7b3b6d609bd990959c6953c04ff"
-  integrity sha1-eo2YxXDD17O21gm9mQlZxpU8BP8=
+axios-encapsulation@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/axios-encapsulation/-/axios-encapsulation-1.1.4.tgz#7c7e1ace4cfa2faf8919080ca4ad60dcd04f4859"
+  integrity sha512-pMzD2qLM36j8Pe0mXcTR+09QAp3B5J1YqP4+y/a5ww48fVSKi5HuFz0shQzgqHp7KmG97SVJfISknFFjWv5EUQ==
   dependencies:
     axios "^0.20.0"
-    axios-retry "^3.1.8"
+    axios-retry "^3.1.9"
 
-axios-retry@^3.1.8:
-  version "3.1.8"
-  resolved "https://registry.npmjs.org/axios-retry/-/axios-retry-3.1.8.tgz#ffcfed757e1fab8cbf832f8505bb0e0af47c520c"
-  integrity sha512-yPw5Y4Bg6Dgmhm35KaJFtlh23s1TecW0HsUerK4/IS1UKl0gtN2aJqdEKtVomiOS/bDo5w4P3sqgki/M10eF8Q==
+axios-retry@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.npmjs.org/axios-retry/-/axios-retry-3.1.9.tgz#6c30fc9aeb4519aebaec758b90ef56fa03fe72e8"
+  integrity sha512-NFCoNIHq8lYkJa6ku4m+V1837TP6lCa7n79Iuf8/AqATAHYB0ISaAS1eyIenDOfHOLtym34W65Sjke2xjg2fsA==
   dependencies:
     is-retry-allowed "^1.1.0"
 

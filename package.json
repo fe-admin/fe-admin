@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "prod": "vue-cli-service build",
     "dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "report": "./node_modules/.bin/eslint src --ext ts,js,vue -f node_modules/eslint-html-reporter/reporter-lite.js -o report.html"
+    "report": "npx eslint src --ext ts,js,vue -f node_modules/eslint-html-reporter/reporter-lite.js -o report.html"
   },
   "dependencies": {
     "@antv/g2plot": "^2.3.21",
-    "axios-encapsulation": "^1.0.3",
+    "axios-encapsulation": "^1.1.4",
     "core-js": "^3.6.5",
     "default-passive-events": "^2.0.0",
     "element-ui": "^2.15.2",
@@ -84,6 +83,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "tag": "754dc44f"
+  }
 }

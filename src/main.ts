@@ -20,7 +20,7 @@ require("../mock");
 // import i18n from "./locales";
 
 import "@/styles/public/index.scss";
-
+console.info(process.env);
 Vue.use(EventProxy);
 Vue.use(ElementUI);
 Vue.use(FeAdmin);
@@ -43,8 +43,8 @@ Vue.config.productionTip = false;
 Vue.prototype.$loading = Loading;
 
 new Vue({
-    // i18n,
-    router: router,
-    store,
-    render: (h: CreateElement) => h(App),
+  // i18n,
+  router: router,
+  store,
+  render: (h: CreateElement) => h(App),
 }).$mount("#app");
