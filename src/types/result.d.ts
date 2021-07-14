@@ -1,4 +1,4 @@
 export interface ResultInfo {
-  title!: string;
-  description?: string;
+  readonly title: string;
+  readonly description?: string;
 }
