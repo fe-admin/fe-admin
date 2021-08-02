@@ -1,8 +1,8 @@
 @font-face {
   font-family: "fe-admin"; /* Project id 2409716 */
-  src: url('iconfont.woff2?t=1622701875199') format('woff2'),
-       url('iconfont.woff?t=1622701875199') format('woff'),
-       url('iconfont.ttf?t=1622701875199') format('truetype');
+  src: url('iconfont.woff2?t=1627888724622') format('woff2'),
+       url('iconfont.woff?t=1627888724622') format('woff'),
+       url('iconfont.ttf?t=1627888724622') format('truetype');
 }
 
 .fe-admin {
@@ -11,6 +11,38 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.fe-refresh:before {
+  content: "\e607";
+}
+
+.fe-yinzhang:before {
+  content: "\e609";
+}
+
+.fe-calculation:before {
+  content: "\e606";
+}
+
+.fe-log:before {
+  content: "\e671";
+}
+
+.fe-org:before {
+  content: "\e651";
+}
+
+.fe-ver:before {
+  content: "\e6cf";
+}
+
+.fe-privacy:before {
+  content: "\e662";
+}
+
+.fe-algorithm:before {
+  content: "\e642";
 }
 
 .fe-phone:before {

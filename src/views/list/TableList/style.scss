@@ -43,6 +43,18 @@
       font-weight: 500;
       font-size: 16px;
     }
+    .el-button {
+      margin-right: 8px;
+    }
+    .el-icon-plus:before {
+      margin-right: 8px;
+    }
+    .item {
+      width: 24px;
+      height: 16px;
+      margin: 0 8px;
+      cursor: pointer;
+    }
   }
   .el-pagination {
     text-align: right;

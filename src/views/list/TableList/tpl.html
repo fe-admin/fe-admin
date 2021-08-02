@@ -8,7 +8,6 @@
       class="search-form"
       label-width="120px"
       :model="searchForm"
-      size="mini"
     >
       <el-form-item prop="name" label="规则名称" for="name">
         <el-input
@@ -58,7 +57,9 @@
       ></template>
       <el-form-item>
         <el-button @click="resetForm('searchForm')">重置</el-button>
-        <el-button type="primary" :loading="loading">查询</el-button>
+        <el-button type="primary" @click="getTableList" :loading="loading"
+          >查询</el-button
+        >
         <CollapseButton :collapsed="collapsed" :onCollapse="onCollapse" />
       </el-form-item>
     </el-form>
@@ -66,7 +67,25 @@
       <div class="table-list-tools">
         <span class="title">表格查询</span>
         <div class="list-toolbar-right">
-          <el-button type="primary">查询</el-button>
+          <el-button
+            type="primary"
+            class="el-icon-plus"
+            @click="dialogShow='Add'"
+            >添加</el-button
+          >
+          <el-tooltip class="item" effect="dark" content="刷新" placement="top">
+            <span @click="getTableList()" :loading="loading"
+              ><svg-icon iconName="fe-refresh"
+            /></span>
+          </el-tooltip>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="列设置"
+            placement="top"
+          >
+            <svg-icon iconName="fe-setting" />
+          </el-tooltip>
         </div>
       </div>
       <el-table
@@ -99,9 +118,11 @@
           </el-table-column>
         </template>
         <el-table-column label="操作">
-          <a>配置</a>
+          <template slot-scope="scope">
+          
+          <a @click="dialogShow='Detail';currentRow=scope.row">详情</a>
           <el-divider direction="vertical"></el-divider>
-          <a>订阅报警</a>
+          <a>订阅报警</a></template>
         </el-table-column>
       </el-table>
       <FePage
@@ -112,4 +133,10 @@
       />
     </div>
   </div>
+  <component
+    v-bind:is="dialogShow"
+    :dialogClose="dialogClose"
+    :currentRow="currentRow"
+    :refresh="getTableList"
+  ></component>
 </with-header>

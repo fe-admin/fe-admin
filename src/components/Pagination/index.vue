@@ -12,41 +12,41 @@
 </template>
 <script>
 export default {
-    name: "FePagination",
-    props: ["limit", "page", "total"],
-    data() {
-        return {
-            pageSizes: [10, 20, 50, 100],
-        };
+  name: "FePagination",
+  props: ["limit", "page", "total", "propPageSizes"],
+  data() {
+    return {
+      pageSizes: this.propPageSizes || [10, 20, 50, 100],
+    };
+  },
+  computed: {
+    pageSize: {
+      get() {
+        return this.limit;
+      },
+      set(val) {
+        this.$emit("update:limit", val);
+      },
     },
-    computed: {
-        pageSize: {
-            get() {
-                return this.limit;
-            },
-            set(val) {
-                this.$emit("update:limit", val);
-            },
-        },
-        currentPage: {
-            get() {
-                return this.page;
-            },
-            set(val) {
-                this.$emit("update:page", val);
-            },
-        },
+    currentPage: {
+      get() {
+        return this.page;
+      },
+      set(val) {
+        this.$emit("update:page", val);
+      },
     },
-    methods: {
-        handleSizeChange(pageSize) {
-            const { currentPage } = this;
-            this.$emit("pageChange", { pageSize, currentPage });
-        },
-        handleCurrentChange(currentPage) {
-            const { pageSize } = this;
-            this.$emit("pageChange", { pageSize, currentPage });
-        },
+  },
+  methods: {
+    handleSizeChange(pageSize) {
+      const { currentPage } = this;
+      this.$emit("pageChange", { pageSize, page: currentPage });
     },
+    handleCurrentChange(currentPage) {
+      const { pageSize } = this;
+      this.$emit("pageChange", { pageSize, page: currentPage });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

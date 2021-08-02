@@ -16,6 +16,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.el-header {
+  z-index: 2001;
+}
 .header-nav.el-menu--horizontal {
   border: none !important;
   .el-menu-item {

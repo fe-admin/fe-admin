@@ -20,3 +20,7 @@ export interface getPageParamsType {
     page?: undefined | Record<string, unknown>
   ): Record<string, unknown>;
 }
+
+export interface dialogCloseType {
+  (): void;
+}

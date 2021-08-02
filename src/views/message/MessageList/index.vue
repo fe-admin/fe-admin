@@ -97,7 +97,7 @@
 import { Component, Ref, Mixins } from "vue-property-decorator";
 import { getMessageList } from "@/api";
 import { sleep } from "@/utils";
-import { PageMixin } from "@/mixins";
+import  PageMixin  from "@/mixins/page";
 import TableAlert from "@/components/TableAlert";
 import { ElTable } from "element-ui/types/table";
 import { MsgItem, MsgList } from "@/types/message";

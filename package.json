@@ -14,7 +14,7 @@
     "core-js": "^3.6.5",
     "default-passive-events": "^2.0.0",
     "element-ui": "^2.15.2",
-    "fe-admin-component": "^0.0.13",
+    "fe-admin-component": "0.0.14",
     "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
