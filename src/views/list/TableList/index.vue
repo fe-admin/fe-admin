@@ -13,6 +13,7 @@ import {
 } from "@/types/element";
 import FePage from "@/components/Pagination";
 import { ElForm } from "element-ui/types/form";
+import { Item } from "@/types/list";
 
 @Component({
   components: {
@@ -20,6 +21,7 @@ import { ElForm } from "element-ui/types/form";
     FePage,
     Add: () => import("./component/add"),
     Detail: () => import("./component/detail"),
+    Edite: () => import("./component/edite"),
   },
 })
 export default class TableList extends Mixins(PageMixin, DialogMixin) {
@@ -43,7 +45,7 @@ export default class TableList extends Mixins(PageMixin, DialogMixin) {
     { name: "statusStr", label: "状态" },
     { name: "updatedAt", label: "上次调用时间" },
   ];
-  tableData = [];
+  tableData: Item[] = [];
   dialogShow = "";
   currentRow = {};
   mounted(): void {
@@ -61,7 +63,7 @@ export default class TableList extends Mixins(PageMixin, DialogMixin) {
     const params = this.getPageParams(defaultParams, page);
     const [err, res] = await getTableList(params);
     if (!err && res) {
-      console.info(res)
+      console.info(res);
       await sleep(1000);
       this.tableData = res.data;
       this.pagination.total = res.total;
@@ -70,8 +72,25 @@ export default class TableList extends Mixins(PageMixin, DialogMixin) {
     return;
   }
 
+  edite(row: Item): void {
+    console.info(row);
+    this.tableData.splice(row.$index, 1, row);
+  }
+
   onCollapse(): void {
     this.collapsed = !this.collapsed;
+  }
+
+  async delRow(id: string): Promise<unknown> {
+    this.$notify({
+      title: "成功",
+      message: "删除成功！",
+      type: "success",
+    });
+    await sleep(1000);
+    this.getTableList();
+
+    return;
   }
 }
 </script>

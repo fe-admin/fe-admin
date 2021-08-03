@@ -119,10 +119,17 @@
         </template>
         <el-table-column label="操作">
           <template slot-scope="scope">
-          
-          <a @click="dialogShow='Detail';currentRow=scope.row">详情</a>
-          <el-divider direction="vertical"></el-divider>
-          <a>订阅报警</a></template>
+            <a @click="dialogShow='Detail';currentRow=scope.row">详情</a>
+            <el-divider direction="vertical"></el-divider>
+            <a
+              @click="dialogShow='Edite';currentRow={...scope.row, $index:scope.$index}"
+              >编辑</a
+            >
+            <el-divider direction="vertical"></el-divider>
+            <el-popconfirm @confirm="delRow(scope.row.id)" title="确定删除吗？">
+              <a slot="reference">删除</a>
+            </el-popconfirm>
+          </template>
         </el-table-column>
       </el-table>
       <FePage
@@ -138,5 +145,6 @@
     :dialogClose="dialogClose"
     :currentRow="currentRow"
     :refresh="getTableList"
+    :edite="edite"
   ></component>
 </with-header>
