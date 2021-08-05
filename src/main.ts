@@ -20,7 +20,6 @@ require("../mock");
 // import i18n from "./locales";
 
 import "@/styles/public/index.scss";
-console.info(process.env);
 Vue.use(EventProxy);
 Vue.use(ElementUI);
 Vue.use(FeAdmin);

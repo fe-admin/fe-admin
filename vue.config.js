@@ -8,53 +8,65 @@ const gitRevisionPlugin = new GitRevisionPlugin();
 const buildDate = JSON.stringify(new Date().toLocaleString());
 
 module.exports = {
-    outputDir: "dist",
-    lintOnSave: false,
-    devServer: {
-        disableHostCheck: true,
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-        },
-        overlay: {
-            warnings: false,
-        },
+  outputDir: "dist",
+  lintOnSave: false,
+  pages: {
+    index: {
+      entry: "src/main.ts",
+      template: "public/index.html",
+      filename: "index.html",
+      title: "fe-admin",
+      chunks: ["chunk-vendors", "chunk-common", "index"],
     },
-    css: {
-        loaderOptions: {
-            scss: {
-                additionalData: `
+    editor: {
+      entry: "src/editor/index.js",
+      template: "public/editor.html",
+      filename: "editor.html",
+      title: "fe-admin",
+      chunks: ["chunk-vendors", "editor"],
+    },
+  },
+  devServer: {
+    disableHostCheck: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    overlay: {
+      warnings: false,
+    },
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `
                 @import "@/styles/public/var.scss";
                 `,
-            },
+      },
+    },
+  },
+  chainWebpack: (config) => {
+    config.resolve.alias.set("@", path.resolve("src"));
+    config.resolve.alias.set("vue$", "vue/dist/vue.esm.js");
+  },
+  publicPath: process.env.publicPath,
+  configureWebpack: {
+    plugins: [
+      gitRevisionPlugin,
+      new webpack.DefinePlugin({
+        VERSION: JSON.stringify(gitRevisionPlugin.version()),
+        COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash()),
+        BRANCH: JSON.stringify(gitRevisionPlugin.branch()),
+        BUILD_DATE: buildDate,
+      }),
+      new ManifestPlugin({
+        filter: ({ name }) => {
+          return !/monaco-editor|\.map|\.png/.test(name);
         },
-    },
-    chainWebpack: (config) => {
-        config.resolve.alias.set("@", path.resolve("src"));
-        config.resolve.alias.set("vue$", "vue/dist/vue.esm.js");
-        config.plugin("html").tap((args) => {
-            args[0].title = "fe-admin";
-            return args;
-        });
-    },
-    publicPath: process.env.publicPath,
-    configureWebpack: {
-        plugins: [
-            gitRevisionPlugin,
-            new webpack.DefinePlugin({
-                VERSION: JSON.stringify(gitRevisionPlugin.version()),
-                COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash()),
-                BRANCH: JSON.stringify(gitRevisionPlugin.branch()),
-                BUILD_DATE: buildDate,
-            }),
-            new ManifestPlugin({
-                filter: ({ name }) => {
-                    return !/monaco-editor|\.map|\.png/.test(name);
-                },
-            }),
-            new MonacoWebpackPlugin({
-                languages: ["javascript", "go", "java"],
-                features: ["coreCommands", "find"],
-            }),
-        ],
-    },
+      }),
+      new MonacoWebpackPlugin({
+        languages: ["javascript", "go", "java"],
+        features: ["coreCommands", "find"],
+      }),
+    ],
+  },
 };
