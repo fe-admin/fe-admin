@@ -18,4 +18,6 @@ export default {
   // 权限页面
   PermissionPage: () => import("@/views/permission/Page"),
   PermissionDirective: () => import("@/views/permission/Directive"),
+  // 表单页面
+  FormAdvanced: () => import("@/views/form/FormAdvanced"),
 };

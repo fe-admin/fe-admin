@@ -25,6 +25,23 @@ const routes = [
       },
     ],
   },
+  {
+    name: "Form",
+    path: "advanced-form",
+    meta: {
+      title: "表单页面",
+      icon: "fe-form",
+    },
+    children: [
+      {
+        path: "/form/advanced-form",
+        name: "FormAdvanced",
+        meta: {
+          title: "高级表单",
+        },
+      },
+    ],
+  },
   // 消息
   {
     name: "Message",

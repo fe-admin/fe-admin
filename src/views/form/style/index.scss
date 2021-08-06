@@ -1,0 +1,33 @@
+.form-container {
+  .el-card {
+    margin-bottom: 16px;
+  }
+  .el-form--inline .el-form-item {
+    width: calc((100% - 10px) / 2);
+    display: inline-flex;
+  }
+  .el-form .el-form-item:nth-child(2n) {
+    margin-right: 0;
+  }
+
+  /deep/.el-form-item__content {
+    flex: 1;
+  }
+  .form-footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 200px);
+    padding: 0 24px;
+    line-height: 40px;
+    height: 40px;
+    justify-content: flex-end;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    box-shadow: 0 -6px 16px -8px #00000014, 0 -9px 28px 0 #0000000d,
+      0 -12px 48px 16px #00000008;
+    transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}

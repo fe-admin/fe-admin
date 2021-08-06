@@ -6,6 +6,20 @@
   "description": "fe-admin",
   "glyphs": [
     {
+      "icon_id": "19532929",
+      "name": "表单",
+      "font_class": "form",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "13977142",
+      "name": "列表",
+      "font_class": "table",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
       "icon_id": "16933376",
       "name": "刷新",
       "font_class": "refresh",
@@ -146,25 +160,11 @@
       "unicode_decimal": 58907
     },
     {
-      "icon_id": "20172949",
-      "name": "表单申请",
-      "font_class": "form",
-      "unicode": "e631",
-      "unicode_decimal": 58929
-    },
-    {
       "icon_id": "20981744",
       "name": "tips",
       "font_class": "tips",
       "unicode": "e601",
       "unicode_decimal": 58881
-    },
-    {
-      "icon_id": "12550621",
-      "name": "表格",
-      "font_class": "table",
-      "unicode": "e639",
-      "unicode_decimal": 58937
     },
     {
       "icon_id": "4922681",
