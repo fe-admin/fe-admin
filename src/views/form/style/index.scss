@@ -3,15 +3,40 @@
     margin-bottom: 16px;
   }
   .el-form--inline .el-form-item {
-    width: calc((100% - 10px) / 2);
+    width: calc((100% - 20px) / 3);
     display: inline-flex;
   }
-  .el-form .el-form-item:nth-child(2n) {
+  .el-form .el-form-item:nth-child(3n) {
     margin-right: 0;
   }
 
   /deep/.el-form-item__content {
     flex: 1;
+    .el-select {
+      width: 100%;
+    }
+  }
+  /deep/.el-date-editor .el-range-separator {
+    padding: 0;
+  }
+  .el-form-item__content .el-input-group {
+    vertical-align: middle;
+  }
+  .el-range-editor.el-input__inner {
+    width: auto;
+  }
+  /deep/.el-input-group__append,
+  /deep/.el-input-group__prepend {
+    padding: 0 10px;
+  }
+  .add-btn {
+    width: 100%;
+    border-color: #d9d9d9;
+    border-style: dashed;
+    margin-top: 12px;
+  }
+  [disabled] {
+    color: #ccc;
   }
   .form-footer {
     position: fixed;

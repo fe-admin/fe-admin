@@ -1,0 +1,121 @@
+<with-header>
+  <template #content>
+    高级表单常见于一次性输入和提交大批量数据的场景。
+  </template>
+  <div class="form-container">
+    <el-form
+      :inline="true"
+      :model="formData"
+      class="demo-form-inline"
+      label-width="100px"
+    >
+      <el-card class="box-card" shadow="hover">
+        <div slot="header" class="clearfix">
+          <span>仓库管理</span>
+        </div>
+
+        <el-form-item label="仓库名：">
+          <el-input v-model="formData.name" placeholder=""></el-input>
+        </el-form-item>
+        <el-form-item label="仓库域名：">
+          <el-input placeholder="请输入内容" v-model="formData.host">
+            <template slot="prepend">Http://</template>
+            <template slot="append">.com</template>
+          </el-input>
+        </el-form-item>
+        <el-form-item label="仓库管理员：">
+          <el-select v-model="formData.admin" placeholder="活动区域">
+            <el-option label="管理员1" value="0"></el-option>
+            <el-option label="管理员2" value="1"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="审批人：">
+          <el-select v-model="formData.approve" placeholder="活动区域">
+            <el-option label="审批人1" value="0"></el-option>
+            <el-option label="审批人2" value="1"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="生效日期：">
+          <el-date-picker
+            v-model="formData.date"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="仓库类型：">
+          <el-select v-model="formData.type" placeholder="活动区域">
+            <el-option label="类型1" value="0"></el-option>
+            <el-option label="类型2" value="1"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-card>
+      <el-card class="box-card" shadow="hover">
+        <div slot="header" class="clearfix">
+          <span>成员设置</span>
+        </div>
+        <el-table
+          ref="multipleTable"
+          v-loading="loading"
+          :data="tableData"
+          tooltip-effect="dark"
+          style="width: 100%"
+        >
+          <template v-for="(item, index) in tableHead">
+            <el-table-column
+              sortable
+              :key="index"
+              :label="item.label"
+              :prop="item.name"
+              :show-overflow-tooltip="true"
+            >
+              <template slot-scope="scope">
+                <template v-if="editeRowIndex===scope.$index">
+                  <el-input
+                    v-model="tableData[scope.$index][scope.column.property]"
+                  />
+                </template>
+                <template v-else>
+                  {{scope.row[scope.column.property]}}
+                </template>
+              </template>
+            </el-table-column>
+          </template>
+          <el-table-column label="操作">
+            <template slot-scope="scope">
+              <template v-if="editeRowIndex===scope.$index">
+                <a @click="save(scope.$index)">保存</a>
+                <el-divider direction="vertical"></el-divider>
+                <a @click="cancel(scope.$index)">取消</a>
+              </template>
+              <template v-else>
+                <template v-if="editeRowIndex!==-1">
+                  <a disabled>编辑</a>
+                </template>
+                <template v-else>
+                  <a @click="edite(scope.$index)">编辑</a>
+                </template>
+              </template>
+              <el-divider direction="vertical"></el-divider>
+              <el-popconfirm
+                @confirm="delRow(scope.$index)"
+                title="确定删除吗？"
+              >
+                <a slot="reference">删除</a>
+              </el-popconfirm>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-button class="add-btn" @click="addRow" icon="el-icon-plus"
+          >添加一行数据</el-button
+        >
+      </el-card>
+      <div class="form-footer">
+        <el-button>取 消</el-button>
+        <el-button type="primary">确 定</el-button>
+      </div>
+    </el-form>
+  </div>
+</with-header>

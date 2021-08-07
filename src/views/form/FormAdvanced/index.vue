@@ -1,142 +1,82 @@
-<template>
-  <with-header>
-    <template #content>
-      高级表单常见于一次性输入和提交大批量数据的场景。
-    </template>
-    <div class="form-container">
-      <el-form
-        :inline="true"
-        :model="formData"
-        class="demo-form-inline"
-        label-width="180px"
-      >
-        <el-card class="box-card" shadow="hover">
-          <div slot="header" class="clearfix">
-            <span>账号/主索引设置</span>
-            <el-button style="float: right; padding: 3px 0" type="text"
-              >保存</el-button
-            >
-          </div>
-
-          <el-form-item label="用户管理员账号：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="随访模块高级管理员账号：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="主索引自动合并分值：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-        </el-card>
-        <el-card class="box-card" shadow="hover">
-          <div slot="header" class="clearfix">
-            <span>时效设置</span>
-            <el-button style="float: right; padding: 3px 0" type="text"
-              >保存</el-button
-            >
-          </div>
-
-          <el-form-item label="病例撤回时效：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="上报时效提醒日期：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="未上报统计日期：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="全国未上报统计日期：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-          <el-form-item label="未完成上报提醒日期：">
-            <el-input v-model="formData.user" placeholder=""></el-input>
-          </el-form-item>
-        </el-card>
-        <div class="form-footer">
-          <el-button>取 消</el-button>
-          <el-button type="primary">确 定</el-button>
-        </div>
-      </el-form>
-    </div>
-  </with-header>
-</template>
+<template src="./tpl.html"> </template>
 
 <script lang="ts">
-import { Component, Ref, Mixins } from "vue-property-decorator";
-import { getMessageList } from "@/api";
+import { Component, Vue } from "vue-property-decorator";
+import { getAdvanced } from "@/api/form";
+import { Item } from "@/types/list";
 import { sleep } from "@/utils";
-import PageMixin from "@/mixins/page";
-import TableAlert from "@/components/TableAlert";
-import { ElTable } from "element-ui/types/table";
-import { MsgItem, MsgList } from "@/types/message";
-import { paginationType, getPageParamsType } from "@/types/element";
-import FePage from "@/components/Pagination";
 
-@Component({
-  components: { TableAlert, FePage },
-})
-export default class MessageList extends Mixins(PageMixin) {
-  pagination!: paginationType;
-  getPageParams!: getPageParamsType;
-  search = "";
+@Component({})
+export default class FormAdvanced extends Vue {
   loading = false;
-  selectNum = 0;
-  type = 0;
-  unread = 0;
-  readType = 0;
-  formData = {};
-  columWidth = [500];
+  editeRowIndex = -1;
+  editeRow = {};
+  formData = {
+    name: "",
+    host: "",
+    approve: "",
+    admin: "",
+    date: "",
+    type: "",
+  };
   tableHead = [
-    { name: "content", label: "消息内容" },
-    { name: "type", label: "消息类型" },
-    { name: "subType", label: "消息子类型" },
-    { name: "receiveTime", label: "接收时间" },
+    { name: "name", label: "成员名称" },
+    { name: "id", label: "工号" },
+    { name: "department", label: "所属部门" },
   ];
-  tableData = [];
-  @Ref("multipleTable") readonly multipleTableEle!: ElTable;
-  get filterData(): MsgList {
-    const { tableData, search } = this;
-    return tableData.filter(
-      (data: MsgItem) =>
-        !search || data.content.toLowerCase().includes(search.toLowerCase())
-    );
-  }
+
+  tableData: Item[] = [];
 
   mounted(): void {
-    this.getMessageList();
+    this.getAdvanced();
   }
-  async getMessageList(
-    page?: undefined | Record<string, unknown>
-  ): Promise<unknown> {
+  async getAdvanced(): Promise<unknown> {
     this.loading = true;
-    const { type, readType } = this;
-    const defaultParams = {
-      type,
-      readType,
-    };
-    const params = this.getPageParams(defaultParams, page);
-    const [err, res] = await getMessageList(params);
+
+    const [err, res] = await getAdvanced();
     if (!err && res) {
       await sleep(1000);
       this.tableData = res.data;
-      this.unread = res.unread;
-      if (this.pagination) this.pagination.total = res.total;
       this.loading = false;
     }
     return;
   }
-
-  async changeReadType(type: number): Promise<unknown> {
-    this.readType = type;
-    await this.$nextTick();
-    return this.getMessageList();
+  edite(index: number): void {
+    this.editeRow = { ...this.tableData[index] };
+    this.editeRowIndex = index;
   }
-
-  handleSelectionChange(v: []): void {
-    this.selectNum = v.length;
+  save(index: number): void {
+    const row = this.tableData[index];
+    for (let key in row) {
+      row[key] = row[key] || "-";
+    }
+    this.editeRow = { ...row };
+    this.editeRowIndex = -1;
   }
-  clearSelection(): void {
-    this.multipleTableEle.clearSelection();
+  cancel(index: number): void {
+    this.tableData[index] = this.editeRow;
+    this.editeRowIndex = -1;
+  }
+  delRow(index: number): void {
+    this.tableData.splice(index, 1);
+    this.editeRowIndex = -1;
+  }
+  addRow(): void {
+    const length = this.tableData.length;
+    if (this.editeRowIndex !== -1) {
+      this.$message({
+        showClose: true,
+        message: "请先保存！",
+        type: "warning",
+      });
+      return;
+    }
+    this.tableData.splice(length, 0, {
+      name: "",
+      id: "",
+      department: "",
+    });
+    this.editeRowIndex = length;
   }
 }
 </script>
