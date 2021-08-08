@@ -4,7 +4,7 @@
   </el-menu>
 </template>
 <script>
-import { loginOut } from "@/api";
+import { loginOut } from "@/api/user";
 
 export default {
     name: "HeaderMenu",

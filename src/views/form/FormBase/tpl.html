@@ -1,0 +1,86 @@
+<with-header>
+  <template #content>
+    表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。
+  </template>
+  <div class="form-container">
+    <el-form :model="formData" label-position="top" label-width="100px">
+      <el-form-item label="标题：">
+        <el-input v-model="formData.name" placeholder=""></el-input>
+      </el-form-item>
+      <el-form-item label="起止日期：">
+        <el-date-picker
+          v-model="formData.date"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        >
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="目标描述：">
+        <el-input
+          v-model="formData.name"
+          placeholder=""
+          type="textarea"
+          :row="3"
+        ></el-input>
+      </el-form-item>
+      <el-form-item label="衡量标准：">
+        <el-input
+          v-model="formData.name"
+          placeholder=""
+          type="textarea"
+          :row="3"
+        ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <span slot="label">客户：<span class="text">（选填）</span></span>
+
+        <el-input
+          v-model="formData.name"
+          placeholder="请描述你服务的客户，内部客户直接 @姓名／工号"
+        ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <span slot="label">邀评人：<span class="text">（选填）</span></span>
+
+        <el-input
+          v-model="formData.name"
+          placeholder="请直接 @姓名／工号，最多可邀请 5 人"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item>
+        <span slot="label">权重：<span class="text">（选填）</span></span>
+
+        <el-input-number
+          v-model="num"
+          controls-position="right"
+          @change="handleChange"
+          :min="1"
+          :max="10"
+        ></el-input-number>
+      </el-form-item>
+      <el-form-item>
+        <span slot="label"
+          >目标公开：<span class="text">客户、邀评人默认被分享</span></span
+        >
+        <el-radio v-model="radio" label="1">备选项</el-radio>
+        <el-radio v-model="radio" label="2">备选项</el-radio>
+        <el-radio v-model="radio" label="1">备选项</el-radio>
+        <el-radio v-model="radio" label="2">备选项</el-radio>
+        <el-select v-model="formData.admin" placeholder="活动区域">
+          <el-option label="管理员1" value="0"></el-option>
+          <el-option label="管理员2" value="1"></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')"
+          >提交</el-button
+        >
+        <el-button @click="resetForm('ruleForm')">重置</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</with-header>

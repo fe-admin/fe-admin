@@ -2,7 +2,7 @@
 <script lang="ts">
 import { Component, Ref, Mixins } from "vue-property-decorator";
 import CollapseButton from "@/components/CollapseButton";
-import { getTableList } from "@/api";
+import { getTableList } from "@/api/list";
 import { sleep } from "@/utils";
 import PageMixin from "@/mixins/page";
 import DialogMixin from "@/mixins/dialog";

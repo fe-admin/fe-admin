@@ -2,7 +2,7 @@
 <script lang="ts">
 import { Component, Vue, Ref } from "vue-property-decorator";
 import { Action } from "vuex-class";
-import { login } from "@/api";
+import { login } from "@/api/user";
 import { debounce, sleep } from "@/utils";
 import { setToken } from "@/utils/auth";
 import { ElForm } from "element-ui/types/form";

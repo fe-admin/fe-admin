@@ -20,4 +20,5 @@ export default {
   PermissionDirective: () => import("@/views/permission/Directive"),
   // 表单页面
   FormAdvanced: () => import("@/views/form/FormAdvanced"),
+  FormBase: () => import("@/views/form/FormBase"),
 };

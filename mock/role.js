@@ -27,12 +27,19 @@ const routes = [
   },
   {
     name: "Form",
-    path: "advanced-form",
+    path: "base-form",
     meta: {
       title: "表单页面",
       icon: "fe-form",
     },
     children: [
+      {
+        path: "/form/base-form",
+        name: "FormBase",
+        meta: {
+          title: "基础表单",
+        },
+      },
       {
         path: "/form/advanced-form",
         name: "FormAdvanced",

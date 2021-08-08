@@ -7,7 +7,7 @@ import { Item } from "@/types/list";
 import { sleep } from "@/utils";
 
 @Component({})
-export default class FormAdvanced extends Vue {
+export default class FormBase extends Vue {
   loading = false;
   editeRowIndex = -1;
   editeRow = {};

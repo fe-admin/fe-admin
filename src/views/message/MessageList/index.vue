@@ -95,7 +95,7 @@
 
 <script lang="ts">
 import { Component, Ref, Mixins } from "vue-property-decorator";
-import { getMessageList } from "@/api";
+import { getMessageList } from "@/api/message";
 import { sleep } from "@/utils";
 import  PageMixin  from "@/mixins/page";
 import TableAlert from "@/components/TableAlert";

@@ -1,0 +1,35 @@
+.form-container {
+  background-color: #fff;
+  padding: 24px;
+  .el-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /deep/.el-form-item__label {
+    padding: 0;
+    line-height: 28px;
+  }
+  .text {
+    color: #ccc;
+  }
+  /deep/.el-form-item__content {
+    flex: 1;
+    .el-select {
+      width: 100%;
+    }
+  }
+  /deep/.el-date-editor .el-range-separator {
+    padding: 0;
+  }
+  .el-form-item__content .el-input-group {
+    vertical-align: middle;
+  }
+  .el-range-editor.el-input__inner {
+    width: auto;
+  }
+  /deep/.el-input-group__append,
+  /deep/.el-input-group__prepend {
+    padding: 0 10px;
+  }
+}

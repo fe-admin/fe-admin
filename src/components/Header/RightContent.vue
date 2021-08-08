@@ -18,7 +18,7 @@
   </el-menu>
 </template>
 <script>
-import { loginOut } from "@/api";
+import { loginOut } from "@/api/user";
 import { mapGetters } from "vuex";
 import { removeToken } from "@/utils/auth";
 

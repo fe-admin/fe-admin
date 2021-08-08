@@ -63,7 +63,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { getSubscribeList } from "@/api";
+import { getSubscribeList } from "@/api/message";
 import { sleep } from "@/utils";
 import { SubscribeItem } from "@/types/message";
 @Component
