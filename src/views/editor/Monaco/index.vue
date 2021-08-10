@@ -5,14 +5,6 @@
 </template>
 <script>
 export default {
-  components: {},
-
-  mounted() {},
-  methods: {},
-  beforeDestroy() {
-    // try {
-    // } catch (error) {}
-  },
 };
 </script>
 <style lang="scss" scoped>
