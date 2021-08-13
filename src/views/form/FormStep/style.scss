@@ -1,0 +1,53 @@
+.form-container {
+  background-color: #fff;
+  padding: 24px;
+  .el-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /deep/.el-form-item__label {
+    padding: 0;
+    line-height: 28px;
+  }
+  .text {
+    color: #ccc;
+  }
+  /deep/.el-form-item__content {
+    flex: 1;
+    .el-select {
+      width: 100%;
+    }
+  }
+
+  .el-alert {
+    margin-bottom: 24px;
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
+    color: rgba(0, 0, 0, 0.85);
+  }
+  /deep/.el-icon-info:before {
+    color: #1890ff;
+  }
+  .desc {
+    margin-top: 24px;
+    padding: 24px 40px;
+    background-color: #fafafa;
+    /deep/.el-descriptions__body {
+      background-color: #fafafa;
+    }
+  }
+  .extra-info {
+    line-height: 28px;
+    .tit:first-child {
+      font-size: 15px;
+    }
+    .tit {
+      font-weight: 500;
+    }
+
+    .des {
+      margin: 0;
+    }
+  }
+}

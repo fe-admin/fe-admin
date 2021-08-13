@@ -33,3 +33,12 @@ export function addRoutes(router, list) {
         });
     }
 }
+
+export function getDicMap(list) {
+    const map = {};
+    list.forEach((item) => {
+      map[item.value] = item.label;
+    });
+    return map;
+  }
+  

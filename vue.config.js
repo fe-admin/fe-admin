@@ -5,6 +5,7 @@ const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
 const gitRevisionPlugin = new GitRevisionPlugin();
 const buildDate = JSON.stringify(new Date().toLocaleString());
@@ -18,16 +19,12 @@ module.exports = {
       template: "public/index.html",
       filename: "index.html",
       title: "fe-admin",
-      // chunks: ["index","chunk-vendors", "chunk-common"],
-      // chunks: ["chunk-vendors", "chunk-common", "index"],
     },
     editor: {
       entry: "src/editor/index.js",
       template: "public/editor.html",
       filename: "editor.html",
       title: "fe-admin",
-      // chunks: ["editor", "chunk-common"],
-      // chunks: ["chunk-vendors", "editor"],
     },
   },
   devServer: {
@@ -56,7 +53,7 @@ module.exports = {
   configureWebpack: (config) => {
     config.plugins = [
       ...config.plugins,
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
       gitRevisionPlugin,
       new webpack.DefinePlugin({
         VERSION: JSON.stringify(gitRevisionPlugin.version()),
@@ -73,30 +70,12 @@ module.exports = {
         languages: ["javascript", "go", "java"],
         features: ["coreCommands", "find"],
       }),
+      new CompressionWebpackPlugin({
+        test: /\.(js|css)$/, // 匹配文件名
+        threshold: 10240, // 对超过10k的数据压缩
+      }),
     ];
 
     config.optimization.splitChunks.minChunks = 2;
-
-    // js output config
-    // config.output.filename = "[name].[hash].js";
-    // config.output.chunkFilename = "[name].[hash].js";
-
-    // optimization: {
-    //   splitChunks: {
-    //     cacheGroups: {
-    //       common: {
-    //         //抽取所有入口页面都需要的公共chunk
-    //         name: "chunk-common",
-    //         chunks: "initial",
-    //         minChunks: 2,
-    //         maxInitialRequests: 5,
-    //         minSize: 0,
-    //         priority: 1,
-    //         reuseExistingChunk: true,
-    //         enforce: true,
-    //       },
-    //     },
-    //   },
-    // },
   },
 };

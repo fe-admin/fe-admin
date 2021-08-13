@@ -21,4 +21,5 @@ export default {
   // 表单页面
   FormAdvanced: () => import("@/views/form/FormAdvanced"),
   FormBase: () => import("@/views/form/FormBase"),
+  FormStep: () => import("@/views/form/FormStep"),
 };

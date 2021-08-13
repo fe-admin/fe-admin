@@ -41,6 +41,13 @@ const routes = [
         },
       },
       {
+        path: "/form/step-form",
+        name: "FormStep",
+        meta: {
+          title: "分步表单",
+        },
+      },
+      {
         path: "/form/advanced-form",
         name: "FormAdvanced",
         meta: {

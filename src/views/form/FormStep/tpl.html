@@ -1,0 +1,114 @@
+<with-header>
+  <template #content>
+    将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。
+  </template>
+  <div class="form-container">
+    <el-steps :active="active" align-center finish-status="success">
+      <el-step title="填写转账信息"></el-step>
+      <el-step title="确认转账信息"></el-step>
+      <el-step title="完成"></el-step>
+    </el-steps>
+    <el-form :model="formData" label-position="top" label-width="100px">
+      <template v-if="active===0">
+
+    
+
+        <el-form-item label="付款账号：">
+          <el-select v-model="formData.payAccount" placeholder="选择付款账号">
+            <el-option v-for="item in payAccountList" :label="item.label" :key="item.value" :value="item.value"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="收款账号：">
+          <el-input v-model="formData.receiverAccount" placeholder=""></el-input>
+        </el-form-item>
+
+        <el-form-item label="收款人姓名：">
+          <el-input v-model="formData.receiverName" placeholder=""></el-input>
+        </el-form-item>
+
+        <el-form-item label="转账金额">
+          <el-input-number
+            v-model="formData.count"
+            controls-position="right"
+            :min="1"
+            :max="10000"
+          ></el-input-number>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button type="primary" @click="next(1)">下一步</el-button>
+        </el-form-item>
+      </template>
+      <template v-else-if="active===1">
+        <el-alert
+          title="确认转账后，资金将直接打入对方账户，无法退回。"
+          type="info"
+          show-icon
+        >
+        </el-alert>
+        <el-descriptions
+          class="margin-top"
+          title=""
+          size="medium"
+          :column="1"
+          border
+        >
+          <el-descriptions-item label="付款账户">
+            {{payAccountMap[formData.payAccount]}}
+          </el-descriptions-item>
+          <el-descriptions-item label="收款账户">
+            {{formData.receiverAccount}}
+          </el-descriptions-item>
+          <el-descriptions-item label="收款人姓名">
+            {{formData.receiverName}}
+          </el-descriptions-item>
+          <el-descriptions-item label="转账金额">
+            {{formData.count}}元
+          </el-descriptions-item>
+        </el-descriptions>
+        <el-divider></el-divider>
+        <el-form-item label="支付密码：">
+          <el-input v-model="formData.payPwd" type="password" placeholder=""></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="next(3)">下一步</el-button>
+          <el-button @click="next(0)">上一步</el-button>
+        </el-form-item>
+      </template>
+      <fe-result
+        v-else
+        status="success"
+        title="操作成功"
+        sub-title="预计两小时内到账"
+      >
+        <template #extra>
+          <el-button type="primary" @click="next(0)">再转一笔</el-button>
+          <el-button style="margin-left: 8px">查看账单</el-button>
+
+          <el-descriptions class="desc" title="" size="medium" :column="1">
+            <el-descriptions-item label="付款账户">
+              {{payAccountMap[formData.payAccount]}}
+            </el-descriptions-item>
+            <el-descriptions-item label="收款账户">
+              {{formData.receiverAccount}}
+            </el-descriptions-item>
+            <el-descriptions-item label="收款人姓名">
+              {{formData.receiverName}}
+            </el-descriptions-item>
+            <el-descriptions-item label="转账金额">
+              {{formData.count}}元
+            </el-descriptions-item>
+          </el-descriptions></template
+        >
+      </fe-result>
+    </el-form>
+    <el-divider></el-divider>
+    <dl class="extra-info">
+      <dt class="tit">说明</dt>
+      <dt class="tit">转账到支付宝账户</dt>
+      <dd class="des">如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</dd>
+      <dt class="tit">转账到银行卡</dt>
+      <dd class="des">如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</dd>
+    </dl>
+  </div>
+</with-header>
