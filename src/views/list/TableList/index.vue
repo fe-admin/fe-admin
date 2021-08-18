@@ -63,7 +63,6 @@ export default class TableList extends Mixins(PageMixin, DialogMixin) {
     const params = this.getPageParams(defaultParams, page);
     const [err, res] = await getTableList(params);
     if (!err && res) {
-      console.info(res);
       await sleep(1000);
       this.tableData = res.data;
       this.pagination.total = res.total;

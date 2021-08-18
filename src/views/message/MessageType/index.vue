@@ -36,15 +36,31 @@
           >
             <template slot-scope="scope">
               {{ scope.row[scope.column.property] }}
+              <span style="float:right;" v-if="scope.$index === 1"
+                >起止日期：2021-08-1 10:30 ~ 2021-08-16 12:20</span
+              >
             </template>
           </el-table-column>
 
           <el-table-column label="操作" min-width="20%">
             <template slot-scope="scope">
               <template v-if="scope.row.web !== undefined">
-                <a>删除</a>
-                <el-divider direction="vertical"></el-divider>
-                <a>编辑</a>
+                <template v-if="scope.$index === 1">
+                  <el-switch
+                    v-model="close"
+                    active-color="#13ce66"
+                    inactive-color="#ff4949"
+                    @change="onSwitch"
+                  >
+                  </el-switch>
+                  <el-divider v-if="close" direction="vertical"></el-divider>
+                  <a v-if="close">编辑</a>
+                </template>
+                <template v-else>
+                  <a>删除</a>
+                  <el-divider direction="vertical"></el-divider>
+                  <a>编辑</a>
+                </template>
               </template>
               <template v-else>
                 <a>删除</a>
@@ -58,41 +74,66 @@
         </el-table>
       </div>
     </div>
+    <component
+      v-bind:is="dialogShow"
+      :dialogClose="dialogClose"
+      :currentRow="currentRow"
+      :edite="edite"
+    ></component>
   </with-header>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Mixins } from "vue-property-decorator";
 import { getSubscribeList } from "@/api/message";
 import { sleep } from "@/utils";
-import { SubscribeItem } from "@/types/message";
-@Component
-export default class messageSubscribe extends Vue {
+import DialogMixin from "@/mixins/dialog";
+import { dialogCloseType } from "@/types/element";
+import { Item } from "@/types/list";
+
+@Component({
+  components: {
+    Edite: () => import("./component/edite"),
+  },
+})
+export default class messageSubscribe extends Mixins(DialogMixin) {
   search = "";
   loading = false;
+  close = false;
+  dialogShow = "";
   tableHead = [{ name: "msgType", label: "消息类型" }];
-  tableData = [];
-  get filterData(): SubscribeItem[] {
-      const { tableData, search } = this;
-      return tableData.filter(
-          (data: { msgType: string }) =>
-              !search || data.msgType.toLowerCase().includes(search.toLowerCase())
-      );
+  tableData: Item[] = [];
+  dialogClose!: dialogCloseType;
+  private get filterData() {
+    const { tableData, search } = this;
+    return tableData.filter(
+      (data) =>
+        !search || data.msgType.toLowerCase().includes(search.toLowerCase())
+    );
   }
 
   mounted(): void {
-      this.getSubscribeList();
+    this.getSubscribeList();
   }
 
   async getSubscribeList(): Promise<unknown> {
-      this.loading = true;
-      const [err, res] = await getSubscribeList();
-      if (!err && res) {
-          await sleep(1000);
-          this.tableData = res;
-          this.loading = false;
-      }
-      return;
+    this.loading = true;
+    const [err, res] = await getSubscribeList();
+    if (!err && res) {
+      await sleep(1000);
+      this.tableData = res;
+      this.loading = false;
+    }
+    return;
+  }
+  edite(row: Item): void {
+    console.info(row);
+    this.tableData.splice(row.$index, 1, row);
+  }
+  onSwitch(type) {
+    if (type) {
+      this.dialogShow = "Edite";
+    }
   }
 }
 </script>

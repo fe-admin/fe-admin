@@ -43,7 +43,6 @@ export function getDicMap(list) {
 }
 
 export function scrollIntoView(ele) {
-  console.info(ele);
   const target = ele || document.querySelector(".is-error");
   target?.scrollIntoView({
     block: "center",
