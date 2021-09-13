@@ -7,7 +7,7 @@ import store from "@/store";
 
 const whiteList = ["/user/login"];
 const loginRoutePath = "/user/login";
-const defaultRoutePath = "/dashbord";
+const defaultRoutePath = "//dashboard";
 
 router.beforeEach((to, from, next) => {
   NProgress.start({ showSpinner: false });

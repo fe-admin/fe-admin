@@ -68,7 +68,6 @@ export function ErrorBoundary<T>(promise: Promise<T>, handle?: () => void) {
 }
 
 window.addEventListener("error", (e) => {
-  console.info(e);
   e.preventDefault();
   let message = (lodashGet(e, "message") || "").replace(
     /Uncaught Error: /i,

@@ -27,7 +27,7 @@ const routes = [
   },
   {
     name: "Form",
-    path: "base-form",
+    path: "/form/base-form",
     meta: {
       title: "表单页面",
       icon: "fe-form",

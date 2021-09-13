@@ -97,7 +97,7 @@
 import { Component, Ref, Mixins } from "vue-property-decorator";
 import { getMessageList } from "@/api/message";
 import { sleep } from "@/utils";
-import  PageMixin  from "@/mixins/page";
+import PageMixin from "@/mixins/page";
 import TableAlert from "@/components/TableAlert";
 import { ElTable } from "element-ui/types/table";
 import { MsgItem, MsgList } from "@/types/message";
@@ -105,7 +105,7 @@ import { paginationType, getPageParamsType } from "@/types/element";
 import FePage from "@/components/Pagination";
 
 @Component({
-    components: { TableAlert, FePage },
+  components: { TableAlert, FePage },
 })
 export default class MessageList extends Mixins(PageMixin) {
   pagination!: paginationType;
@@ -118,56 +118,56 @@ export default class MessageList extends Mixins(PageMixin) {
   readType = 0;
   columWidth = [500];
   tableHead = [
-      { name: "content", label: "消息内容" },
-      { name: "type", label: "消息类型" },
-      { name: "subType", label: "消息子类型" },
-      { name: "receiveTime", label: "接收时间" },
+    { name: "content", label: "消息内容" },
+    { name: "type", label: "消息类型" },
+    { name: "subType", label: "消息子类型" },
+    { name: "receiveTime", label: "接收时间" },
   ];
   tableData = [];
   @Ref("multipleTable") readonly multipleTableEle!: ElTable;
   get filterData(): MsgList {
-      const { tableData, search } = this;
-      return tableData.filter(
-          (data: MsgItem) =>
-              !search || data.content.toLowerCase().includes(search.toLowerCase())
-      );
+    const { tableData, search } = this;
+    return tableData.filter(
+      (data: MsgItem) =>
+        !search || data.content.toLowerCase().includes(search.toLowerCase())
+    );
   }
 
   mounted(): void {
-      this.getMessageList();
+    this.getMessageList();
   }
   async getMessageList(
-      page?: undefined | Record<string, unknown>
+    page?: undefined | Record<string, unknown>
   ): Promise<unknown> {
-      this.loading = true;
-      const { type, readType } = this;
-      const defaultParams = {
-          type,
-          readType,
-      };
-      const params = this.getPageParams(defaultParams, page);
-      const [err, res] = await getMessageList(params);
-      if (!err && res) {
-          await sleep(1000);
-          this.tableData = res.data;
-          this.unread = res.unread;
-          if (this.pagination) this.pagination.total = res.total;
-          this.loading = false;
-      }
-      return;
+    this.loading = true;
+    const { type, readType } = this;
+    const defaultParams = {
+      type,
+      readType,
+    };
+    const params = this.getPageParams(defaultParams, page);
+    const [err, res] = await getMessageList(params);
+    if (!err && res) {
+      await sleep(1000);
+      this.tableData = res.data;
+      this.unread = res.unread;
+      if (this.pagination) this.pagination.total = res.total;
+      this.loading = false;
+    }
+    return;
   }
 
   async changeReadType(type: number): Promise<unknown> {
-      this.readType = type;
-      await this.$nextTick();
-      return this.getMessageList();
+    this.readType = type;
+    await this.$nextTick();
+    return this.getMessageList();
   }
 
   handleSelectionChange(v: []): void {
-      this.selectNum = v.length;
+    this.selectNum = v.length;
   }
   clearSelection(): void {
-      this.multipleTableEle.clearSelection();
+    this.multipleTableEle.clearSelection();
   }
 }
 </script>

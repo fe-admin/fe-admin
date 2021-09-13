@@ -5,6 +5,7 @@
     :menuId="menuId"
     :toggleCollapse="toggleCollapse"
     :updateMenuId="updateMenuId"
+    :showTagViews="true"
   >
     <template v-slot:logo>
       <div class="logo-wrapper">
@@ -29,7 +30,6 @@ import { mapGetters, mapActions } from "vuex";
 import defaultSettings from "@/config";
 import HeaderMenu from "@/components/Header/Menu";
 import HeaderRightContent from "@/components/Header/RightContent";
-import storage from "store";
 
 export default {
   name: "BasicLayout",

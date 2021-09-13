@@ -130,7 +130,7 @@ export default class messageSubscribe extends Mixins(DialogMixin) {
     console.info(row);
     this.tableData.splice(row.$index, 1, row);
   }
-  onSwitch(type) {
+  onSwitch(type: string): void {
     if (type) {
       this.dialogShow = "Edite";
     }
