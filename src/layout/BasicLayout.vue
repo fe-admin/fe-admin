@@ -9,7 +9,6 @@
   >
     <template v-slot:logo>
       <div class="logo-wrapper">
-        <img src="/favicon.png" width="32" height="32" />
         <svg-icon iconName="fe-logo-text" />
       </div>
     </template>
@@ -26,14 +25,22 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { mapGetters, mapActions } from "vuex";
 import defaultSettings from "@/config";
 import HeaderMenu from "@/components/Header/Menu";
 import HeaderRightContent from "@/components/Header/RightContent";
+const state = Vue.observable({ count: 0 });
 
 export default {
   name: "BasicLayout",
   components: { HeaderMenu, HeaderRightContent },
+  provide: {
+    foo: {
+      name: "bar",
+      state,
+    },
+  },
   data() {
     return {
       title: defaultSettings.title,
@@ -46,6 +53,11 @@ export default {
   },
   methods: {
     ...mapActions(["toggleCollapse", "updateMenuId"]),
+  },
+  mounted() {
+    setInterval(() => {
+      this._provided.foo.state.count += 1;
+    }, 5000);
   },
   updated() {
     const { name } = this.$route;

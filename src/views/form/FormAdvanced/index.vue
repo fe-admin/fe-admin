@@ -1,13 +1,14 @@
 <template src="./tpl.html"> </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Inject } from "vue-property-decorator";
 import { getAdvanced } from "@/api/form";
 import { Item } from "@/types/list";
 import { sleep } from "@/utils";
 
 @Component({})
 export default class FormAdvanced extends Vue {
+  @Inject() foo!: Record<string, unknown>;
   loading = false;
   editeRowIndex = -1;
   editeRow = {};
